@@ -1,8 +1,6 @@
 # IART
 
-# B5: 
-
-Otimização na Programação de uma Conferência
+# B5: Otimização na Programação de uma Conferência
 
 # Objetivo:
 
