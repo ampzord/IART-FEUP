@@ -1,5 +1,4 @@
-
-
+import java.math.BigInteger;
 
 public class Main {
 	public static void main(String[] args) {
@@ -18,13 +17,13 @@ public class Main {
 		//5 - Se solução, end; se não, 2;
 		
 		
-		// Indivíduos -> acho que sao as sessões(most likely) ou então os dias.
+		// Indivíduos -> acho que sao as sessões
 		
 		//Numero de Genes = Numero de atributos
 		
 		/*
 		 * Sessão tem:
-		 * duração, tema, papers(2 full papers no minimo), apresentador 	
+		 * duração, tema, papers(2 full papers no minimo), apresentador, dia da apresentação
 		 * Cada elemento seria um gene. 
 		 */
 		
@@ -37,9 +36,7 @@ public class Main {
 		//escala-se as variaveis para inteiros multiplicando-as por 10^n, onde n = precisão
 		//precisão pode ser usada para diferentes desempenhos
 		
-		//Transformar novas variáveis em forma binária
-		
-		
+		//Transformar novas variáveis em forma binária ou usar como ints compridos
 		
 		/*
 		 * SELEÇÃO
@@ -52,7 +49,7 @@ public class Main {
 		
 		/*
 		 * REPRODUÇÃO
-		 * Os eelcionados sao emparelhados aleatoriamente
+		 * Os selecionados sao emparelhados aleatoriamente
 		 * Por par, com Pcrossover, pelo menos 1 crossover point é escolhido, de 1 a N(Cromossoma.size())
 		 * Troca-se o material genetico
 		 */
@@ -72,9 +69,23 @@ public class Main {
 		 * Roleta para serem selecionados alguns // Ou o 1...M sessões são aqui ou então é no tamanho da população
 		 * CONFIRM AFTER ROLETA
 		 * 
+		 */	
+		
+		
+		/*
+		 * Combinações dos Papers
+		 * 30 30
+		 1 Hora 	+ 20 + 20 + 20   = 60			111
+					+ 30 + 30		 = 60			110
+					+ 20 + 30        = 50			101
+					+ 20 + 20 	  	 = 40			100
+					+ 30			 = 30		 	011
+					+ 20 			 = 20			010
+				    + 0				 = 0			001
 		 */
 		
+		String a = "5"; //101
+		System.out.println(Utilities.transform2Bin(5, 4));
 
 	}
-
 }
