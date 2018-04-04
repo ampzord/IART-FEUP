@@ -37,11 +37,11 @@ public class Paper {
 	public void createGene() {
 		String themesG ="";
 		for (int theme : themes) 
-			themesG += Utilities.transform2Bin(theme, 3);
+			themesG += Utilities.transform2Bin(theme, Utilities.THEME);
 		
 		String authorsG = "";
 		for (int author : authors) 
-			authorsG += Utilities.transform2Bin(author, 3);
+			authorsG += Utilities.transform2Bin(author, Utilities.AUTHORS);
 		
 		this.gene = themesG + authorsG + this.durationG;
 	}

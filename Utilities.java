@@ -2,6 +2,13 @@ import java.math.BigInteger;
 
 public class Utilities {
 	
+	public static int SESSION_THEME = 5; //32 themes
+	public static int THEME = 5; //32 themes
+	public static int DURATION = 3; // min: 1h(60min)
+	public static int PRESENTER = 6; //idAuthor
+	public static int DAYS = 2; // 3 days 
+	public static int AUTHORS = 6; //idAuthor
+	
 	/**
 	 * Fully transforms to binary
 	 * @param number number to be transformed

@@ -84,6 +84,44 @@ public class Main {
 				    + 0				 = 0			001
 		 */
 		
+		
+	/*
+		FUNÇÃO DE ADAPTAÇÃO:
+		Após gerir população 
+		
+		para cada um dos casos que estamos verificando, podemos atribuir um ´fator de importancia´, 
+		por exemplo, o fator de importancia para os temas de sessoes iguais é 0.2,
+		o fator de importancia para o tema da sessao inserido nos papers é 0.5, etc
+		dessa forma alem de calcularmos a fitness de cada uma das variantes, temos também um fator de
+		importancia geral em relacao ao resto.
+		
+		´Filtrar´ população por dia. (criar 3 arrays, um por dia, e cada inclui sessões para esse dia)
+		
+		* aqui podemos também comparar os dias e retonar um valor pra funcao fitness conforme a diferenca entre
+		* o tempo das duracoes.
+		* ou seja, se o primeiro dia tem 3 horas de papers, o segundo tem 6 horas, a diferneca é de 3 horas, 
+		* o que retornaria um fitness baixo
+		* mas se o priemiro dia tem 3 horas e o segundo tem 2 horas e meia, o retorno seria um finess alto. 
+		* talvez isso entre em conflito com o item abaixo, conferir qual o melhor.
+		
+		Por cada array
+			Verificar se há temas de sessões iguais
+				Se sim, escolher o que tem maior duração(da table anterior, o mais acima)
+						Se = duração, não há problema
+			
+			Verificar se tema da sessão está contido nos temas dos papers
+				buscar fitness relacionado com o nº papers associado ao tema
+					(retornar valor maior se mais papers relacionados com o tema da sessão)
+					
+			
+			
+			
+			
+			
+							
+		
+		
+	 */
 		String a = "5"; //101
 		System.out.println(Utilities.transform2Bin(5, 4));
 

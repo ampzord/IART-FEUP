@@ -40,11 +40,11 @@ public class Session {
 		for (Paper paper : papers) 
 			papersGene += paper.getGene();
 
-		this.genome = Utilities.transform2Bin(this.themeID, 3)
-					+ Utilities.transform2Bin(this.durationID, 3)
-					+ papers
-					+ Utilities.transform2Bin(this.presenterID, 3)
-					+ Utilities.transform2Bin(this.day, 3);	
+		this.genome = Utilities.transform2Bin(this.themeID, Utilities.SESSION_THEME)
+					+ Utilities.transform2Bin(this.durationID, Utilities.DURATION)
+					+ Utilities.transform2Bin(this.presenterID, Utilities.PRESENTER)
+					+ Utilities.transform2Bin(this.day, Utilities.DAYS)
+					+ papers;
 	}
 
 
