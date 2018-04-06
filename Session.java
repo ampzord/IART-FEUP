@@ -25,7 +25,6 @@ public class Session {
 		this.durationID = duration;
 		this.papers = papers;
 		this.presenterID = presenter;
-		this.day = day;
 
 		createGenome();
 	}
@@ -42,9 +41,11 @@ public class Session {
 
 		this.genome = Utilities.transform2Bin(this.themeID, Utilities.SESSION_THEME)
 					+ Utilities.transform2Bin(this.durationID, Utilities.DURATION)
-					+ Utilities.transform2Bin(this.presenterID, Utilities.PRESENTER)
-					+ Utilities.transform2Bin(this.day, Utilities.DAYS)
 					+ papers;
+	}
+	
+	public String getGenome() {
+		return this.genome;
 	}
 
 
