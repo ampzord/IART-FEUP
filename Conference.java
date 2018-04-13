@@ -6,7 +6,7 @@ public class Conference {
 	ArrayList<Day> days;
 	int numberRooms;
 	int numberSessions;
-
+	int nDays;
 	Conference(String cromossome){
 		this.cromossome = cromossome;
 		
@@ -14,12 +14,12 @@ public class Conference {
 	}
 
 	private void splitCromossome() {
+		String day = cromossome.substring(0, 1);
+		String sessions = cromossome.substring(2, 32); //ver valor de 30 -> tamanho das sessï¿½es, salas
+		for (int i =0; i <  nDays; i++){
+			days.add(new Day(day, sessions));
+		}
 
-		String day1 = cromossome.substring(0, 1);
-		String sessions1 = cromossome.substring(2, 32); //ver valor de 30 -> tamanho das sessões, salas
-		String day2 = cromossome.substring(33,34);
-		String sessions2 = cromossome.substring(35, 65); //ver valor de 30 -> tamanho das sessões, salas
-		String day3 = cromossome.substring(66,67);
-		String sessions3 = cromossome.substring(68, 38); //ver valor de 30 -> tamanho das sessões, salas
+		//verificar valor sde substrings
 	}
 }
