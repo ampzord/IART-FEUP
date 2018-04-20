@@ -8,26 +8,27 @@ public class Session {
 	private int themeID;
 	private int durationID;
 	private ArrayList<Paper> papers;
-	private int presenterID;
-	private int day;
 	private String genome;
 
+
 	/**
-	 * Creates a Session
-	 * @param theme Theme id
-	 * @param duration Duration id
-	 * @param papers List of papers
-	 * @param presenter Presenter id
-	 * @param day Day id
+	 * Creates a session
+	 * @param session String containing all the information related to the session
 	 */
-	Session(int theme, int duration, ArrayList<Paper> papers, int presenter, int day){
-		this.themeID = theme;
-		this.durationID = duration;
-		this.papers = papers;
-		this.presenterID = presenter;
+	public Session(String session) {
+		this.themeID = Integer.parseInt(Utilities.binToDec(session.substring(0, Utilities.THEME)));
+		int index = Utilities.THEME + Utilities.DURATION;
+		this.durationID = Integer.parseInt(Utilities.binToDec(session.substring(Utilities.THEME, index)));
+		
+		
+		for (int i = 0; i < Utilities.PAPERS_PER_SESSION; i++) 
+			this.papers.add(new Paper(session.substring(index, index+=Utilities.PAPERS)));
+		
 
 		createGenome();
 	}
+	
+	// TT DD PPPPPP PPPPPPP
 
 	/**
 	 * Creates a genome with all the elements

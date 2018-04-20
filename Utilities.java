@@ -8,7 +8,10 @@ public class Utilities {
 	public static int PRESENTER = 6; //idAuthor
 	public static int DAYS = 2; // 3 days 
 	public static int AUTHORS = 6; //idAuthor
-	
+	public static int AUTHORS_PER_PAPER = 2; 
+	public static int PAPERS= 6; //64 themes
+	public static int THEMES_PER_PAPER = 2; 
+	public static int PAPERS_PER_SESSION= 2; //64 themes
 	/**
 	 * Fully transforms to binary
 	 * @param number number to be transformed
@@ -57,5 +60,13 @@ public class Utilities {
 	public static String decToBin(int i) {
 		 String s = String.valueOf(i);
 		 return new BigInteger(s, 10).toString(2);
+	}
+	
+	public static String binToDec(String s) {
+		return new BigInteger(s, 2).toString(10);
+	}
+	
+	public static int getSessionCount() {
+		return THEME + DURATION + PAPERS; 
 	}
 }

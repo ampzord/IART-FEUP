@@ -5,31 +5,32 @@ public class Paper {
 	private ArrayList<Integer> themes;
 	private ArrayList<Integer> authors;
 	private int duration;
-	private String durationG;
 	private boolean isFullPaper;
 	private String gene;
 	
 	/**
-	 * Creates a Paper
-	 * @param themes List of themes ids
-	 * @param authors List of authors ids
-	 * @param isFullPaper
+	 * Creates a paper
+	 * @param paper String containing all the information related to the paper
 	 */
-	public Paper(ArrayList<Integer> themes, ArrayList<Integer> authors, boolean isFullPaper) {
-		this.themes = themes;
-		this.authors = authors;
-		this.isFullPaper = isFullPaper;
+	public Paper(String paper) {
+		int index = 0;
+		for (int i = 0; i < Utilities.AUTHORS_PER_PAPER; i++) 
+			this.authors.add(Integer.parseInt(Utilities.binToDec(paper.substring(index, index+=Utilities.AUTHORS))));		
 		
-		if (this.isFullPaper) {
-			this.duration = 30; //30
-			this.durationG = "1"; //30
-		}
-		else {
-			this.duration = 20; //30
-			this.durationG = "0"; //30
-		}		
+		for (int i = 0; i < Utilities.THEMES_PER_PAPER; i++) 
+			this.themes.add(Integer.parseInt(Utilities.binToDec(paper.substring(index, index+=Utilities.THEME))));		
+
+		this.isFullPaper = paper.substring(index, index++).equals("0") ? false : true;
+		
+		if (this.isFullPaper)
+			this.duration=30;
+		else
+			this.duration=20;
+
 		createGene();
 	}
+	
+	// AAAA AAAA AAAA TT TT TT DD
 	
 	/**
 	 * Creates a gene of a paper
@@ -43,7 +44,7 @@ public class Paper {
 		for (int author : authors) 
 			authorsG += Utilities.transform2Bin(author, Utilities.AUTHORS);
 		
-		this.gene = themesG + authorsG + this.durationG;
+		this.gene = authorsG + themesG + this.isFullPaper;
 	}
 
 	/**
@@ -72,8 +73,6 @@ public class Paper {
 	public int getDuration() {
 		return duration;
 	}
-
-
-
+	
 
 }
