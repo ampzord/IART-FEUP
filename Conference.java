@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Conference {
 	
 	String cromossome;
-	ArrayList<Day> days;
+	ArrayList<Day> days = new ArrayList<Day>();
 	int numberRooms;
 	int numberSessions;
 	int nDays;
@@ -15,12 +15,22 @@ public class Conference {
 
 	private void splitCromossome() {
 		String day = cromossome.substring(0, 1);
-		String sessions = cromossome.substring(2, 32); //ver valor de 30 -> tamanho das sess�es, salas
+		String sessions = cromossome.substring(2, cromossome.length()); //ver valor de 30 -> tamanho das sess�es, salas
+		
+		this.nDays = cromossome.length() / Utilities.getSessionCount();
+		
 		for (int i =0; i <  nDays; i++){
 			days.add(new Day(day, sessions));
 		}
 
 		//verificar valor sde substrings
+	}
+	
+	@Override
+	public String toString() {
+		
+		return "Total de Dias: " + nDays;
+		
 	}
 }
 

@@ -4,76 +4,76 @@ public class Main {
 	public static void main(String[] args) {
 		System.out.println("hello world!");
 
-		//Algoritmos de evolução
+		//Algoritmos de evoluï¿½ï¿½o
 
-		//1 - população inicial
+		//1 - populaï¿½ï¿½o inicial
 
-		//2 - alguns são selecionados (selected[] )
+		//2 - alguns sï¿½o selecionados (selected[] )
 
-		//3 - os selected são emparelhados e cruzam entre si, criando os descendents[] -> reprodução
+		//3 - os selected sï¿½o emparelhados e cruzam entre si, criando os descendents[] -> reproduï¿½ï¿½o
 
-		//4 - possibilidade de os descendents[] sofrerem mutação
+		//4 - possibilidade de os descendents[] sofrerem mutaï¿½ï¿½o
 
-		//5 - Se solução, end; se não, 2;
+		//5 - Se soluï¿½ï¿½o, end; se nï¿½o, 2;
 
 
-		// Indivíduos -> acho que sao as sessões
+		// Indivï¿½duos -> acho que sao as sessï¿½es
 
 		//Numero de Genes = Numero de atributos
 
 		/*
-		 * Sessão tem:
-		 * duração, tema, papers(2 full papers no minimo), apresentador, dia da apresentação
+		 * Sessï¿½o tem:
+		 * duraï¿½ï¿½o, tema, papers(2 full papers no minimo), apresentador, dia da apresentaï¿½ï¿½o
 		 * Cada elemento seria um gene. 
 		 */
 
 		/*
-		 * Há no maximo M sessões. Logo, são 1...M individuos selecionados
-		 * OU 1...M cromossomas como população inicial(most likely)
-		 * Durante 3 dias e, por dia, no máximo 4 horarios para sessões, com coffee breaks e almoço.
+		 * Hï¿½ no maximo M sessï¿½es. Logo, sï¿½o 1...M individuos selecionados
+		 * OU 1...M cromossomas como populaï¿½ï¿½o inicial(most likely)
+		 * Durante 3 dias e, por dia, no mï¿½ximo 4 horarios para sessï¿½es, com coffee breaks e almoï¿½o.
 		 */
 
-		//escala-se as variaveis para inteiros multiplicando-as por 10^n, onde n = precisão
-		//precisão pode ser usada para diferentes desempenhos
+		//escala-se as variaveis para inteiros multiplicando-as por 10^n, onde n = precisï¿½o
+		//precisï¿½o pode ser usada para diferentes desempenhos
 
-		//Transformar novas variáveis em forma binária ou usar como ints compridos
+		//Transformar novas variï¿½veis em forma binï¿½ria ou usar como ints compridos
 
 		/*
-		 * SELEÇÃO
-		 * fa(Ci) -> adaptação do Cromossoma Ci(função de adaptação)
-		 * Sum(fa(ci)) -> soma das adaptações de toda a população
+		 * SELEï¿½ï¿½O
+		 * fa(Ci) -> adaptaï¿½ï¿½o do Cromossoma Ci(funï¿½ï¿½o de adaptaï¿½ï¿½o)
+		 * Sum(fa(ci)) -> soma das adaptaï¿½ï¿½es de toda a populaï¿½ï¿½o
 		 * P(Ci escolhido) = fa(Ci)/Sum(fa(ci))
-		 * São selecionados alguns daqui
+		 * Sï¿½o selecionados alguns daqui
 		 */
 
 
 		/*
-		 * REPRODUÇÃO
+		 * REPRODUï¿½ï¿½O
 		 * Os selecionados sao emparelhados aleatoriamente
-		 * Por par, com Pcrossover, pelo menos 1 crossover point é escolhido, de 1 a N(Cromossoma.size())
+		 * Por par, com Pcrossover, pelo menos 1 crossover point ï¿½ escolhido, de 1 a N(Cromossoma.size())
 		 * Troca-se o material genetico
 		 */
 
 		/*
-		 * MUTAÇÃO
+		 * MUTAï¿½ï¿½O
 		 * Pode acontecer com Pm muito baixo
 		 */
 
 
 		/*
-		 * Conclusões tendo em conta o exemplo dos slides
-		 * Cria-se 1...M cromossomas com tamanho = nº de atributos
-		 * Estes cromossomas são inicializados aleatoriamente e em formato binário
-		 * Aplica-se função de adaptação a esses cromossomas
+		 * Conclusï¿½es tendo em conta o exemplo dos slides
+		 * Cria-se 1...M cromossomas com tamanho = nï¿½ de atributos
+		 * Estes cromossomas sï¿½o inicializados aleatoriamente e em formato binï¿½rio
+		 * Aplica-se funï¿½ï¿½o de adaptaï¿½ï¿½o a esses cromossomas
 		 * Calcula-se a P(Ci escolhido) para cada
-		 * Roleta para serem selecionados alguns // Ou o 1...M sessões são aqui ou então é no tamanho da população
+		 * Roleta para serem selecionados alguns // Ou o 1...M sessï¿½es sï¿½o aqui ou entï¿½o ï¿½ no tamanho da populaï¿½ï¿½o
 		 * CONFIRM AFTER ROLETA
 		 * 
 		 */	
 
 
 		/*
-		 * Combinações dos Papers
+		 * Combinaï¿½ï¿½es dos Papers
 		 * 30 30
 		 1 Hora 	+ 20 + 20 + 20   = 60			111
 					+ 30 + 30		 = 60			110
@@ -84,84 +84,90 @@ public class Main {
 				    + 0				 = 0			001
 
 
-		FUNÇÃO DE ADAPTAÇÃO:
-		Após gerir população 
+		FUNï¿½ï¿½O DE ADAPTAï¿½ï¿½O:
+		Apï¿½s gerir populaï¿½ï¿½o 
 
-		para cada um dos casos que estamos verificando, podemos atribuir um ´fator de importancia´, 
-		por exemplo, o fator de importancia para os temas de sessoes iguais é 0.2,
-		o fator de importancia para o tema da sessao inserido nos papers é 0.5, etc
-		dessa forma alem de calcularmos a fitness de cada uma das variantes, temos também um fator de
+		para cada um dos casos que estamos verificando, podemos atribuir um ï¿½fator de importanciaï¿½, 
+		por exemplo, o fator de importancia para os temas de sessoes iguais ï¿½ 0.2,
+		o fator de importancia para o tema da sessao inserido nos papers ï¿½ 0.5, etc
+		dessa forma alem de calcularmos a fitness de cada uma das variantes, temos tambï¿½m um fator de
 		importancia geral em relacao ao resto.
 
-		´Filtrar´ população por dia. (criar 3 arrays, um por dia, e cada inclui sessões para esse dia)
+		ï¿½Filtrarï¿½ populaï¿½ï¿½o por dia. (criar 3 arrays, um por dia, e cada inclui sessï¿½es para esse dia)
 
-		 * aqui podemos também comparar os dias e retonar um valor pra funcao fitness conforme a diferenca entre
+		 * aqui podemos tambï¿½m comparar os dias e retonar um valor pra funcao fitness conforme a diferenca entre
 		 * o tempo das duracoes.
-		 * ou seja, se o primeiro dia tem 3 horas de papers, o segundo tem 6 horas, a diferneca é de 3 horas, 
+		 * ou seja, se o primeiro dia tem 3 horas de papers, o segundo tem 6 horas, a diferneca ï¿½ de 3 horas, 
 		 * o que retornaria um fitness baixo
 		 * mas se o priemiro dia tem 3 horas e o segundo tem 2 horas e meia, o retorno seria um finess alto. 
 		 * talvez isso entre em conflito com o item abaixo, conferir qual o melhor.
 
 		Por cada array(cada dia)
 						
-			Verificar se tema da sessão está contido nos temas dos papers
-				Se houver algum tema que não faça parte, retorna 0.
+			Verificar se tema da sessï¿½o estï¿½ contido nos temas dos papers
+				Se houver algum tema que nï¿½o faï¿½a parte, retorna 0.
 
-			Verificar se há, no mínimo, dois full papers
-				Se não há, retorna 0;
+			Verificar se hï¿½, no mï¿½nimo, dois full papers
+				Se nï¿½o hï¿½, retorna 0;
 
-			Verificar se cada apresentador está associado a cada paper
-				Se não, retorna 0.
+			Verificar se cada apresentador estï¿½ associado a cada paper
+				Se nï¿½o, retorna 0.
 				
 				
-			Verificar se há temas de sessões iguais
-				Se sim, escolher o que tem maior duração(da table anterior, o mais acima)
+			Verificar se hï¿½ temas de sessï¿½es iguais
+				Se sim, escolher o que tem maior duraï¿½ï¿½o(da table anterior, o mais acima)
 
 
-		perguntar ao professor se devemos retirar papers não relacionados com a sessão(após decidirmos se é melhor ou não)
+		perguntar ao professor se devemos retirar papers nï¿½o relacionados com a sessï¿½o(apï¿½s decidirmos se ï¿½ melhor ou nï¿½o)
 
 		 */
 		
 		/*
-		 	Há, no máximo, 4 * M sessões por dia(M = número de sessões em paralelo).
+		 	Hï¿½, no mï¿½ximo, 4 * M sessï¿½es por dia(M = nï¿½mero de sessï¿½es em paralelo).
 		 
 
 		 */
 		String a = "5"; //101
 		System.out.println(Utilities.transform2Bin(5, 4));
+					 //DIA    HORA    TEMA     DURA   PAPERS		full
+//		String cromo = "01 -  11      11       001     00 01  10 11   1";
+		
 
+		
+//		String cromo = "011111001000110111";
+		String cromo = "0111110010001101111111001000110111";
+		
+		
+		Conference c = new Conference(cromo);
+		System.out.println(c);
+		
+		
+		
+		
 
-		/*
-			O que é um estado?
-			O que é uma função de vizinhança?
-			Existe algum critério específico para o cruzamento e mutação(no nosso tema)?	
-					aleatorio
-			Como saber quando parar o algoritmo?
-				-> n iterações
-				-> ver se score não aumentou desde x iterações atrás
-				-> por tempo
-			Como distinguir os 3 dias?	
-			
-		 */
+//		<DIA> <SESSï¿½ES> <DIA> <SESSï¿½ES> <DIA> <SESSï¿½ES>, para 3 dias
+//		 * 	Ex:	
+//		 * 	00 01010101010 01 00000000000 10 11101010001
+//		<SESSOES>
+//		TT DD PPPPPP PPPPPPP
 		
-		
-		
+				
 		/* 	THE REAL DEAL NOW 
 		 * 
-		 * Indivíduo : uma solução que representa TODOS os dias e todas as sessões associadas
+		 * Indivï¿½duo : uma soluï¿½ï¿½o que representa TODOS os dias e todas as sessï¿½es associadas
 		 * 
-		 * 	<DIA> <SESSÕES> <DIA> <SESSÕES> <DIA> <SESSÕES>, para 3 dias
+		 * 	<DIA> <SESSï¿½ES> <DIA> <SESSï¿½ES> <DIA> <SESSï¿½ES>, para 3 dias
 		 * 	Ex:	
 		 * 	00 01010101010 01 00000000000 10 11101010001
 		 * 	
 		 * 
-		 *  <Sessões>: XX YYYYYYYYY
-		 * 		XX representa o horário da sessão(inicio/fim da manhã/tarde)
+		 *  <Sessï¿½es>: XX YYYYYYYYY
+		 * 		XX representa o horï¿½rio da sessï¿½o(inicio/fim da manhï¿½/tarde)
 		 * 		YYYY.. represneta o getGenome da classe session
 		 * 
-		 *   verificar se o apresentador está representador 
+		 *   verificar se o apresentador estï¿½ representador 
 		 * 
-		 * 	após gerar aleatóriamente, é criada um objeto Conference que faz parse do cromossoma todo
+		 * 	apï¿½s gerar aleatï¿½riamente, ï¿½ criada um objeto Conference que faz parse do cromossoma todo
 		 * 
 		 * 
 		 * 
