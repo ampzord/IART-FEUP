@@ -135,7 +135,7 @@ public class Main {
 
 		
 //		String cromo = "011111001000110111";
-		String cromo = "0111110010001101111111001000110111";
+		String cromo = "011111001000110111001111001000110111";
 		
 		
 		Conference c = new Conference(cromo);

@@ -17,9 +17,10 @@ public class Conference {
 		String day = cromossome.substring(0, 1);
 		String sessions = cromossome.substring(2, cromossome.length()); //ver valor de 30 -> tamanho das sess�es, salas
 		
-		this.nDays = cromossome.length() / Utilities.getSessionCount();
 		
-		for (int i =0; i <  nDays; i++){
+		this.nDays = cromossome.length() / (Utilities.getSessionCount() * Utilities.SESSIONS_PER_PERIOD);
+		
+		for (int i = 0; i <  nDays; i++){
 			days.add(new Day(day, sessions));
 		}
 

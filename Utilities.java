@@ -23,6 +23,7 @@ public class Utilities {
 	public static int PAPERS= 2; //64 themes
 	public static int THEMES_PER_PAPER = 2; 
 	public static int PAPERS_PER_SESSION = 1; //64 themes
+	public static int SESSIONS_PER_PERIOD = 1;
 	
 	
 	

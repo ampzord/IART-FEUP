@@ -13,11 +13,13 @@ public class Day {
 //			
 //		}
 	
-		for (int j = 0; j < Utilities.getSessionCount()  ; j += Utilities.getSessionCount()) {
-			this.sessions.add(new Session(sessions.substring(j, j + Utilities.getSessionCount())));
+		int index = 0;
+		
+		for (int j = 0; j < Utilities.SESSIONS_PER_PERIOD ; j ++) {
+			this.sessions.add(new Session(sessions.substring(0, index += Utilities.getSessionCount())));
 		}
 		
-		
+		System.out.println("Sessions Number: " + this.sessions.size());
 		
 	}
 	
