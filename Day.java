@@ -6,20 +6,16 @@ public class Day {
 	ArrayList<Session> sessions = new ArrayList<Session>();
 
 	public Day(String day, String sessions) {
-		System.out.println(sessions);
-		this.day = day;
-		
-//		for (int j = 0; j < Utilities) {
-//			
-//		}
 	
+		this.day = day;
+
 		int index = 0;
 		
 		for (int j = 0; j < Utilities.SESSIONS_PER_PERIOD ; j ++) {
-			this.sessions.add(new Session(sessions.substring(0, index += Utilities.getSessionCount())));
+			System.out.println("Session " + j);
+			this.sessions.add(new Session(sessions.substring(index, index += Utilities.getSessionCount())));
+			System.out.println();
 		}
-		
-		System.out.println("Sessions Number: " + this.sessions.size());
 		
 	}
 	

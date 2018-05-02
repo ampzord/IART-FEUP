@@ -36,18 +36,19 @@ public class Paper {
 		else
 			this.duration=20;
 
-		System.out.println("Authors: ");
+		System.out.print("Authors: ");
 		for (Integer integer : authors) {
 			System.out.print(integer+", ");
 			
 		}
-		System.out.println("Themes:: ");
+		System.out.println();
+		System.out.print("Themes: ");
 		for (Integer integer : themes) {
 			System.out.print(integer+", ");
 			
 		}
 		
-		System.out.println("Duration: " + duration);
+		System.out.println("\nDuration: " + duration);
 		System.out.println("Full Papper: " + isFullPaper);
 		
 		

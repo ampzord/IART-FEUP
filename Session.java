@@ -26,6 +26,7 @@ public class Session {
 		
 //		String cromo = "11 001 000110111";
 		for (int i = 0; i < Utilities.PAPERS_PER_SESSION; i++) {
+			System.out.println("Paper " + i);
 			String paper = session.substring(index, index += Utilities.getPaperSize());
 			this.papers.add(new Paper(paper));
 		}
