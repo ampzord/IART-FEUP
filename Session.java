@@ -58,6 +58,38 @@ public class Session {
 	public String getGenome() {
 		return this.genome;
 	}
+	
+	public int getNumberOfFullPapers() {
+		int i = 0;
+		for (Paper p: papers)
+			if (p.isFullPaper())
+				i++;
+		return i;
+	}
+	
+	public double checkThemesID() {
+		double score = 0;
+		
+		for (Paper p: papers) {
+			for (int t: p.getThemes()) {
+				if (t == this.themeID) {
+					score += 1 / getNumberOfValidPapers(); 
+					continue;
+				}
+			}
+		}
+		return score;
+	}
 
+	public int getNumberOfValidPapers() {
+		int validPapers = 0;
+		for (Paper p: papers) {
+			if (p.isValid()) {
+				validPapers++;
+			}
+		}
+		return validPapers;
+	}
+	
 
 }

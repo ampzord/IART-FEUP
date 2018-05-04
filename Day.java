@@ -19,6 +19,10 @@ public class Day {
 		
 	}
 	
+	public ArrayList<Session> getSessions() {
+		return sessions;
+	}
+	
 	
 	
 }

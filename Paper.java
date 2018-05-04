@@ -105,5 +105,9 @@ public class Paper {
 		return duration;
 	}
 	
+	public boolean isValid() {
+		return gene.contains("1");
+	}
+	
 
 }

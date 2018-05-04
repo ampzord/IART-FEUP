@@ -28,6 +28,12 @@ public class Conference {
 		//verificar valor sde substrings
 	}
 	
+	
+//	public boolean checkAuthors() {
+//		
+//	}
+	
+	
 	@Override
 	public String toString() {
 		
