@@ -10,7 +10,7 @@ public class Session {
 	private ArrayList<Paper> papers = new ArrayList<Paper>();
 	private String genome;
 	private int sessionSchedule;
-
+	
 	/**
 	 * Creates a session
 	 * @param session String containing all the information related to the session

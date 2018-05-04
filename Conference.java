@@ -17,10 +17,11 @@ public class Conference {
 		String day = cromossome.substring(0, 1);
 		String sessions = cromossome.substring(2, cromossome.length()); //ver valor de 30 -> tamanho das sess�es, salas
 		
-		
 		this.nDays = cromossome.length() / (Utilities.getSessionCount() * Utilities.SESSIONS_PER_PERIOD);
 		
-		for (int i = 0; i <  nDays; i++){
+//		System.out.println("ndays "+ nDays);
+		
+		for (int i = 0; i <  Utilities.DAYS; i++){
 			days.add(new Day(day, sessions));
 		}
 
@@ -30,7 +31,7 @@ public class Conference {
 	@Override
 	public String toString() {
 		
-		return "Total de Dias: " + nDays;
+		return "Total de Dias: " + Utilities.DAYS;
 		
 	}
 }

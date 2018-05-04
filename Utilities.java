@@ -16,15 +16,32 @@ public class Utilities {
 	public static int SESSION_THEME = 2; //32 themes
 	public static int THEME = 2; //32 themes
 	public static int DURATION = 3; // min: 1h(60min)
-	public static int PRESENTER = 2; //idAuthor
-	public static int DAYS = 1; // 3 days 
+	public static int PRESENTER = 2; //idAuthor 
 	public static int AUTHORS = 2; //idAuthor
 	public static int AUTHORS_PER_PAPER = 1; 
-	public static int PAPERS= 2; //64 themes
+	public static int PAPERS = 2; //64 themes
 	public static int THEMES_PER_PAPER = 2; 
-	public static int PAPERS_PER_SESSION = 2; //64 themes
-	public static int SESSIONS_PER_PERIOD = 1;
 	
+//	// Exemplo 1
+//	public static int DAYS = 1; // 3 days
+//	public static int SESSIONS_PER_PERIOD = 1;
+//	public static int PAPERS_PER_SESSION = 1; //64 themes
+	
+	// Exemplo 2
+//		public static int DAYS = 1; // 3 days
+//		public static int SESSIONS_PER_PERIOD = 2;
+//		public static int PAPERS_PER_SESSION = 1; //64 themes
+	
+	
+	// Exemplo 3
+//	public static int DAYS = 1; // 3 days
+//	public static int SESSIONS_PER_PERIOD = 2;
+//	public static int PAPERS_PER_SESSION = 2; //64 themes
+
+	// Exemplo 4
+	public static int DAYS = 2; // 3 days
+	public static int SESSIONS_PER_PERIOD = 2;
+	public static int PAPERS_PER_SESSION = 2; //64 themes
 	
 	
 	/**
@@ -82,10 +99,16 @@ public class Utilities {
 	}
 	
 	public static int getSessionCount() {
-		return THEME + DURATION + getPaperSize()+2; 
+		//Periodo (manhã, tarde...)
+		int PERIOD = 2;		
+		return PERIOD + THEME + DURATION + getPaperSize() * PAPERS_PER_SESSION; 
 	}
-		
+	
+	
+	
 	public static int getPaperSize() {
-		return (PAPERS * PAPERS_PER_SESSION) + (THEME * THEMES_PER_PAPER);
+		int ISFULLPAPER = 1;
+				//4									4							
+		return (AUTHORS * AUTHORS_PER_PAPER) + (THEME * THEMES_PER_PAPER) + ISFULLPAPER;
 	}
 }

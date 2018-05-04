@@ -55,7 +55,12 @@ public class Paper {
 		createGene();
 	}
 	
-	// AAAA AAAA AAAA TT TT TT DD
+//	Upgrade
+	// AAAA AAAA AAAA TT TT TT D
+	
+	
+	
+	//	AAAA AAAA AAAA TT TT TT DD
 	
 	
 	/**

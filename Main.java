@@ -95,16 +95,44 @@ public class Main {
 		// DIA HORA TEMA DURA PAPERS full
 		
 
-		System.out.println("Cromossomo padrao com 1 dia, 1 sessao e 2 papers");
-		// String cromo = "01  11 11 001 0001101";
-		String cromo = "0111110010001100001100001101";
+		System.out.println("Cromossomo padrao com 1 dia, 1 sessao e 1 papers");
+//		 		 DIA    HORA    TEMA     DURA    AA AA	TT TT   full
+//String cromo = "01 -  11      11       001     00 01  10 11   1";
+
+//		String cromo = "011111001000110111";
+//		Conference c1 = new Conference(cromo);
+//		System.out.println(c1);
+
+
+		
+		System.out.println("Cromossomo padrao com 1 dia, 2 sessao e 1 papers");
+//		          DIA    HORA   TEMA    DURA    AA AA	TT TT   full       Sessao 2
+//String cromo = "01 -  11      11       001     00 01  10 11   1          0111001000110111
+
+//		String cromo = "0111110010001101111011001000110111";
+//		Conference c1 = new Conference(cromo);
+//		System.out.println(c1);
+
+
+		
+		System.out.println("Cromossomo padrao com 1 dia, 2 sessao e 2 papers");
+//                DIA    HORA   TEMA    DURA    AA AA	TT TT  full  papper2        Sessao 2		     paper 2
+//String cromo = "01 -  11      11       001     00 01  10 11  1          			01 11 001 000110111  011110110 
+
+//		String cromo = "0111110010001101110111101100111001000110111011110110";
+//		Conference c1 = new Conference(cromo);
+//		System.out.println(c1);
+
+
+		System.out.println("Cromossomo padrao com 2 dia, 1 sessao e 2 papers");
+//                DIA    HORA   TEMA    DURA    AA AA	TT TT  full  papper2        Sessao 2		     paper 2
+//String cromo = "01 -  11      11       001     00 01  10 11  1          			01 11 001 000110111  011110110 
+
+		String cromo = "0011110010001101110111101100011001000110111011110110"; 
 		Conference c1 = new Conference(cromo);
 		System.out.println(c1);
-
-		System.out.println("Cromossomo com 2 dias, 1 sessao e 2 papers");
-		String cromo2 = "01111100100011011011110010001101";
-		Conference c2 = new Conference(cromo2);
-	//	System.out.println(c2);
+		
+		
 		
 
 		// <DIA> <SESS�ES> <DIA> <SESS�ES> <DIA> <SESS�ES>, para 3 dias
