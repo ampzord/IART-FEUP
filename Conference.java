@@ -8,7 +8,8 @@ public class Conference {
 	int numberSessions;
 	int nDays;
 	Conference(String cromossome){
-		this.cromossome = cromossome;
+		
+		this.cromossome = cromossome.replaceAll(" ", "");
 		
 		splitCromossome();
 	}

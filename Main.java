@@ -99,41 +99,43 @@ public class Main {
 //		 		 DIA    HORA    TEMA     DURA    AA AA	TT TT   full
 //String cromo = "01 -  11      11       001     00 01  10 11   1";
 
-//		String cromo = "011111001000110111";
+//		String cromo = "01111100101000110111";
 //		Conference c1 = new Conference(cromo);
 //		System.out.println(c1);
 
 
 		
 		System.out.println("Cromossomo padrao com 1 dia, 2 sessao e 1 papers");
-//		          DIA    HORA   TEMA    DURA    AA AA	TT TT   full       Sessao 2
-//String cromo = "01 -  11      11       001     00 01  10 11   1          0111001000110111
+//		          DIA    HORA   TEMA    DURA    AP AA AA	TT TT   full       Sessao 2
+//String cromo = "01 -  11      11       001    00  00 01  10 11   1          0111001  01 000110111
 
-//		String cromo = "0111110010001101111011001000110111";
+//		String cromo = "01111100100000110111111100100000110111";
 //		Conference c1 = new Conference(cromo);
 //		System.out.println(c1);
 
 
 		
 		System.out.println("Cromossomo padrao com 1 dia, 2 sessao e 2 papers");
-//                DIA    HORA   TEMA    DURA    AA AA	TT TT  full  papper2        Sessao 2		     paper 2
-//String cromo = "01 -  11      11       001     00 01  10 11  1          			01 11 001 000110111  011110110 
+//                DIA    HORA   TEMA    DURA   AP AA AA	TT TT  full  papper2        Sessao 2		     paper 2
+//String cromo = "01 -  11      11       001   00  00 01  10 11  1          			01 11 001 000110111  011110110 
+							//           paper				paper 2
+		// Cromossomo com apresentadores diferentes e funcionando
+		String cromo = "01 11 11     001 11 10 11 10 11 1   01 00 01 10 11 1    1111001  00000110111  10100000011";
+		Conference c1 = new Conference(cromo);
+		System.out.println(c1);
 
-//		String cromo = "0111110010001101110111101100111001000110111011110110";
-//		Conference c1 = new Conference(cromo);
-//		System.out.println(c1);
-
+		
 
 		System.out.println("Cromossomo padrao com 2 dia, 1 sessao e 2 papers");
 //                DIA    HORA   TEMA    DURA    AA AA	TT TT  full  papper2        Sessao 2		     paper 2
 //String cromo = "01 -  11      11       001     00 01  10 11  1          			01 11 001 000110111  011110110 
 
-		String cromo = "0011110010001101110111101100011001000110111011110110"; 
-		Conference c1 = new Conference(cromo);
-		System.out.println(c1);
+//		String cromo = "0011110010001101110111101100011001000110111011110110"; 
+//		Conference c1 = new Conference(cromo);
+//		System.out.println(c1);
 		
 		
-		
+		System.out.println("score final: " + Genetic.getScore(c1));
 
 		// <DIA> <SESS�ES> <DIA> <SESS�ES> <DIA> <SESS�ES>, para 3 dias
 		// * Ex:

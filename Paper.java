@@ -8,6 +8,7 @@ public class Paper {
 	private int duration;
 	private boolean isFullPaper;
 	private String gene;
+	private int presenter;
 	
 	/**
 	 * Creates a paper
@@ -15,6 +16,10 @@ public class Paper {
 	 */
 	public Paper(String paper) {
 		int index = 0;
+		
+		presenter = Integer.parseInt(Utilities.binToDec(paper.substring(index, index += Utilities.PRESENTER)));
+		
+		System.out.println("Presenter: " + presenter);
 		
 		for (int i = 0; i < Utilities.AUTHORS_PER_PAPER; i++) {
 						
@@ -50,6 +55,8 @@ public class Paper {
 		
 		System.out.println("\nDuration: " + duration);
 		System.out.println("Full Papper: " + isFullPaper);
+		
+		System.out.println("presenter is an author: " + checkIfPresenterIsAuthor());
 		
 		
 		createGene();
@@ -107,6 +114,14 @@ public class Paper {
 	
 	public boolean isValid() {
 		return gene.contains("1");
+	}
+	
+	public boolean checkIfPresenterIsAuthor() {
+		return authors.contains(presenter);
+	}
+	
+	public int getPresenter() {
+		return presenter;
 	}
 	
 

@@ -59,6 +59,14 @@ public class Session {
 		return this.genome;
 	}
 	
+	public int getSchedule() {
+		return this.sessionSchedule;
+	}
+	
+	public ArrayList<Paper> getPapers() {
+		return this.papers;
+	}
+	
 	public int getNumberOfFullPapers() {
 		int i = 0;
 		for (Paper p: papers)
@@ -69,12 +77,13 @@ public class Session {
 	
 	public double checkThemesID() {
 		double score = 0;
-		
+
+	
 		for (Paper p: papers) {
 			for (int t: p.getThemes()) {
 				if (t == this.themeID) {
-					score += 1 / getNumberOfValidPapers(); 
-					continue;
+					score += 1.0 / getNumberOfValidPapers(); 
+					break;
 				}
 			}
 		}
@@ -90,6 +99,5 @@ public class Session {
 		}
 		return validPapers;
 	}
-	
 
 }

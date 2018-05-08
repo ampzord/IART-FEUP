@@ -23,7 +23,37 @@ public class Day {
 		return sessions;
 	}
 	
+	/**
+	 * Checks if presenters on each papers are different on each session in the same period
+	 * @return trye if there is a duplicated presenter, otherwise returns false
+	 */
+	public boolean checkPresenters() {
+		ArrayList<Session> aux = new ArrayList<Session>();
+		
+		for (int i = 0; i < Utilities.NUM_PERIODS; i++) {
+			aux = getSessionsOfPeriod(i);		
+			ArrayList<Integer> presenters = new ArrayList<Integer>();
+			for (Session s : aux) 
+				for (Paper p : s.getPapers()) {
+					int presenter = p.getPresenter();
+					if (presenters.contains(presenter))
+						return false;
+					presenters.add(presenter);
+				}		
+		}		
+
+		return true;
+	}
 	
+	public ArrayList<Session> getSessionsOfPeriod(int period){
+		ArrayList<Session> aux = new ArrayList<Session>();
+		
+		for (Session s : sessions)
+			if (s.getSchedule() == period)
+				aux.add(s);
+		return aux;
+		
+	}
 	
 }
 
