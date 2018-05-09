@@ -6,9 +6,7 @@ public class Day {
 	ArrayList<Session> sessions = new ArrayList<Session>();
 
 	public Day(String day, String sessions) {
-	
 		this.day = day;
-
 		int index = 0;
 		
 		for (int j = 0; j < Utilities.SESSIONS_PER_PERIOD ; j ++) {
@@ -16,7 +14,6 @@ public class Day {
 			this.sessions.add(new Session(sessions.substring(index, index += Utilities.getSessionCount())));
 			System.out.println();
 		}
-		
 	}
 	
 	public ArrayList<Session> getSessions() {
@@ -25,7 +22,7 @@ public class Day {
 	
 	/**
 	 * Checks if presenters on each papers are different on each session in the same period
-	 * @return trye if there is a duplicated presenter, otherwise returns false
+	 * @return true if there is a duplicated presenter, otherwise returns false
 	 */
 	public boolean checkPresenters() {
 		ArrayList<Session> aux = new ArrayList<Session>();

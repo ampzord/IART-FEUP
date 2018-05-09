@@ -12,6 +12,12 @@ public class Utilities {
 //	public static int PAPERS= 6; //64 themes
 //	public static int THEMES_PER_PAPER = 2; 
 //	public static int PAPERS_PER_SESSION= 2; //64 themes
+	public static int DAY_WEIGHT = 1;
+	public static int CONF_WEIGHT = 1;
+	public static int SESS_WEIGHT = 1;
+	public static int PAPR_WEIGHT = 1;
+	public static int THEM_WEIGHT = 1;
+	
 	
 	public static int SESSION_THEME = 2; //32 themes
 	public static int THEME = 2; //32 themes
@@ -95,18 +101,29 @@ public class Utilities {
 		 return new BigInteger(s, 10).toString(2);
 	}
 	
+	/**
+	 * Converts a number on binary format to decimal
+	 * @param i
+	 * @return string in binary
+	 */
 	public static String binToDec(String s) {
 		return new BigInteger(s, 2).toString(10);
 	}
 	
+	/**
+	 * Returns the size of a session in the cromossome
+	 * @return Session size
+	 */
 	public static int getSessionCount() {
 		//Periodo (manhã, tarde...)
 		int PERIOD = 2;		
 		return PERIOD + THEME + DURATION + getPaperSize() * PAPERS_PER_SESSION; 
 	}
 	
-	
-	
+	/**
+	 * Returns the size of a paper in the cromossome
+	 * @return
+	 */
 	public static int getPaperSize() {
 		int ISFULLPAPER = 1;
 				//4									4							

@@ -55,18 +55,34 @@ public class Session {
 					+ papers;
 	}
 	
+	/**
+	 * Returns the genome of the session
+	 * @return genome
+	 */
 	public String getGenome() {
 		return this.genome;
 	}
 	
+	/**
+	 * Returns the schedule of the session
+	 * @return schedule
+	 */
 	public int getSchedule() {
 		return this.sessionSchedule;
 	}
 	
+	/**
+	 * Returns the papers of the session
+	 * @return genome
+	 */
 	public ArrayList<Paper> getPapers() {
 		return this.papers;
 	}
 	
+	/**
+	 * Returns the number of fullPapers of the session
+	 * @return number of fullPapers
+	 */
 	public int getNumberOfFullPapers() {
 		int i = 0;
 		for (Paper p: papers)
@@ -75,10 +91,12 @@ public class Session {
 		return i;
 	}
 	
+	/**
+	 * Returns a value relating the Session theme with the papers themes.
+	 * @return value
+	 */
 	public double checkThemesID() {
-		double score = 0;
-
-	
+		double score = 0;	
 		for (Paper p: papers) {
 			for (int t: p.getThemes()) {
 				if (t == this.themeID) {
@@ -90,6 +108,10 @@ public class Session {
 		return score;
 	}
 
+	/**
+	 * Returns number of valid papers
+	 * @return number of valid papers
+	 */
 	public int getNumberOfValidPapers() {
 		int validPapers = 0;
 		for (Paper p: papers) {
@@ -98,6 +120,14 @@ public class Session {
 			}
 		}
 		return validPapers;
+	}
+
+	/**
+	 * Returns the duration value of the session
+	 * @return durationID
+	 */
+	public int getDuration() {
+		return this.durationID;
 	}
 
 }
