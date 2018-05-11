@@ -1,4 +1,5 @@
 import java.math.BigInteger;
+import java.util.ArrayList;
 
 public class Utilities {
 	
@@ -33,6 +34,11 @@ public class Utilities {
 	// Inteiro ao invés do tamanho do binário
 	public static int NUM_PERIODS = 4;
 	
+	public static enum SELECTION {
+		ELITIST, PROBABILISTIC
+	};
+	
+	public static int POPULATION_SIZE = 10;
 	
 //	// Exemplo 1
 //	public static int DAYS = 1; // 3 days
@@ -135,6 +141,7 @@ public class Utilities {
 		return (PRESENTER + AUTHORS * AUTHORS_PER_PAPER) + (THEME * THEMES_PER_PAPER) + ISFULLPAPER;
 	}
 	
+
 	/**
 	 * Returns the size of a cromossome
 	 * @return
@@ -143,5 +150,22 @@ public class Utilities {
 		int cromossomePaper = (DAYS * DAYS) + DAYS * (SESSIONS_PER_PERIOD * getSessionCount()); 
 		System.out.println("Cromossome size: " + cromossomePaper);
 		return cromossomePaper;
+}
+	
+
+	public static int calculateRepresentation(ArrayList<Integer> representations) {
+				
+		int min = representations.get(0);
+	    int max = min;
+	    int size = representations.size();
+        for (int i = 0; i < size; i++){
+        	
+        	int value = representations.get(i);
+            if (min > value)
+                min = value;
+            if (max < value)
+                max = value;
+        }
+        return max-min;
 	}
 }

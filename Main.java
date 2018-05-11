@@ -90,9 +90,10 @@ public class Main {
 //		arr.add(c2);
 		
 //		arr.sort(Comparator.comparingDouble(Conference::getScore));
-		
-		
+
 //		System.out.println("score final: " + Genetic.getScore(c1));
+		// c1.calculateScore();
+		// System.out.println("Score final: " + c1.getScore());
 
 		// <DIA> <SESS�ES> <DIA> <SESS�ES> <DIA> <SESS�ES>, para 3 dias
 		// * Ex:
@@ -115,6 +116,50 @@ public class Main {
 		 * 
 		 * 
 		 */
+		
+		
+		/* --------------------------------------------*/
+		
+		
+		//ask for user input
+		
+		
+		ArrayList<Conference> population = new ArrayList<Conference>();
+		
+		
+		
+		//populate population randomly
+		
+		
+		//calculate fitness score of all population
+		for(Conference c : population) {
+			c.calculateScore();
+		}
+		
+		Genetic g = new Genetic(population);
+		
+		
+		
+		
+		
+		
+		
+		
+		//create randomly cromossomes
+		
+		
+		
+		//save score
+		
+		
+		// if(userInput == "elitist"
+		
+		
 
+		
+		
+		
+		
+		
 	}
 }
