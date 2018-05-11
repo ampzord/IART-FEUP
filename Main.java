@@ -1,4 +1,6 @@
-
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Main {
 	public static void main(String[] args) {
@@ -56,22 +58,41 @@ public class Main {
 //String cromo = "01 -  11      11       001   00  00 01  10 11  1          			01 11 001 000110111  011110110 
 							//           paper				paper 2
 		// Cromossomo com apresentadores diferentes e funcionando
-		String cromo = "01 11 11     111 11 10 11 10 11 1   01 00 01 10 11 1    1111001  00000110111  10100000011";
-		Conference c1 = new Conference(cromo);
-		System.out.println(c1);
+//		String cromo = "01 11 11     111 11 10 11 10 11 1   01 00 01 10 11 1    1111001  00000110111  10100000011";
+//		Conference c1 = new Conference(cromo);
+//		System.out.println(c1);
 
 		
 
 		System.out.println("Cromossomo padrao com 2 dia, 1 sessao e 2 papers");
-//                DIA    HORA   TEMA    DURA    AA AA	TT TT  full  papper2        Sessao 2		     paper 2
-//String cromo = "01 -  11      11       001     00 01  10 11  1          			01 11 001 000110111  011110110 
-
-//		String cromo = "0011110010001101110111101100011001000110111011110110"; 
+//                DIA    HORA   TEMA    DURA    AP AA AA	TT TT  full  papper2             Sessao 2		     paper 2
+//String cromo = "01 -  11      11       001    00 00 01  10 11  1          			     01 11 001 00000110111  01011110110 
+//
+//		String cromo = "00  11   11      001    00 00 01  10 11  1    01011110110         01     00 11 001 00000110111  01011110110"; 
 //		Conference c1 = new Conference(cromo);
 //		System.out.println(c1);
+//		
+//		String cromo2 = "01  01   01      000    01 10 00  00 10  1    01101110110        01      10 01 011 01010110101  11010111100"; 
+//		Conference c2 = new Conference(cromo2);
+//		System.out.println(c2);
+//		
+//		Genetic.crossCromossomes(c1, c2);
 		
 		
-		System.out.println("score final: " + Genetic.getScore(c1));
+		Conference c3 = new Conference(Genetic.generateRandomPoplation());
+		Conference c4 = new Conference(Genetic.generateRandomPoplation());
+		
+		Genetic.crossCromossomes(c3, c4);
+		
+		
+//		ArrayList<Conference> arr = new ArrayList<Conference>();
+//		arr.add(c1);
+//		arr.add(c2);
+		
+//		arr.sort(Comparator.comparingDouble(Conference::getScore));
+		
+		
+//		System.out.println("score final: " + Genetic.getScore(c1));
 
 		// <DIA> <SESS�ES> <DIA> <SESS�ES> <DIA> <SESS�ES>, para 3 dias
 		// * Ex:

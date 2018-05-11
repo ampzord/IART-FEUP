@@ -2,6 +2,8 @@ import java.math.BigInteger;
 
 public class Utilities {
 	
+	public static double CROSSING_RATIO = 0.5;
+	
 //	public static int SESSION_THEME = 5; //32 themes
 //	public static int THEME = 5; //32 themes
 //	public static int DURATION = 3; // min: 1h(60min)
@@ -27,7 +29,10 @@ public class Utilities {
 	public static int AUTHORS_PER_PAPER = 2; 
 	public static int PAPERS = 2; //64 themes
 	public static int THEMES_PER_PAPER = 2; 
+	
+	// Inteiro ao invés do tamanho do binário
 	public static int NUM_PERIODS = 4;
+	
 	
 //	// Exemplo 1
 //	public static int DAYS = 1; // 3 days
@@ -41,14 +46,14 @@ public class Utilities {
 	
 	
 	// Exemplo 3
-	public static int DAYS = 1; // 3 days
-	public static int SESSIONS_PER_PERIOD = 2;
-	public static int PAPERS_PER_SESSION = 2; //64 themes
-
-	// Exemplo 4
-//	public static int DAYS = 2; // 3 days
+//	public static int DAYS = 1; // 3 days
 //	public static int SESSIONS_PER_PERIOD = 2;
 //	public static int PAPERS_PER_SESSION = 2; //64 themes
+
+	// Exemplo 4
+	public static int DAYS = 2; // 3 days
+	public static int SESSIONS_PER_PERIOD = 1;
+	public static int PAPERS_PER_SESSION = 2; //64 themes
 	
 	
 	/**
@@ -128,5 +133,15 @@ public class Utilities {
 		int ISFULLPAPER = 1;
 				//4									4							
 		return (PRESENTER + AUTHORS * AUTHORS_PER_PAPER) + (THEME * THEMES_PER_PAPER) + ISFULLPAPER;
+	}
+	
+	/**
+	 * Returns the size of a cromossome
+	 * @return
+	 */
+	public static int getCromossomeSize() {
+		int cromossomePaper = (DAYS * DAYS) + DAYS * (SESSIONS_PER_PERIOD * getSessionCount()); 
+		System.out.println("Cromossome size: " + cromossomePaper);
+		return cromossomePaper;
 	}
 }

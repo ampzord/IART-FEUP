@@ -41,5 +41,10 @@ public class Conference {
 		return "Total de Dias: " + Utilities.DAYS;
 		
 	}
+
+	public double getScore() {
+		
+		return 1.1;
+	}
 }
 
