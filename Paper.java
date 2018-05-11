@@ -56,7 +56,7 @@ public class Paper {
 		System.out.println("\nDuration: " + duration);
 		System.out.println("Full Papper: " + isFullPaper);
 		
-		System.out.println("presenter is an author: " + checkIfPresenterIsAuthor());
+		System.out.println("Presenter is an author: " + checkIfPresenterIsAuthor());
 		
 		
 		createGene();

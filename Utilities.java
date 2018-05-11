@@ -1,4 +1,5 @@
 import java.math.BigInteger;
+import java.util.ArrayList;
 
 public class Utilities {
 	
@@ -28,6 +29,12 @@ public class Utilities {
 	public static int PAPERS = 2; //64 themes
 	public static int THEMES_PER_PAPER = 2; 
 	public static int NUM_PERIODS = 4;
+	
+	public static enum SELECTION {
+		ELITIST, PROBABILISTIC
+	};
+	
+	public static int POPULATION_SIZE = 10;
 	
 //	// Exemplo 1
 //	public static int DAYS = 1; // 3 days
@@ -128,5 +135,23 @@ public class Utilities {
 		int ISFULLPAPER = 1;
 				//4									4							
 		return (PRESENTER + AUTHORS * AUTHORS_PER_PAPER) + (THEME * THEMES_PER_PAPER) + ISFULLPAPER;
+	}
+	
+	
+
+	public static int calculateRepresentation(ArrayList<Integer> representations) {
+				
+		int min = representations.get(0);
+	    int max = min;
+	    int size = representations.size();
+        for (int i = 0; i < size; i++){
+        	
+        	int value = representations.get(i);
+            if (min > value)
+                min = value;
+            if (max < value)
+                max = value;
+        }
+        return max-min;
 	}
 }
