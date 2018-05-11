@@ -1,96 +1,70 @@
 import java.util.ArrayList;
 import java.util.Random;
+
 import jdk.nashorn.internal.runtime.Context.ThrowErrorManager;
-import java.util.Comparator;
-import javax.naming.ldap.InitialLdapContext;
 
 public class Genetic {
-	
-	private ArrayList<Conference> initialPopulation;
-	private ArrayList<Conference> population;
-	
-	
-	public Genetic(ArrayList<Conference> initialPopulation) {
-		
-		this.initialPopulation = initialPopulation;
-		
-		selection();
-	
-		
-	}
 
-	
-	public void selection() {
-		Utilities.SELECTION selection_t = Utilities.SELECTION.ELITIST;
-			
-		//best n elements -> input asked
-		int N = 2;
-			
-		//if elitist
-		switch(selection_t) {
-			case ELITIST :
-					population = elitist(N);
-				break;
-					
-			case PROBABILISTIC :
-					population = probabilistic();
-				break;
+	public static double getScore(Conference conf) {
+		
+		ArrayList<Integer> daysRepresentation = new ArrayList<Integer>();
+
+		double score = 0;
+		double reprs = 0;
+		for (Day d: conf.days) {
+
+			ArrayList<Integer> papersRepresentations = new ArrayList<Integer>();
+			if (!d.checkPresenters()) {
+				System.out.println("merda1");
+				return 0;
 			}
-		
-	}
-	
-
-	private ArrayList<Conference> probabilistic() {
-
-		double totalSum = 0;
-		
-		for (Conference c : this.initialPopulation)
-			totalSum += c.getScore();
-			
-		for (Conference c : this.initialPopulation)
-			c.setProbability( c.getScore()/totalSum);
-		
-		
-		
-		
-		return null;
-	}
-
-
-	public ArrayList<Conference> elitist(int N) {
-
-		ArrayList<Conference> bestN = getNBestConfs(N);
-		
-		return fillPopulation(bestN);
-		
-	}
-	
-	
-	private ArrayList<Conference> getNBestConfs( int N) {		
-	
-		initialPopulation.sort(Comparator.comparingDouble(Conference::getScore));
-		
-		return (ArrayList<Conference>) initialPopulation.subList(0,N);
-	}
-
-
-	private ArrayList<Conference> fillPopulation(ArrayList<Conference> best) {
-		
+			for (Session s: d.sessions) {
+				if (s.getNumberOfFullPapers() < 2) {
+					System.out.println("merda2");
+					return 0;
+				}
 				
-		int div = Utilities.POPULATION_SIZE / best.size();
-		int module = Utilities.POPULATION_SIZE % best.size();
+				for (Paper p : s.getPapers()) {
+					if (!p.checkIfPresenterIsAuthor()){
+						System.out.println("merda3");
+						return 0;
+					}					
+				}
+				score += (s.checkThemesID() * Utilities.THEM_WEIGHT);
+				
+				papersRepresentations.add(s.getDuration());
+				
+			}
+			int repr = calculateRepresentation(papersRepresentations);
+		//	System.out.println("difference in sessions of a day: " + repr);
+			reprs += 1.0 - repr/7.0;
+		//	System.out.println("reprs: " + reprs);
+			daysRepresentation.add(repr);
+		}
+		reprs*= Utilities.DAY_WEIGHT;
+		int rep = calculateRepresentation(daysRepresentation);
+		//System.out.println("day rep: " + rep);
+		score += (1.0 - rep/7.0)*Utilities.CONF_WEIGHT;
 		
-		ArrayList<Conference> newPopulation = new ArrayList<Conference>();
-		
-		for (int i = 0 ; i < div ; i++) 
-			newPopulation.addAll(best);
-		
-		for (int i = 0 ; i < module ; i++)
-			newPopulation.add(best.get(i));
-		
-		
-		return newPopulation;
-		
+		//System.out.println("final rep: " + reprs);
+
+		return score + reprs;
+	}
+
+	private static int calculateRepresentation(ArrayList<Integer> representations) {
+				
+		int min = representations.get(0);
+	    int max = min;
+	    int size = representations.size();
+        for (int i = 0; i < size; i++){
+        	
+        	int value = representations.get(i);
+            if (min > value)
+                min = value;
+            if (max < value)
+                max = value;
+        }
+        return max-min;
 	}
 	
 	public static String crossCromossomes(Conference c1, Conference c2) {
@@ -196,7 +170,6 @@ public class Genetic {
 		
 		return newCromossome;
 	}
-
 }
 
 

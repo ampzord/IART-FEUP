@@ -132,11 +132,11 @@ public class Main {
 		
 		
 		//calculate fitness score of all population
-		for(Conference c : population) {
-			c.calculateScore();
-		}
-		
-		Genetic g = new Genetic(population);
+//		for(Conference c : population) {
+//			c.calculateScore();
+//		}
+//		
+//		Genetic g = new Genetic(population);
 		
 		
 		
