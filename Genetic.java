@@ -89,67 +89,36 @@ public class Genetic {
 		for (int i = 0 ; i < module ; i++)
 			newPopulation.add(best.get(i));
 
-
 		return newPopulation;
 
 	}
 
 
 
-	public ArrayList<Conference> wheel(ArrayList<Conference> population, boolean naturalFitnessScores,	int selectionSize,	Random rng)
-	{
-		// Record the cumulative fitness scores.  It doesn't matter whether the
-		// population is sorted or not.  We will use these cumulative scores to work out
-		// an index into the population.  The cumulative array itself is implicitly
-		// sorted since each element must be greater than the previous one.  The
-		// numerical difference between an element and the previous one is directly
-		// proportional to the probability of the corresponding candidate in the population
-		// being selected.
+	public static ArrayList<Conference> wheel(ArrayList<Conference> population, boolean naturalFitnessScores, int selectionSize, Random rng)
+	{	
 		double[] cumulativeFitnesses = new double[population.size()];
-		cumulativeFitnesses[0] = getAdjustedFitness(population.get(0).getProbability(),
-				naturalFitnessScores);
+		cumulativeFitnesses[0] = population.get(0).getProbability();
+		
+		
+		//fills the wheel
 		for (int i = 1; i < population.size(); i++)
-		{
-			double fitness = getAdjustedFitness(population.get(i).getProbability(), naturalFitnessScores);
-			cumulativeFitnesses[i] = cumulativeFitnesses[i - 1] + fitness;
-		}
+			cumulativeFitnesses[i] = cumulativeFitnesses[i - 1] + population.get(i).getProbability();
 
 		ArrayList<Conference> selection = new ArrayList<Conference>(selectionSize);
 		for (int i = 0; i < selectionSize; i++)
-		{
+		{			
 			double randomFitness = rng.nextDouble() * cumulativeFitnesses[cumulativeFitnesses.length - 1];
+			System.out.println("random: " + randomFitness);
 			int index = Arrays.binarySearch(cumulativeFitnesses, randomFitness);
+			
 			if (index < 0)
-			{
-				// Convert negative insertion point to array index.
 				index = Math.abs(index + 1);
-			}
+			
 			selection.add(population.get(index));
 		}
 		return selection;
 	}
-
-
-	private double getAdjustedFitness(double rawFitness, boolean naturalFitness)
-	{
-		if (naturalFitness)
-		{
-			return rawFitness;
-		}
-		else
-		{
-			// If standardised fitness is zero we have found the best possible
-			// solution.  The evolutionary algorithm should not be continuing
-			// after finding it.
-			return rawFitness == 0 ? Double.POSITIVE_INFINITY : 1 / rawFitness;
-		}
-	}
-
-
-	
-	
-	
-	
 
 
 	public static String crossCromossomes(Conference c1, Conference c2) {
