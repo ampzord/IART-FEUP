@@ -1,26 +1,38 @@
 import java.util.ArrayList;
 
+/**
+ * This class represents a Conference,
+ * which is an individual on the Genetic Algorithm 
+ *
+ */
 public class Conference  {
 	
-	String cromossome;
-	ArrayList<Day> days = new ArrayList<Day>();
-	int numberRooms;
-	int numberSessions;
-	int nDays;
+	private String cromossome;
+	private ArrayList<Day> days = new ArrayList<Day>();
+	private int numberRooms;
+	private int numberSessions;
+	private int nDays;
 	private double fitnessScore;
 	private double probability;
-	Conference(String cromossome){
-		
-		this.cromossome = cromossome.replaceAll(" ", "");
-		
+	
+	/**
+	 * Constructor for a Conference. Receives a cromossome as argument to be parsed
+	 * @param cromossome String that defines the genome
+	 */
+	Conference(String cromossome){		
+		this.setCromossome(cromossome.replaceAll(" ", ""));
 		splitCromossome();
 	}
-
+	
+	/**
+	 * Splits the cromossome in days and sessions. 
+	 * A day has one or more sessions
+	 */
 	private void splitCromossome() {
-		String day = cromossome.substring(0, 1);
-		String sessions = cromossome.substring(2, cromossome.length()); //ver valor de 30 -> tamanho das sess�es, salas
+		String day = getCromossome().substring(0, 1);
+		String sessions = getCromossome().substring(2, getCromossome().length()); //ver valor de 30 -> tamanho das sess�es, salas
 		
-		this.nDays = cromossome.length() / (Utilities.getSessionCount() * Utilities.SESSIONS_PER_PERIOD);
+		this.nDays = getCromossome().length() / (Utilities.getSessionCount() * Utilities.SESSIONS_PER_PERIOD);
 		
 //		System.out.println("ndays "+ nDays);
 		
@@ -36,6 +48,9 @@ public class Conference  {
 //		
 //	}
 	
+	/**
+	 * Calculates the fitness score associated to the Conference
+	 */
 	public void calculateScore() {
 		
 		ArrayList<Integer> daysRepresentation = new ArrayList<Integer>();
@@ -85,21 +100,51 @@ public class Conference  {
 		this.fitnessScore =  score + reprs;
 	}
 	
+	/**
+	 * Returns the fitness score
+	 * @return fitnessScore
+	 */
 	public double getScore() {
 		return this.fitnessScore;
 	}
 	
+	/**
+	 * Returns the probability to be chosen in the selection phase
+	 * @return probability
+	 */
 	public double getProbability() {
 		return probability;
 	}
 	
+	/**
+	 * Sets the probability to be chosen in the selection phase
+	 * @param probability Probability of the conference to set
+	 */
 	public void setProbability(double probability) {
 		this.probability = probability;
 	}
 	
+	/**
+	 * Returns the cromossome
+	 * @return cromossome
+	 */
+	public String getCromossome() {
+		return cromossome;
+	}
+
+	/**
+	 * Sets the cromossome
+	 * @param cromossome the cromossome to set
+	 */
+	public void setCromossome(String cromossome) {
+		this.cromossome = cromossome;
+	}
+
+	/**
+	 * Prints all the information regarding the Conference
+	 */
 	@Override
-	public String toString() {
-		
+	public String toString() {		
 		return "Total de Dias: " + Utilities.DAYS;
 		
 	}

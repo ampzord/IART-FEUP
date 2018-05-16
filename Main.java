@@ -94,7 +94,7 @@ public class Main {
 			System.out.println(c.getProbability());
 		}
 		
-		ArrayList<Conference> w = Genetic.wheel(populationForWheel,true,populationSize, new Random());
+		ArrayList<Conference> w = Genetic.selectionWheel(populationForWheel,populationSize, new Random());
 
 
 		System.out.println("after wheel");
