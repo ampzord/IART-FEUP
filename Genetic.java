@@ -111,8 +111,8 @@ public class Genetic {
 	}
 
 	/**
-	 * Generates a wheel with all the probabilities from the population and generates
-	 * random numbers, selecting the chosen individuals
+	 * Generates a wheel with all the probabilities from the population and 
+	 * selects individuals, depending on the random generated number
 	 * @param population Population of individuals
 	 * @param selectionSize Size of the initial population
 	 * @param rng Random generated number
@@ -228,6 +228,10 @@ public class Genetic {
 		}
 	}
 
+	/**
+	 * Generates a random Cromossome
+	 * @return new cromossome
+	 */
 	public static String generateRandomPoplation() {
 		String newCromossome = "";
 

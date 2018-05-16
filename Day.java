@@ -1,10 +1,20 @@
 import java.util.ArrayList;
 
+/**
+ * This class represents a Day,
+ * which is a gene from a Conference
+ */
 public class Day {
 
-	String day;
-	ArrayList<Session> sessions = new ArrayList<Session>();
+	private String day;
+	private ArrayList<Session> sessions = new ArrayList<Session>();
 
+	/**
+	 * Creates a Day, which is composed by an identifier and 
+	 * the sessions of that day
+	 * @param day The day identifier
+	 * @param sessions The sessions of the day
+	 */
 	public Day(String day, String sessions) {
 		this.day = day;
 		int index = 0;
@@ -16,12 +26,9 @@ public class Day {
 		}
 	}
 	
-	public ArrayList<Session> getSessions() {
-		return sessions;
-	}
 	
 	/**
-	 * Checks if presenters on each papers are different on each session in the same period
+	 * Checks if presenters on the papers are different on each session in the same period
 	 * @return true if there is a duplicated presenter, otherwise returns false
 	 */
 	public boolean checkPresenters() {
@@ -42,6 +49,11 @@ public class Day {
 		return true;
 	}
 	
+	/**
+	 * Returns the sessions of the indicated period
+	 * @param period Period to check 
+	 * @return ArrayList of the sessions of the indicated period
+	 */
 	public ArrayList<Session> getSessionsOfPeriod(int period){
 		ArrayList<Session> aux = new ArrayList<Session>();
 		
@@ -50,6 +62,15 @@ public class Day {
 				aux.add(s);
 		return aux;
 		
+	}
+	
+
+	/**
+	 * Returns the sessions of the Day
+	 * @return sessions
+	 */
+	public ArrayList<Session> getSessions() {
+		return sessions;
 	}
 	
 }

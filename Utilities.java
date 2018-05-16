@@ -63,7 +63,7 @@ public class Utilities {
 	
 	
 	/**
-	 * Fully transforms to binary
+	 * Transforms a number to binary in string format
 	 * @param number number to be transformed
 	 * @param size size of number in binary
 	 * @return binary number as a string
@@ -122,7 +122,7 @@ public class Utilities {
 	}
 	
 	/**
-	 * Returns the size of a session in the cromossome
+	 * Returns the size of a session on a cromossome
 	 * @return Session size
 	 */
 	public static int getSessionCount() {
@@ -132,7 +132,7 @@ public class Utilities {
 	}
 	
 	/**
-	 * Returns the size of a paper in the cromossome
+	 * Returns the size of a paper on a cromossome
 	 * @return
 	 */
 	public static int getPaperSize() {
@@ -152,7 +152,11 @@ public class Utilities {
 		return cromossomePaper;
 }
 	
-
+	/**
+	 * Calculates the discrepancy between representations
+	 * @param representations Representations to be calculated
+	 * @return Difference between the max value and the min value
+	 */
 	public static int calculateRepresentation(ArrayList<Integer> representations) {
 				
 		int min = representations.get(0);

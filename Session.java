@@ -1,7 +1,10 @@
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Iterator;
 
+import java.util.ArrayList;
+
+/**
+ * This class represents a Session,
+ * which is a gene from a Conference
+ */
 public class Session {
 	//dura��o, tema, papers(2 full papers no minimo), apresentador, dia da apresenta��o
 
@@ -12,7 +15,8 @@ public class Session {
 	private int sessionSchedule;
 	
 	/**
-	 * Creates a session
+	 * Creates a Session, which is composed by a schedule/period, a theme,
+	 * a duration and papers
 	 * @param session String containing all the information related to the session
 	 */
 	public Session(String session) {
@@ -41,7 +45,7 @@ public class Session {
 	// TT DD PPPPPP PPPPPPP
 
 	/**
-	 * Creates a genome with all the elements
+	 * Creates a genome of the session
 	 */
 	private void createGenome() {
 		
@@ -60,23 +64,23 @@ public class Session {
 	 * @return genome
 	 */
 	public String getGenome() {
-		return this.genome;
+		return genome;
 	}
 	
 	/**
 	 * Returns the schedule of the session
-	 * @return schedule
+	 * @return sessionSchecule
 	 */
 	public int getSchedule() {
-		return this.sessionSchedule;
+		return sessionSchedule;
 	}
 	
 	/**
 	 * Returns the papers of the session
-	 * @return genome
+	 * @return papers
 	 */
 	public ArrayList<Paper> getPapers() {
-		return this.papers;
+		return papers;
 	}
 	
 	/**
@@ -92,7 +96,7 @@ public class Session {
 	}
 	
 	/**
-	 * Returns a value relating the Session theme with the papers themes.
+	 * Returns a score relating the Session theme with the papers themes.
 	 * @return value
 	 */
 	public double checkThemesID() {
@@ -109,7 +113,7 @@ public class Session {
 	}
 
 	/**
-	 * Returns number of valid papers
+	 * Returns the number of valid papers
 	 * @return number of valid papers
 	 */
 	public int getNumberOfValidPapers() {
