@@ -65,7 +65,7 @@ public class Conference  {
 				this.fitnessScore = 0;
 				return;
 			}
-			for (Session s: d.sessions) {
+			for (Session s: d.getSessions()) {
 				if (s.getNumberOfFullPapers() < 2) {
 					System.out.println("merda2");
 					this.fitnessScore = 0;
