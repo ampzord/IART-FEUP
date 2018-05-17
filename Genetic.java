@@ -27,8 +27,15 @@ public class Genetic {
 		pairingPhase();
 		crossingOverPhase();
 		mutationPhase();
+		//TODO
+		/*
+		 * Emparelhamento
+		 * Mutação
+		 * condição de paragem
+		 * corrigir a geração aleatória
+		 */
 	}
-	
+
 	/**
 	 * Beginning of the Selection Phase.
 	 * It sets whether to use an elitist or probabilistic selection, 
@@ -48,7 +55,6 @@ public class Genetic {
 		//best n elements -> input asked
 		int N = 1;
 
-		//if elitist
 		switch(selection_t) {
 		case ELITIST :
 			currentPopulation = elitist(N);
@@ -58,7 +64,7 @@ public class Genetic {
 			currentPopulation = probabilistic();
 			break;
 		}
-		
+
 
 		System.out.println("selected population");
 		for (Conference c : currentPopulation) 
@@ -85,18 +91,18 @@ public class Genetic {
 	private ArrayList<Conference> elitist(int N) {
 
 		ArrayList<Conference> bestN = getNBestConfs(N);
-		
+
 		currentPopulation.removeAll(bestN);
 
 		ArrayList<Conference> populationForRoulette = setPopulationForRoulette();
-		
+
 		ArrayList<Conference> w = selectionWheel(populationForRoulette, population_size - bestN.size(), new Random());
 
 		bestN.addAll(w);
 
 		return bestN;
 	}
-	
+
 	/**
 	 * Sets the Roulette's Population, by calculating 
 	 * the population's score and setting each individual's probability
@@ -111,10 +117,10 @@ public class Genetic {
 				sum+=c.getScore();
 				populationForRoulette.add(c);
 			}
-		
+
 		for (Conference c : populationForRoulette) 
 			c.setProbability(c.getScore()/sum);
-		
+
 		return populationForRoulette;
 	}
 
@@ -195,6 +201,14 @@ public class Genetic {
 		// TODO Auto-generated method stub
 
 	}
+
+	/*private ArrayList<String> emparelhar(ArrayList<String> arr ) {
+		ArrayList<String> array2 = new ArrayList<String>();
+		for (int i = 0; i < arr.length( ) ; i++) {
+			array2.add(cruzamento(arr[i], arr[i+1])); 
+		}
+
+	}*/
 
 	private static String crossCromossomes(Conference c1, Conference c2) {
 

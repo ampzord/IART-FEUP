@@ -7,18 +7,7 @@ public class Main {
 	public static void main(String[] args) {
 
 
-		// escala-se as variaveis para inteiros multiplicando-as por 10^n, onde n =
-		// precis�o
-		// precis�o pode ser usada para diferentes desempenhos
-
-		// Transformar novas vari�veis em forma bin�ria ou usar como ints compridos
-
-		/*
-		 * SELE��O fa(Ci) -> adapta��o do Cromossoma Ci(fun��o de adapta��o) Sum(fa(ci))
-		 * -> soma das adapta��es de toda a popula��o P(Ci escolhido) =
-		 * fa(Ci)/Sum(fa(ci)) S�o selecionados alguns daqui
-		 */
-
+		
 		/*
 		 * REPRODU��O Os selecionados sao emparelhados aleatoriamente Por par, com
 		 * Pcrossover, pelo menos 1 crossover point � escolhido, de 1 a
@@ -153,19 +142,6 @@ public class Main {
 
 
 		//populate population randomly
-
-
-		//calculate fitness score of all population
-		//		for(Conference c : population) {
-		//			c.calculateScore();
-		//		}
-		//		
-		//		Genetic g = new Genetic(population);
-
-
-
-
-
 
 
 
