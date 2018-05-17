@@ -12,7 +12,8 @@ import jdk.nashorn.internal.runtime.Context.ThrowErrorManager;
 public class Genetic {
 
 	private ArrayList<Conference> initialPopulation;
-	private ArrayList<Conference> population;
+	private ArrayList<Conference> currentPopulation;
+	private int population_size;
 
 	/**
 	 * Constructor for a Genetic Algorithm. It starts the algorithm with the Selection Phase
@@ -20,30 +21,48 @@ public class Genetic {
 	 */
 	public Genetic(ArrayList<Conference> initialPopulation) {
 		this.initialPopulation = initialPopulation;
-		selection();
+		this.currentPopulation = initialPopulation;
+		population_size = this.initialPopulation.size();
+		selectionPhase();
+		pairingPhase();
+		crossingOverPhase();
+		mutationPhase();
 	}
-
+	
 	/**
 	 * Beginning of the Selection Phase.
 	 * It sets whether to use an elitist or probabilistic selection, 
 	 * based on user input
 	 */
-	private void selection() {
-		Utilities.SELECTION selection_t = Utilities.SELECTION.ELITIST;
+	private void selectionPhase() {
+
+		for (Conference c : initialPopulation) 
+			c.calculateScore();
+
+		System.out.println("Initial Population");
+		for (Conference c : initialPopulation) 
+			System.out.println(c.getScore());
+
+		Utilities.SELECTION selection_t = Utilities.SELECTION.PROBABILISTIC;
 
 		//best n elements -> input asked
-		int N = 2;
+		int N = 1;
 
 		//if elitist
 		switch(selection_t) {
 		case ELITIST :
-			population = elitist(N);
+			currentPopulation = elitist(N);
 			break;
 
 		case PROBABILISTIC :
-			population = probabilistic();
+			currentPopulation = probabilistic();
 			break;
 		}
+		
+
+		System.out.println("selected population");
+		for (Conference c : currentPopulation) 
+			System.out.println(c.getScore());
 
 	}
 
@@ -51,19 +70,11 @@ public class Genetic {
 	 * Probabilistic Selection
 	 * @return
 	 */
-	private ArrayList<Conference> probabilistic() {
+	private ArrayList<Conference> probabilistic() {	
 
-		double totalSum = 0;
+		ArrayList<Conference> populationForRoulette = setPopulationForRoulette();
 
-		for (Conference c : this.initialPopulation)
-			totalSum += c.getScore();
-
-		for (Conference c : this.initialPopulation)
-			c.setProbability( c.getScore()/totalSum);
-		
-		
-
-		return null;
+		return selectionWheel(populationForRoulette, population_size, new Random());
 	}
 
 	/**
@@ -74,10 +85,39 @@ public class Genetic {
 	private ArrayList<Conference> elitist(int N) {
 
 		ArrayList<Conference> bestN = getNBestConfs(N);
+		
+		currentPopulation.removeAll(bestN);
 
-		return fillPopulation(bestN);
+		ArrayList<Conference> populationForRoulette = setPopulationForRoulette();
+		
+		ArrayList<Conference> w = selectionWheel(populationForRoulette, population_size - bestN.size(), new Random());
 
+		bestN.addAll(w);
+
+		return bestN;
 	}
+	
+	/**
+	 * Sets the Roulette's Population, by calculating 
+	 * the population's score and setting each individual's probability
+	 * @return Returns the population for the Roulette to use
+	 */
+	private ArrayList<Conference> setPopulationForRoulette() {
+
+		double sum = 0;
+		ArrayList<Conference> populationForRoulette = new ArrayList<Conference>();
+		for (Conference c : currentPopulation) 
+			if (c.getScore()!= 0) {
+				sum+=c.getScore();
+				populationForRoulette.add(c);
+			}
+		
+		for (Conference c : populationForRoulette) 
+			c.setProbability(c.getScore()/sum);
+		
+		return populationForRoulette;
+	}
+
 
 	/**
 	 * Returns the best conferences from the population
@@ -86,12 +126,12 @@ public class Genetic {
 	 */
 	private ArrayList<Conference> getNBestConfs(int N) {		
 
-		initialPopulation.sort(Comparator.comparingDouble(Conference::getScore));
+		initialPopulation.sort(Comparator.comparingDouble(Conference::getScore).reversed());
 
-		return (ArrayList<Conference>) initialPopulation.subList(0,N);
+		return new ArrayList<Conference>(initialPopulation.subList(0,N));
 	}
 
-	
+
 	private ArrayList<Conference> fillPopulation(ArrayList<Conference> best) {
 
 
@@ -121,7 +161,7 @@ public class Genetic {
 	private ArrayList<Conference> selectionWheel(ArrayList<Conference> population, int selectionSize, Random rng){	
 		double[] cumulativeFitnesses = new double[population.size()];
 		cumulativeFitnesses[0] = population.get(0).getProbability();
-		
+
 		for (int i = 1; i < population.size(); i++)
 			cumulativeFitnesses[i] = cumulativeFitnesses[i - 1] + population.get(i).getProbability();
 
@@ -131,17 +171,32 @@ public class Genetic {
 			double randomFitness = rng.nextDouble() * cumulativeFitnesses[cumulativeFitnesses.length - 1];
 			System.out.println("random: " + randomFitness);
 			int index = Arrays.binarySearch(cumulativeFitnesses, randomFitness);
-			
+
 			if (index < 0)
 				index = Math.abs(index + 1);
-			
+
 			selection.add(population.get(index));
 		}
 		return selection;
 	}
 
 
-	public static String crossCromossomes(Conference c1, Conference c2) {
+	private void pairingPhase() {
+		// TODO Auto-generated method stub
+
+	}
+
+	private void crossingOverPhase() {
+		// TODO Auto-generated method stub
+
+	}
+
+	private void mutationPhase() {
+		// TODO Auto-generated method stub
+
+	}
+
+	private static String crossCromossomes(Conference c1, Conference c2) {
 
 		if (c1.getCromossome().length() != c2.getCromossome().length()) {
 			throw new java.lang.RuntimeException("Error! The cromossome's sizes are different.");

@@ -59,51 +59,35 @@ public class Main {
 		//String cromo = "01 -  11      11       001   00  00 01  10 11  1          			01 11 001 000110111  011110110 
 		//           paper				paper 2
 		// Cromossomo com apresentadores diferentes e funcionando
+//		String cromo = "01 11 11     111 11 10 11 10 11 1   01 00 01 10 11 1    1111001  00000110111  10100000011";
+//		Conference c1 = new Conference(cromo);
+//		System.out.println(c1);
+		
+		
+		
+		
+		//Para testar o algoritmo em si
 		String cromo = "01 11 11     111 11 10 11 10 11 1   01 00 01 10 11 1    1111001  00000110111  10100000011";
 		Conference c1 = new Conference(cromo);
-		System.out.println(c1);
-
 
 		String cromo1 = "01111100100000110110111100100100110011";
 		Conference c2 = new Conference(cromo1);
-		System.out.println(c2);
 
 		String cromo2 = "01111100100000110110110000100100110011";
 		Conference c3 = new Conference(cromo2);
+		
+		
 		ArrayList<Conference> p = new ArrayList<Conference>();
 		
-		p.add(c1); p.add(c2); p.add(c3);
+		p.add(c1);
+		p.add(c2);
+		p.add(c3);
 		
-
-		System.out.println("before wheel");
-
-		double sum = 0;
-
-		int populationSize = p.size();
-		ArrayList<Conference> populationForWheel = new ArrayList<Conference>();
-		for (Conference c : p) {
-			c.calculateScore();
-			if (c.getScore()!= 0) {
-				sum+=c.getScore();
-				System.out.println(c.getScore());
-				populationForWheel.add(c);
-			}
-		}
-		for (Conference c : populationForWheel) {
-			c.setProbability(c.getScore()/sum);
-			System.out.println(c.getProbability());
-		}
 		
-		ArrayList<Conference> w = Genetic.selectionWheel(populationForWheel,populationSize, new Random());
+		
+		Genetic g = new Genetic(p);
 
-
-		System.out.println("after wheel");
-
-		for (Conference c : w)
-			System.out.println(c.getScore());
-
-
-
+	
 		System.out.println("Cromossomo padrao com 2 dia, 1 sessao e 2 papers");
 		//                DIA    HORA   TEMA    DURA    AP AA AA	TT TT  full  papper2             Sessao 2		     paper 2
 		//String cromo = "01 -  11      11       001    00 00 01  10 11  1          			     01 11 001 00000110111  01011110110 
