@@ -319,11 +319,14 @@ public class Genetic {
 	}
 	
 	
-	public ArrayList<Conference> emparelhate(ArrayList<Conference> arr) {
+	public static ArrayList<Conference> emparelhate(ArrayList<Conference> arr) {
 		ArrayList<Conference> array2 = new ArrayList<Conference>();
 		
-		for (int i = 0; i < arr.size() ; i++) {
-			array2.add(new Conference(crossCromossomes(arr.get(0), arr.get(1)))); 
+		for (int i = 0; i < arr.size()-2 ; i+=2) {
+			array2.add(new Conference(crossCromossomes(arr.get(i), arr.get(i+1)))); 
+		}
+		for (int i = 0; i < arr.size()-2 ; i+=2) {
+			array2.add(new Conference(crossCromossomes(arr.get(i), arr.get(i+1)))); 
 		}
 		
 		return array2;
