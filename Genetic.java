@@ -326,10 +326,10 @@ public class Genetic {
 	public static String generateRandomPoplation() {
 		String newCromossome = "";
 
-		Random rand = new Random();
-		int n = rand.nextInt(101);
 
 		for (int i = 0 ; i < Utilities.getCromossomeSize() ; i++) {
+			Random rand = new Random();
+			int n = rand.nextInt(101);
 			if (n < 50) {
 				newCromossome += "0";
 			} else {
@@ -339,4 +339,19 @@ public class Genetic {
 
 		return newCromossome;
 	}
+	
+	
+	public static ArrayList<Conference> emparelhate(ArrayList<Conference> arr) {
+		ArrayList<Conference> array2 = new ArrayList<Conference>();
+		
+		for (int i = 0; i < arr.size()-2 ; i+=2) {
+			array2.add(new Conference(crossCromossomes(arr.get(i), arr.get(i+1)))); 
+		}
+		for (int i = 0; i < arr.size()-2 ; i+=2) {
+			array2.add(new Conference(crossCromossomes(arr.get(i), arr.get(i+1)))); 
+		}
+		
+		return array2;
+	}
+	
 }
