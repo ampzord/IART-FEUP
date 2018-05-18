@@ -30,9 +30,9 @@ public class Genetic {
 		//TODO
 		/*
 		 * Emparelhamento
-		 * Mutação
-		 * condição de paragem
-		 * corrigir a geração aleatória
+		 * Mutaï¿½ï¿½o
+		 * condiï¿½ï¿½o de paragem
+		 * corrigir a geraï¿½ï¿½o aleatï¿½ria
 		 */
 	}
 
@@ -304,10 +304,10 @@ public class Genetic {
 	public static String generateRandomPoplation() {
 		String newCromossome = "";
 
-		Random rand = new Random();
-		int n = rand.nextInt(101);
 
 		for (int i = 0 ; i < Utilities.getCromossomeSize() ; i++) {
+			Random rand = new Random();
+			int n = rand.nextInt(101);
 			if (n < 50) {
 				newCromossome += "0";
 			} else {
@@ -317,4 +317,16 @@ public class Genetic {
 
 		return newCromossome;
 	}
+	
+	
+	public ArrayList<Conference> emparelhate(ArrayList<Conference> arr) {
+		ArrayList<Conference> array2 = new ArrayList<Conference>();
+		
+		for (int i = 0; i < arr.size() ; i++) {
+			array2.add(new Conference(crossCromossomes(arr.get(0), arr.get(1)))); 
+		}
+		
+		return array2;
+	}
+	
 }

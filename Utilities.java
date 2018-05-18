@@ -148,7 +148,7 @@ public class Utilities {
 	 */
 	public static int getCromossomeSize() {
 		int cromossomePaper = (DAYS * DAYS) + DAYS * (SESSIONS_PER_PERIOD * getSessionCount()); 
-		System.out.println("Cromossome size: " + cromossomePaper);
+//		System.out.println("Cromossome size: " + cromossomePaper);
 		return cromossomePaper;
 }
 	
