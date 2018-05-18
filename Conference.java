@@ -62,20 +62,17 @@ public class Conference  {
 
 			ArrayList<Integer> papersRepresentations = new ArrayList<Integer>();
 			if (!d.checkPresenters()) {
-				System.out.println("merda1");
 				this.fitnessScore = 0;
 				return;
 			}
 			for (Session s: d.getSessions()) {
 				if (s.getNumberOfFullPapers() < 2) {
-					System.out.println("merda2");
 					this.fitnessScore = 0;
 					return;
 				}
 				
 				for (Paper p : s.getPapers()) {
 					if (!p.checkIfPresenterIsAuthor()){
-						System.out.println("merda3");
 						this.fitnessScore = 0;
 						return;
 					}					
@@ -86,18 +83,16 @@ public class Conference  {
 				
 			}
 			int repr = Utilities.calculateRepresentation(papersRepresentations);
-		//	System.out.println("difference in sessions of a day: " + repr);
+	
 			reprs += 1.0 - repr/7.0;
-		//	System.out.println("reprs: " + reprs);
+			
 			daysRepresentation.add(repr);
 		}
 		reprs*= Utilities.DAY_WEIGHT;
 		int rep = Utilities.calculateRepresentation(daysRepresentation);
-		//System.out.println("day rep: " + rep);
+		
 		score += (1.0 - rep/7.0)*Utilities.CONF_WEIGHT;
 		
-		//System.out.println("final rep: " + reprs);
-
 		this.fitnessScore =  score + reprs;
 	}
 	
@@ -167,6 +162,11 @@ public class Conference  {
 		cromossome = newCromossome;
 		splitCromossome();
 		calculateScore();
+	}
+
+	public void setScore(int i) {
+		this.fitnessScore = i;
+		
 	}
 }
 

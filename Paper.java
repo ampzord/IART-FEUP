@@ -24,7 +24,7 @@ public class Paper {
 		
 		presenter = Integer.parseInt(Utilities.binToDec(paper.substring(index, index += Utilities.PRESENTER)));
 		
-		System.out.println("Presenter: " + presenter);
+	//	System.out.println("Presenter: " + presenter);
 		
 		for (int i = 0; i < Utilities.AUTHORS_PER_PAPER; i++) {
 						
@@ -46,22 +46,22 @@ public class Paper {
 		else
 			this.duration=20;
 
-		System.out.print("Authors: ");
-		for (Integer integer : authors) {
-			System.out.print(integer+", ");
+	//	System.out.print("Authors: ");
+//		for (Integer integer : authors) {
+//			System.out.print(integer+", ");
+//			
+//		}
+	//	System.out.println();
+	//	System.out.print("Themes: ");
+	//	for (Integer integer : themes) {
+	//		System.out.print(integer+", ");
 			
-		}
-		System.out.println();
-		System.out.print("Themes: ");
-		for (Integer integer : themes) {
-			System.out.print(integer+", ");
-			
-		}
+	//	}
 		
-		System.out.println("\nDuration: " + duration);
-		System.out.println("Full Papper: " + isFullPaper);
+	//	System.out.println("\nDuration: " + duration);
+	//	System.out.println("Full Papper: " + isFullPaper);
 		
-		System.out.println("Presenter is an author: " + checkIfPresenterIsAuthor());
+	//	System.out.println("Presenter is an author: " + checkIfPresenterIsAuthor());
 		
 		
 		createGenome();

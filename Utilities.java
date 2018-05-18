@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 public class Utilities {
 	
+
 	public static double CROSSING_RATIO = 0.5;
 	
 //	public static int SESSION_THEME = 5; //32 themes
@@ -20,7 +21,7 @@ public class Utilities {
 	public static int SESS_WEIGHT = 1;
 	public static int PAPR_WEIGHT = 1;
 	public static int THEM_WEIGHT = 1;
-	
+	public static int MAX_ITERATIONS = 100;
 	
 	public static int SESSION_THEME = 2; //32 themes
 	public static int THEME = 2; //32 themes

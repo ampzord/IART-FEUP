@@ -68,9 +68,15 @@ public class Main {
 		
 		ArrayList<Conference> p = new ArrayList<Conference>();
 		
-		p.add(c1);
-		p.add(c2);
-		p.add(c3);
+		
+		for (int i = 0; i < 100 ; i++) {
+			p.add(new Conference(Genetic.generateRandomPopulation()));
+		}
+		
+		for (int i = 0; i < 100 ; i++) {
+			System.out.println(p.get(i).getCromossome());
+			}
+		
 		
 		
 		
@@ -152,7 +158,7 @@ public class Main {
 		//save score
 
 
-
+/*
 
 		ArrayList<Conference> arr = new ArrayList<Conference>(); 
 		ArrayList<Conference> arr2 = new ArrayList<Conference>();
@@ -167,6 +173,6 @@ public class Main {
 		
 		for (int i = 0; i < 100 ; i++) {
 			System.out.println(arr2.get(i).getCromossome());
-		}
+		}*/
 	}
 }

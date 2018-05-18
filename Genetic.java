@@ -11,45 +11,42 @@ import jdk.nashorn.internal.runtime.Context.ThrowErrorManager;
  */
 public class Genetic {
 
-	private ArrayList<Conference> initialPopulation;
 	private ArrayList<Conference> currentPopulation;
 	private int population_size;
+	private Conference bestConference;
+	private double currentScore;
+	private int sameScoreIter = 0;
 
 	/**
 	 * Constructor for a Genetic Algorithm. It starts the algorithm with the Selection Phase
 	 * @param initialPopulation population to be used in the algorithm
 	 */
 	public Genetic(ArrayList<Conference> initialPopulation) {
-		this.initialPopulation = initialPopulation;
 		this.currentPopulation = initialPopulation;
-		population_size = this.initialPopulation.size();
+		population_size = this.currentPopulation.size();
 
+		for (int i = 0; i < Utilities.MAX_ITERATIONS; i++){
+			System.out.println("----------------------------------------------------");
+			System.out.println("Current Iteration " + i);
 
-		System.out.println("Initial Population");
-		for (Conference c : initialPopulation) 
-			System.out.println(c.getScore());
-
-
-		selectionPhase();
-		pairingPhase();
-		crossingOverPhase();
-		mutationPhase();
-
-
-		System.out.println("Current Population");
-		for (Conference c : currentPopulation) 
-			System.out.println(c.getScore());
+			selectionPhase();
+			pairingPhase();
+			crossingOverPhase();
+			mutationPhase();
+			setBestConference();
+		}
+		System.out.println("Best Conference");
+		System.out.println(bestConference.getScore());
+		
 		//TODO
 		/*
 		 * Emparelhamento
-		 * Muta��o
-		 * condi��o de paragem
 		 * corrigir a gera��o aleat�ria
 		 */
 	}
 
 	/**
-	 * Beginning of the Selection Phase.
+	 * Selection Phase.
 	 * It sets whether to use an elitist or probabilistic selection, 
 	 * based on user input
 	 */
@@ -72,9 +69,6 @@ public class Genetic {
 		}
 
 
-		System.out.println("selected population");
-		for (Conference c : currentPopulation) 
-			System.out.println(c.getScore());
 
 	}
 
@@ -138,9 +132,9 @@ public class Genetic {
 	 */
 	private ArrayList<Conference> getNBestConfs(int N) {		
 
-		initialPopulation.sort(Comparator.comparingDouble(Conference::getScore).reversed());
+		currentPopulation.sort(Comparator.comparingDouble(Conference::getScore).reversed());
 
-		return new ArrayList<Conference>(initialPopulation.subList(0,N));
+		return new ArrayList<Conference>(currentPopulation.subList(0,N));
 	}
 
 
@@ -181,7 +175,7 @@ public class Genetic {
 		for (int i = 0; i < selectionSize; i++)
 		{			
 			double randomFitness = rng.nextDouble() * cumulativeFitnesses[cumulativeFitnesses.length - 1];
-			System.out.println("random: " + randomFitness);
+
 			int index = Arrays.binarySearch(cumulativeFitnesses, randomFitness);
 
 			if (index < 0)
@@ -205,6 +199,11 @@ public class Genetic {
 
 	}
 
+	/**
+	 * Mutation Phase.
+	 * In order to have diversity, it tries to mutate a bit from one string of the population,
+	 * by fliping said bit
+	 */
 	private void mutationPhase() {
 		Random rand = new Random();
 		ArrayList<Integer> mutations = new ArrayList<Integer>();
@@ -223,6 +222,7 @@ public class Genetic {
 			currentPopulation.get(cromossomeIndex).setMutateBit(posInCromossome);
 		}
 
+		
 	}
 
 	/*private ArrayList<String> emparelhar(ArrayList<String> arr ) {
@@ -341,16 +341,7 @@ public class Genetic {
 		return newCromossome;
 	}
 
-	
-	/*
-	 * Perguntar ao professor:
-	 * 
-	 * Quantos pontos de cruzamento.
-	 * Se o cruzamento é obrigatório ou é aleatório
-	 * Sobre a GUI
-	 * 
-	 */
-	
+
 	private ArrayList<Conference> emparelhate() {
 
 		double pc = 0.25; //user input
@@ -361,17 +352,27 @@ public class Genetic {
 			if (n < pc)
 				paired.add(currentPopulation.get(i));
 		}
-		
+
 		ArrayList<Conference> array2 = new ArrayList<Conference>();
-		
+
 		if (paired.size()%2 == 0) {
 			for (int i = 0; i < paired.size()-2 ; i+=2) {
 				array2.add(new Conference(crossCromossomes(paired.get(i), paired.get(i+1)))); 
 				array2.add(new Conference(crossCromossomes(paired.get(i), paired.get(i+1)))); 
 			}
 		}
-		
+
 		return array2;
+	}
+
+
+
+	/**
+	 * Sets the Best Conference found
+	 */
+	private void setBestConference() {
+
+		bestConference = currentPopulation.stream().max(Comparator.comparing(v -> v.getScore())).get();
 	}
 
 }

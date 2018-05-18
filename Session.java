@@ -30,14 +30,14 @@ public class Session {
 		
 //		String cromo = "11 001 000110111";
 		for (int i = 0; i < Utilities.PAPERS_PER_SESSION; i++) {
-			System.out.println("Paper " + i);
+		//	System.out.println("Paper " + i);
 			String paper = session.substring(index, index += Utilities.getPaperSize());
 			this.papers.add(new Paper(paper));
 		}
 
-		System.out.println("Theme ID: "+ themeID);
-		System.out.println("Duration ID: "+ durationID);
-		System.out.println("Period: "+ sessionSchedule);
+	//	System.out.println("Theme ID: "+ themeID);
+	//	System.out.println("Duration ID: "+ durationID);
+	//	System.out.println("Period: "+ sessionSchedule);
 		
 		createGenome();
 	}

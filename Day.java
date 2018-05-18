@@ -20,9 +20,9 @@ public class Day {
 		int index = 0;
 		
 		for (int j = 0; j < Utilities.SESSIONS_PER_PERIOD ; j ++) {
-			System.out.println("Session " + j);
+		//	System.out.println("Session " + j);
 			this.sessions.add(new Session(sessions.substring(index, index += Utilities.getSessionCount())));
-			System.out.println();
+		//	System.out.println();
 		}
 	}
 	
