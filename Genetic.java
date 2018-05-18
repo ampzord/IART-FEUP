@@ -23,16 +23,28 @@ public class Genetic {
 		this.initialPopulation = initialPopulation;
 		this.currentPopulation = initialPopulation;
 		population_size = this.initialPopulation.size();
+		
+
+		System.out.println("Initial Population");
+		for (Conference c : initialPopulation) 
+			System.out.println(c.getScore());
+		
+		
 		selectionPhase();
 		pairingPhase();
 		crossingOverPhase();
 		mutationPhase();
+		
+
+		System.out.println("Current Population");
+		for (Conference c : currentPopulation) 
+			System.out.println(c.getScore());
 		//TODO
 		/*
 		 * Emparelhamento
-		 * Mutação
-		 * condição de paragem
-		 * corrigir a geração aleatória
+		 * Mutaï¿½ï¿½o
+		 * condiï¿½ï¿½o de paragem
+		 * corrigir a geraï¿½ï¿½o aleatï¿½ria
 		 */
 	}
 
@@ -43,12 +55,6 @@ public class Genetic {
 	 */
 	private void selectionPhase() {
 
-		for (Conference c : initialPopulation) 
-			c.calculateScore();
-
-		System.out.println("Initial Population");
-		for (Conference c : initialPopulation) 
-			System.out.println(c.getScore());
 
 		Utilities.SELECTION selection_t = Utilities.SELECTION.PROBABILISTIC;
 
@@ -181,7 +187,8 @@ public class Genetic {
 			if (index < 0)
 				index = Math.abs(index + 1);
 
-			selection.add(population.get(index));
+			
+			selection.add(new Conference(population.get(index).getCromossome()));
 		}
 		return selection;
 	}
@@ -198,8 +205,23 @@ public class Genetic {
 	}
 
 	private void mutationPhase() {
-		// TODO Auto-generated method stub
-
+		Random rand = new Random();
+		ArrayList<Integer> mutations = new ArrayList<Integer>();
+		int cromossomeSize =  Utilities.getCromossomeSize();
+		double pm = 0.01;
+		int times = population_size * cromossomeSize;
+		for (int i = 0; i < times; i++) {
+			double n = rand.nextDouble();
+			if (n < pm)
+				mutations.add(i);
+		}
+		
+		for (int a: mutations) {
+			int cromossomeIndex = a / cromossomeSize;
+			int posInCromossome = a % cromossomeSize;
+			currentPopulation.get(cromossomeIndex).setMutateBit(posInCromossome);
+		}
+		
 	}
 
 	/*private ArrayList<String> emparelhar(ArrayList<String> arr ) {

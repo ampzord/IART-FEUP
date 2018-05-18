@@ -22,6 +22,7 @@ public class Conference  {
 	Conference(String cromossome){		
 		this.setCromossome(cromossome.replaceAll(" ", ""));
 		splitCromossome();
+		calculateScore();
 	}
 	
 	/**
@@ -147,6 +148,25 @@ public class Conference  {
 	public String toString() {		
 		return "Total de Dias: " + Utilities.DAYS;
 		
+	}
+	
+	/**
+	 * Changes the cromossome with the new mutation bit at the specified index 
+	 * and recalculates score
+	 * @param index Index of bit that will be modified
+	 */
+	public void setMutateBit(int index) {
+				
+		String newCromossome = "";
+		for (int i = 0; i < cromossome.length() ; i++) {
+			if (i == index) 
+				newCromossome += (cromossome.charAt(index) == '0' ) ? '1' : '0';		
+			else
+				newCromossome += cromossome.charAt(i);
+		}
+		cromossome = newCromossome;
+		splitCromossome();
+		calculateScore();
 	}
 }
 
