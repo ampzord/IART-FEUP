@@ -152,16 +152,13 @@ public class Main {
 		//save score
 
 
-		// if(userInput == "elitist"
-
-
 
 
 		ArrayList<Conference> arr = new ArrayList<Conference>(); 
 		ArrayList<Conference> arr2 = new ArrayList<Conference>();
 		
 		for (int i = 0; i < 100 ; i++) {
-			arr.add(new Conference(Genetic.generateRandomPoplation()));
+			arr.add(new Conference(Genetic.generateRandomPopulation()));
 		}
 		
 		for (int i = 0; i < 100 ; i++) {

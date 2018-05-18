@@ -23,18 +23,18 @@ public class Genetic {
 		this.initialPopulation = initialPopulation;
 		this.currentPopulation = initialPopulation;
 		population_size = this.initialPopulation.size();
-		
+
 
 		System.out.println("Initial Population");
 		for (Conference c : initialPopulation) 
 			System.out.println(c.getScore());
-		
-		
+
+
 		selectionPhase();
 		pairingPhase();
 		crossingOverPhase();
 		mutationPhase();
-		
+
 
 		System.out.println("Current Population");
 		for (Conference c : currentPopulation) 
@@ -187,11 +187,12 @@ public class Genetic {
 			if (index < 0)
 				index = Math.abs(index + 1);
 
-			
+
 			selection.add(new Conference(population.get(index).getCromossome()));
 		}
 		return selection;
 	}
+
 
 
 	private void pairingPhase() {
@@ -215,13 +216,13 @@ public class Genetic {
 			if (n < pm)
 				mutations.add(i);
 		}
-		
+
 		for (int a: mutations) {
 			int cromossomeIndex = a / cromossomeSize;
 			int posInCromossome = a % cromossomeSize;
 			currentPopulation.get(cromossomeIndex).setMutateBit(posInCromossome);
 		}
-		
+
 	}
 
 	/*private ArrayList<String> emparelhar(ArrayList<String> arr ) {
@@ -323,12 +324,12 @@ public class Genetic {
 	 * Generates a random Cromossome
 	 * @return new cromossome
 	 */
-	public static String generateRandomPoplation() {
+	public static String generateRandomPopulation() {
 		String newCromossome = "";
 
 
 		for (int i = 0 ; i < Utilities.getCromossomeSize() ; i++) {
-			Random rand = new Random();
+			Random rand = new Random();			
 			int n = rand.nextInt(101);
 			if (n < 50) {
 				newCromossome += "0";
@@ -339,19 +340,38 @@ public class Genetic {
 
 		return newCromossome;
 	}
+
 	
+	/*
+	 * Perguntar ao professor:
+	 * 
+	 * Quantos pontos de cruzamento.
+	 * Se o cruzamento é obrigatório ou é aleatório
+	 * Sobre a GUI
+	 * 
+	 */
 	
-	public static ArrayList<Conference> emparelhate(ArrayList<Conference> arr) {
+	private ArrayList<Conference> emparelhate() {
+
+		double pc = 0.25; //user input
+		ArrayList<Conference> paired = new ArrayList<Conference>();
+		for(int i = 0; i < population_size; i++) {
+			Random rand = new Random();		
+			double n = rand.nextDouble();
+			if (n < pc)
+				paired.add(currentPopulation.get(i));
+		}
+		
 		ArrayList<Conference> array2 = new ArrayList<Conference>();
 		
-		for (int i = 0; i < arr.size()-2 ; i+=2) {
-			array2.add(new Conference(crossCromossomes(arr.get(i), arr.get(i+1)))); 
-		}
-		for (int i = 0; i < arr.size()-2 ; i+=2) {
-			array2.add(new Conference(crossCromossomes(arr.get(i), arr.get(i+1)))); 
+		if (paired.size()%2 == 0) {
+			for (int i = 0; i < paired.size()-2 ; i+=2) {
+				array2.add(new Conference(crossCromossomes(paired.get(i), paired.get(i+1)))); 
+				array2.add(new Conference(crossCromossomes(paired.get(i), paired.get(i+1)))); 
+			}
 		}
 		
 		return array2;
 	}
-	
+
 }
