@@ -35,12 +35,15 @@ public class Conference  {
 //		this.nDays = getCromossome().length() / (Utilities.getSessionCount() * Utilities.SESSIONS_PER_PERIOD);
 //		System.out.println("ndays "+ nDays);
 		
+		days = new ArrayList<Day>(); 
+		
 		for (int i = 0; i <  Utilities.DAYS; i++) {
 			
 			String day = getCromossome().substring(offset, offset += Utilities.DAYSBITS);
 			String sessions = getCromossome().substring(offset, offset += (Utilities.getSessionCount() * Utilities.SESSIONS_PER_PERIOD));//getCromossome().length()); //ver valor de 30 -> tamanho das sess�es, salas
 			
 			days.add(new Day(day, sessions));
+			
 		}
 
 		//verificar valor sde substrings
@@ -147,9 +150,8 @@ public class Conference  {
 		info += "Total de Dias: " + days.size() + "\n";
 		
 		for (int i = 0 ; i < days.size() ; i++) {
-			info+= "Dia: " + i + "\n" + days.toString() + "\n"	;
+			info += "Dia: " + i + "\n" + days.toString() + "\n"	;
 		}
-		
 		
 		return info;		
 	}

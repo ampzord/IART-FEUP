@@ -90,7 +90,7 @@ public class Genetic {
 		ArrayList<Conference> populationForRoulette = setPopulationForRoulette();
 
 		while (populationForRoulette.size() == 0) {
-			System.out.println("tamamho nao aceitavewl -> " + populationForRoulette.size());
+//			System.out.println("tamamho nao aceitavewl -> " + populationForRoulette.size());
 			currentPopulation = new ArrayList<Conference>();
 			for (int i = 0; i < Utilities.POPULATION_SIZE; i++) 
 				currentPopulation.add(new Conference(Genetic.generateRandomPopulation()));
