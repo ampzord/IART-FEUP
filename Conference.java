@@ -148,11 +148,11 @@ public class Conference  {
 	@Override
 	public String toString() {
 		String info = "";
-		info += "Total de Dias: " + Utilities.DAYS; 
-		for (Day d : days) {
-			info+= d.toString();
-		}
+		info += "Total de Dias: " + Utilities.DAYS;
 		
+		for (int i = 0 ; i < days.size() ; i++) {
+			info+= "Dia: " + i + "\n" + days.toString() + "\n"	;
+		}
 		
 		
 		return info;		
