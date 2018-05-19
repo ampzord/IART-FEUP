@@ -3,6 +3,8 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Random;
 
+import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
+
 import jdk.nashorn.internal.runtime.Context.ThrowErrorManager;
 
 /**
@@ -12,6 +14,17 @@ import jdk.nashorn.internal.runtime.Context.ThrowErrorManager;
 public class Genetic {
 
 	private ArrayList<Conference> currentPopulation;
+	
+	public ArrayList<Conference> getCurrentPopulation() {
+		return currentPopulation;
+	}
+
+	public void setCurrentPopulation(ArrayList<Conference> currentPopulation) {
+		this.currentPopulation = currentPopulation;
+	}
+
+
+
 	private int population_size;
 	private Conference bestConference;
 	private double currentScore;
@@ -233,13 +246,14 @@ public class Genetic {
 
 	}*/
 
-	private static String crossCromossomes(Conference c1, Conference c2) {
+	private static ArrayList<Conference> crossCromossomes(Conference c1, Conference c2) {
 
 		if (c1.getCromossome().length() != c2.getCromossome().length()) {
 			throw new java.lang.RuntimeException("Error! The cromossome's sizes are different.");
 		}
 
-		String newCromossome = "";
+		String offspring1 = "";
+		String offspring2 = "";
 		int offset = 0;
 
 		//      DIA                (HORA   TEMA    DURA    (AP AA AA TT TT  full)  (papper2))           (HORA TEMA DUR		    (paper)   (paper2))
@@ -247,47 +261,66 @@ public class Genetic {
 		//		String cromo2 = "01  01   01      000    01 10 00  00 10  1    01101110110           01      10 01 011 01010110101  11010111100";
 
 		System.out.println("Total lenght: " + c1.getCromossome().length());
-
+		
+		ArrayList<String> aux;
+				
 		for (int days = 0 ; days < Utilities.DAYS ; days ++) {
-			newCromossome += crossAux(c1.getCromossome().substring(offset, offset+Utilities.DAYS), c2.getCromossome().substring(offset, offset+Utilities.DAYS));
+			aux = crossAux(c1.getCromossome().substring(offset, offset+Utilities.DAYS), c2.getCromossome().substring(offset, offset+Utilities.DAYS));
+			offspring1 += aux.get(0);
+			offspring2 += aux.get(1);
+
 			offset += Utilities.DAYS;
 
 			for (int sessions = 0 ; sessions < Utilities.SESSIONS_PER_PERIOD ; sessions++) {
 				// offset + 2 porque o número de bits que representam o periodo é 2
-				newCromossome += crossAux(c1.getCromossome().substring(offset, offset+2), c2.getCromossome().substring(offset, offset+2));
+				aux = crossAux(c1.getCromossome().substring(offset, offset+2), c2.getCromossome().substring(offset, offset+2));
+				offspring1 += aux.get(0);
+				offspring2 += aux.get(1);
 				offset += 2;
 				System.out.println("current offset: " + offset);
 
 				// Tema de sessao
-				newCromossome += crossAux(c1.getCromossome().substring(offset, offset+Utilities.SESSION_THEME), c2.getCromossome().substring(offset, offset+Utilities.SESSION_THEME));
+				aux = crossAux(c1.getCromossome().substring(offset, offset+Utilities.SESSION_THEME), c2.getCromossome().substring(offset, offset+Utilities.SESSION_THEME));
+				offspring1 += aux.get(0);
+				offspring2 += aux.get(1);
 				offset += Utilities.SESSION_THEME;
 				System.out.println("current offset: " + offset);
 
 				// duração da sessao
-				newCromossome += crossAux(c1.getCromossome().substring(offset, offset+Utilities.DURATION), c2.getCromossome().substring(offset, offset+Utilities.DURATION));
+				aux = crossAux(c1.getCromossome().substring(offset, offset+Utilities.DURATION), c2.getCromossome().substring(offset, offset+Utilities.DURATION));
+				offspring1 += aux.get(0);
+				offspring2 += aux.get(1);
 				offset += Utilities.DURATION;
 				System.out.println("current offset: " + offset);
 
 				for (int paper = 0 ; paper < Utilities.PAPERS_PER_SESSION ; paper++) {
 					// Presenter
-					newCromossome += crossAux(c1.getCromossome().substring(offset, offset+Utilities.PRESENTER), c2.getCromossome().substring(offset, offset+Utilities.PRESENTER));
+					aux = crossAux(c1.getCromossome().substring(offset, offset+Utilities.PRESENTER), c2.getCromossome().substring(offset, offset+Utilities.PRESENTER));
+					offspring1 += aux.get(0);
+					offspring2 += aux.get(1);
 					offset += Utilities.PRESENTER;
 					System.out.println("current offset: " + offset);
 
 					for (int authors = 0 ; authors < Utilities.AUTHORS_PER_PAPER ; authors++) {
 						// Authors
-						newCromossome += crossAux(c1.getCromossome().substring(offset, offset+Utilities.AUTHORS), c2.getCromossome().substring(offset, offset+Utilities.AUTHORS));
+						aux = crossAux(c1.getCromossome().substring(offset, offset+Utilities.AUTHORS), c2.getCromossome().substring(offset, offset+Utilities.AUTHORS));
+						offspring1 += aux.get(0);
+						offspring2 += aux.get(1);
 						offset += Utilities.AUTHORS;						
 					}
 
 					for (int themes = 0 ; themes < Utilities.THEMES_PER_PAPER; themes++) {
 						// Themes
-						newCromossome += crossAux(c1.getCromossome().substring(offset, offset+Utilities.THEME), c2.getCromossome().substring(offset, offset+Utilities.THEME));
+						aux = crossAux(c1.getCromossome().substring(offset, offset+Utilities.THEME), c2.getCromossome().substring(offset, offset+Utilities.THEME));
+						offspring1 += aux.get(0);
+						offspring2 += aux.get(1);
 						offset += Utilities.THEME;						
 					}
 
 					// Is full paper (defined always by 1 bit)
-					newCromossome += crossAux(c1.getCromossome().substring(offset, offset+1), c2.getCromossome().substring(offset, offset+1));
+					aux = crossAux(c1.getCromossome().substring(offset, offset+1), c2.getCromossome().substring(offset, offset+1));
+					offspring1 += aux.get(0);
+					offspring2 += aux.get(1);
 					offset += 1;
 
 				}
@@ -304,20 +337,28 @@ public class Genetic {
 		if (c1.getCromossome().length() != offset) {
 			throw new java.lang.RuntimeException("Error! The cromossome and the generated cromossome size are different.");
 		}
-
-		System.out.println("New Cromossome: " + newCromossome);
-		return "";
+		
+		ArrayList<Conference> children = new ArrayList<Conference>();
+		
+//		System.out.println("Parents: " + c1.getCromossome() + "\n" + c2.getCromossome() + "\n");
+//		System.out.println("New Cromossome: " + offspring1 + "\n" + offspring2 + "\n");
+		return children;
 	}
 
-	public static String crossAux(String s1, String s2) {
+	public static ArrayList<String> crossAux(String s1, String s2) {
 		Random rand = new Random();
 		int n = rand.nextInt(101);
+		ArrayList<String> aux = new ArrayList<String>();
 
 		if (n < Utilities.CROSSING_RATIO * 100) {
-			return " " + s1;
+			aux.add(" " + s1);
+			aux.add(" " + s2);
 		} else {
-			return " " + s2;
+			aux.add(" " + s2);
+			aux.add(" " + s1);
 		}
+		
+		return aux;
 	}
 
 	/**
@@ -342,7 +383,7 @@ public class Genetic {
 	}
 
 
-	private ArrayList<Conference> emparelhate() {
+	ArrayList<Conference> emparelhate() {
 
 		double pc = 0.25; //user input
 		ArrayList<Conference> paired = new ArrayList<Conference>();
@@ -357,8 +398,7 @@ public class Genetic {
 
 		if (paired.size()%2 == 0) {
 			for (int i = 0; i < paired.size()-2 ; i+=2) {
-				array2.add(new Conference(crossCromossomes(paired.get(i), paired.get(i+1)))); 
-				array2.add(new Conference(crossCromossomes(paired.get(i), paired.get(i+1)))); 
+				array2.addAll(crossCromossomes(paired.get(i), paired.get(i+1)));  
 			}
 		}
 

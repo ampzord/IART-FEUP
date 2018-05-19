@@ -158,21 +158,23 @@ public class Main {
 		//save score
 
 
-/*
+
 
 		ArrayList<Conference> arr = new ArrayList<Conference>(); 
 		ArrayList<Conference> arr2 = new ArrayList<Conference>();
 		
+	
 		for (int i = 0; i < 100 ; i++) {
 			arr.add(new Conference(Genetic.generateRandomPopulation()));
 		}
+		g.setCurrentPopulation(arr);
 		
 		for (int i = 0; i < 100 ; i++) {
-			arr2 = Genetic.emparelhate(arr);
+			arr2 = g.emparelhate();
 		}
-		
-		for (int i = 0; i < 100 ; i++) {
-			System.out.println(arr2.get(i).getCromossome());
-		}*/
+//		
+//		for (int i = 0; i < 100 ; i++) {
+//			System.out.println(arr2.get(i).getCromossome());
+//		}
 	}
 }
