@@ -206,13 +206,16 @@ public class Genetic {
 
 
 	private void pairingPhase() {
-		// TODO Auto-generated method stub
-
+		setCurrentPopulation(emparelhate());
 	}
 
 	private void crossingOverPhase() {
-		// TODO Auto-generated method stub
-
+		int counter = population_size % 2 == 0 ? population_size : population_size-1;
+		ArrayList<Conference> aux = new ArrayList<Conference>();
+		for (int i = 0; i < counter ; i+=2) {
+			aux.addAll(crossCromossomes(getCurrentPopulation().get(i), getCurrentPopulation().get(i+1)));
+		}
+		setCurrentPopulation(aux);
 	}
 
 	/**

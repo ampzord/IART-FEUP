@@ -69,7 +69,7 @@ public class Main {
 		ArrayList<Conference> p = new ArrayList<Conference>();
 //		
 //		
-		for (int i = 0; i < 100 ; i++) {
+		for (int i = 0; i < 1000 ; i++) {
 			p.add(new Conference(Genetic.generateRandomPopulation()));
 		}
 //		
