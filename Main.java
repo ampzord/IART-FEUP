@@ -23,7 +23,7 @@ public class Main {
 		// DIA HORA TEMA DURA PAPERS full
 
 
-		System.out.println("Cromossomo padrao com 1 dia, 1 sessao e 1 papers");
+//		System.out.println("Cromossomo padrao com 1 dia, 1 sessao e 1 papers");
 		//		 		 DIA    HORA    TEMA     DURA    AA AA	TT TT   full
 		//String cromo = "01 -  11      11       001     00 01  10 11   1";
 
@@ -33,7 +33,7 @@ public class Main {
 
 
 
-		System.out.println("Cromossomo padrao com 1 dia, 2 sessao e 1 papers");
+//		System.out.println("Cromossomo padrao com 1 dia, 2 sessao e 1 papers");
 		//		          DIA    HORA   TEMA    DURA    AP AA AA	TT TT   full       Sessao 2
 		//String cromo = "01 -  11      11       001    00  00 01  10 11   1          0111001  01 000110111
 
@@ -43,7 +43,7 @@ public class Main {
 
 
 
-		System.out.println("Cromossomo padrao com 1 dia, 2 sessao e 2 papers");
+//		System.out.println("Cromossomo padrao com 1 dia, 2 sessao e 2 papers");
 		//                DIA    HORA   TEMA    DURA   AP AA AA	TT TT  full  papper2        Sessao 2		     paper 2
 		//String cromo = "01 -  11      11       001   00  00 01  10 11  1          			01 11 001 000110111  011110110 
 		//           paper				paper 2
@@ -82,8 +82,7 @@ public class Main {
 		
 		Genetic g = new Genetic(p);
 
-	
-		System.out.println("Cromossomo padrao com 2 dia, 1 sessao e 2 papers");
+
 		//                DIA    HORA   TEMA    DURA    AP AA AA	TT TT  full  papper2             Sessao 2		     paper 2
 		//String cromo = "01 -  11      11       001    00 00 01  10 11  1          			     01 11 001 00000110111  01011110110 
 		//
@@ -169,10 +168,10 @@ public class Main {
 //		}
 //		g.setCurrentPopulation(arr);
 		
-		for (int i = 0; i < 100 ; i++) {
-			arr2 = g.emparelhate();
-		}
-//		
+//		for (int i = 0; i < 100 ; i++) {
+//			arr2 = g.emparelhate();
+//		}
+////		
 //		for (int i = 0; i < 100 ; i++) {
 //			System.out.println(arr2.get(i).getCromossome());
 //		}

@@ -16,9 +16,9 @@ public class Utilities {
 //	public static int PAPERS= 6; //64 themes
 //	public static int THEMES_PER_PAPER = 2; 
 //	public static int PAPERS_PER_SESSION= 2; //64 themes
-	public static int DAY_WEIGHT = 1;
+	public static int DAY_WEIGHT = 5;
 	public static int CONF_WEIGHT = 5;
-	public static int SESS_WEIGHT = 1;
+	public static int SESS_WEIGHT = 5;
 	public static int PAPR_WEIGHT = 1;
 	public static int THEM_WEIGHT = 1;
 	public static int MAX_ITERATIONS = 1000;

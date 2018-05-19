@@ -37,7 +37,7 @@ public class Conference  {
 		
 		this.nDays = getCromossome().length() / (Utilities.getSessionCount() * Utilities.SESSIONS_PER_PERIOD);
 		
-//		System.out.println("ndays "+ nDays);
+		System.out.println("ndays "+ nDays);
 		
 		for (int i = 0; i <  Utilities.DAYS; i++){
 			days.add(new Day(day, sessions));
@@ -148,7 +148,7 @@ public class Conference  {
 	@Override
 	public String toString() {
 		String info = "";
-		info += "Total de Dias: " + Utilities.DAYS;
+		info += "Total de Dias: " + days.size() + "\n";
 		
 		for (int i = 0 ; i < days.size() ; i++) {
 			info+= "Dia: " + i + "\n" + days.toString() + "\n"	;
