@@ -95,9 +95,14 @@ public class Genetic {
 	private ArrayList<Conference> probabilistic() {	
 
 		ArrayList<Conference> populationForRoulette = setPopulationForRoulette();
-//		while (populationForRoulette.size() == ) {
-//			
-//		}
+		
+		while (populationForRoulette.size() == 0) {
+			System.out.println("tamamho nao aceitavewl -> " + populationForRoulette.size());
+			currentPopulation = new ArrayList<Conference>();
+			for (int i = 0; i < Utilities.POPULATION_SIZE; i++) 
+				currentPopulation.add(new Conference(Genetic.generateRandomPopulation()));
+			 populationForRoulette = setPopulationForRoulette();
+		}
 		
 		return selectionWheel(populationForRoulette, population_size, new Random());
 	}
