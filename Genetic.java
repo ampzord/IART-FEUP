@@ -14,7 +14,7 @@ import jdk.nashorn.internal.runtime.Context.ThrowErrorManager;
 public class Genetic {
 
 	private ArrayList<Conference> currentPopulation;
-	
+
 	public ArrayList<Conference> getCurrentPopulation() {
 		return currentPopulation;
 	}
@@ -39,8 +39,8 @@ public class Genetic {
 		population_size = this.currentPopulation.size();
 
 		for (int i = 0; i < Utilities.MAX_ITERATIONS; i++){
-//			System.out.println("----------------------------------------------------");
-//			System.out.println("Current Iteration " + i);
+			//			System.out.println("----------------------------------------------------");
+			//			System.out.println("Current Iteration " + i);
 
 			selectionPhase();
 			pairingPhase();
@@ -52,7 +52,7 @@ public class Genetic {
 		System.out.println(bestConference.getScore() + "\n");
 		System.out.println(bestConference.toString());
 
-		
+
 		//TODO
 		/*
 		 * Emparelhamento
@@ -83,43 +83,55 @@ public class Genetic {
 			break;
 		}
 
-
-
 	}
 
-	/**
-	 * Probabilistic Selection
-	 * @return
-	 */
-	private ArrayList<Conference> probabilistic() {	
+	private ArrayList<Conference> setCurrentPopulationForRoulette() {
 
 		ArrayList<Conference> populationForRoulette = setPopulationForRoulette();
-		
+
 		while (populationForRoulette.size() == 0) {
 			System.out.println("tamamho nao aceitavewl -> " + populationForRoulette.size());
 			currentPopulation = new ArrayList<Conference>();
 			for (int i = 0; i < Utilities.POPULATION_SIZE; i++) 
 				currentPopulation.add(new Conference(Genetic.generateRandomPopulation()));
-			 populationForRoulette = setPopulationForRoulette();
+
+			int sum = 0;
+			for (Conference c : currentPopulation)
+				if (c.getScore() != 0)
+					sum++;
+			System.out.println(sum);
+			populationForRoulette = setPopulationForRoulette();
 		}
-		
-		return selectionWheel(populationForRoulette, population_size, new Random());
+
+		return populationForRoulette;
+
+	}
+
+	/**
+	 * Probabilistic Selection
+	 * @return New Population after being selected
+	 */
+	private ArrayList<Conference> probabilistic() {	
+
+		ArrayList<Conference> newPopulation = setCurrentPopulationForRoulette();
+
+		return selectionWheel(newPopulation, population_size, new Random());
 	}
 
 	/**
 	 * Elitist Selection
 	 * @param N Sets the N best individuals that always pass on the next generation(s)
-	 * @return
+	 * @return New Population after being selected
 	 */
 	private ArrayList<Conference> elitist(int N) {
 
 		ArrayList<Conference> bestN = getNBestConfs(N);
 
 		currentPopulation.removeAll(bestN);
+		
+		ArrayList<Conference> populationForRoulette = setCurrentPopulationForRoulette();
 
-		ArrayList<Conference> populationForRoulette = setPopulationForRoulette();
-
-		ArrayList<Conference> w = selectionWheel(populationForRoulette, population_size - bestN.size(), new Random());
+		ArrayList<Conference> w = selectionWheel(populationForRoulette, population_size, new Random());
 
 		bestN.addAll(w);
 
@@ -144,7 +156,7 @@ public class Genetic {
 		for (Conference c : populationForRoulette) 
 			c.setProbability(c.getScore()/sum);
 
-//		System.out.println("poprolette" +populationForRoulette.size());
+		//		System.out.println("poprolette" +populationForRoulette.size());
 		return populationForRoulette;
 	}
 
@@ -161,24 +173,6 @@ public class Genetic {
 		return new ArrayList<Conference>(currentPopulation.subList(0,N));
 	}
 
-
-	private ArrayList<Conference> fillPopulation(ArrayList<Conference> best) {
-
-
-		int div = Utilities.POPULATION_SIZE / best.size();
-		int module = Utilities.POPULATION_SIZE % best.size();
-
-		ArrayList<Conference> newPopulation = new ArrayList<Conference>();
-
-		for (int i = 0 ; i < div ; i++) 
-			newPopulation.addAll(best);
-
-		for (int i = 0 ; i < module ; i++)
-			newPopulation.add(best.get(i));
-
-		return newPopulation;
-
-	}
 
 	/**
 	 * Generates a wheel with all the probabilities from the population and 
@@ -220,10 +214,10 @@ public class Genetic {
 	private void crossingOverPhase() {
 		int counter = currentPopulation.size() % 2 == 0 ? currentPopulation.size()-1 : currentPopulation.size();
 		ArrayList<Conference> aux = new ArrayList<Conference>();
-		
+
 		for (int i = 0; i < counter-2 ; i+=2) {
-//			System.out.println(i+1);
-			
+			//			System.out.println(i+1);
+
 			aux.addAll(crossCromossomes(currentPopulation.get(i), currentPopulation.get(i+1)));
 		}
 
@@ -253,7 +247,7 @@ public class Genetic {
 			currentPopulation.get(cromossomeIndex).setMutateBit(posInCromossome);
 		}
 
-		
+
 	}
 
 	/*private ArrayList<String> emparelhar(ArrayList<String> arr ) {
@@ -278,16 +272,16 @@ public class Genetic {
 		//		String cromo =  "00  11   11      001    00 00 01  10 11  1    01011110110           01      00 11 001 00000110111  01011110110"; 
 		//		String cromo2 = "01  01   01      000    01 10 00  00 10  1    01101110110           01      10 01 011 01010110101  11010111100";
 
-//		System.out.println("Total lenght: " + c1.getCromossome().length());
-		
+		//		System.out.println("Total lenght: " + c1.getCromossome().length());
+
 		ArrayList<String> aux;
-				
+
 		for (int days = 0 ; days < Utilities.DAYS ; days ++) {
-			aux = crossAux(c1.getCromossome().substring(offset, offset+Utilities.DAYS), c2.getCromossome().substring(offset, offset+Utilities.DAYS));
+			aux = crossAux(c1.getCromossome().substring(offset, offset + Utilities.DAYSBITS), c2.getCromossome().substring(offset, offset+Utilities.DAYSBITS));
 			offspring1 += aux.get(0);
 			offspring2 += aux.get(1);
 
-			offset += Utilities.DAYS;
+			offset += Utilities.DAYSBITS;
 
 			for (int sessions = 0 ; sessions < Utilities.SESSIONS_PER_PERIOD ; sessions++) {
 				// offset + 2 porque o número de bits que representam o periodo é 2
@@ -295,21 +289,21 @@ public class Genetic {
 				offspring1 += aux.get(0);
 				offspring2 += aux.get(1);
 				offset += 2;
-//				System.out.println("current offset: " + offset);
+				//				System.out.println("current offset: " + offset);
 
 				// Tema de sessao
 				aux = crossAux(c1.getCromossome().substring(offset, offset+Utilities.SESSION_THEME), c2.getCromossome().substring(offset, offset+Utilities.SESSION_THEME));
 				offspring1 += aux.get(0);
 				offspring2 += aux.get(1);
 				offset += Utilities.SESSION_THEME;
-//				System.out.println("current offset: " + offset);
+				//				System.out.println("current offset: " + offset);
 
 				// duração da sessao
 				aux = crossAux(c1.getCromossome().substring(offset, offset+Utilities.DURATION), c2.getCromossome().substring(offset, offset+Utilities.DURATION));
 				offspring1 += aux.get(0);
 				offspring2 += aux.get(1);
 				offset += Utilities.DURATION;
-//				System.out.println("current offset: " + offset);
+				//				System.out.println("current offset: " + offset);
 
 				for (int paper = 0 ; paper < Utilities.PAPERS_PER_SESSION ; paper++) {
 					// Presenter
@@ -317,7 +311,7 @@ public class Genetic {
 					offspring1 += aux.get(0);
 					offspring2 += aux.get(1);
 					offset += Utilities.PRESENTER;
-//					System.out.println("current offset: " + offset);
+					//					System.out.println("current offset: " + offset);
 
 					for (int authors = 0 ; authors < Utilities.AUTHORS_PER_PAPER ; authors++) {
 						// Authors
@@ -348,16 +342,16 @@ public class Genetic {
 			//			offset += Utilities.DAY;
 		}
 
-//		System.out.println("offset: "+ offset);
+		//		System.out.println("offset: "+ offset);
 
-//		Utilities.getCromossomeSize();
+		//		Utilities.getCromossomeSize();
 
 		if (c1.getCromossome().length() != offset) {
 			throw new java.lang.RuntimeException("Error! The cromossome and the generated cromossome size are different.");
 		}
-		
+
 		ArrayList<Conference> children = new ArrayList<Conference>();
-		
+
 		children.add(new Conference(offspring1));
 		children.add(new Conference(offspring2));
 		return children;
@@ -375,7 +369,7 @@ public class Genetic {
 			aux.add(" " + s2);
 			aux.add(" " + s1);
 		}
-		
+
 		return aux;
 	}
 
@@ -412,15 +406,15 @@ public class Genetic {
 				paired.add(currentPopulation.get(i));
 		}
 
-//		ArrayList<Conference> array2 = new ArrayList<Conference>();
+		//		ArrayList<Conference> array2 = new ArrayList<Conference>();
 
-//		if (paired.size()%2 == 0) {
-//			for (int i = 0; i < paired.size()-2 ; i+=2) {
-//				array2.addAll(crossCromossomes(paired.get(i), paired.get(i+1)));  
-//			}
-//		}
+		//		if (paired.size()%2 == 0) {
+		//			for (int i = 0; i < paired.size()-2 ; i+=2) {
+		//				array2.addAll(crossCromossomes(paired.get(i), paired.get(i+1)));  
+		//			}
+		//		}
 
-//		System.out.println(paired.size());
+		//		System.out.println(paired.size());
 		return paired;
 	}
 
@@ -432,7 +426,7 @@ public class Genetic {
 	private void setBestConference() {
 
 		bestConference = currentPopulation.stream().max(Comparator.comparing(v -> v.getScore())).get();
-		
+
 	}
 
 }

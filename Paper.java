@@ -45,35 +45,9 @@ public class Paper {
 			this.duration=30;
 		else
 			this.duration=20;
-
-	//	System.out.print("Authors: ");
-//		for (Integer integer : authors) {
-//			System.out.print(integer+", ");
-//			
-//		}
-	//	System.out.println();
-	//	System.out.print("Themes: ");
-	//	for (Integer integer : themes) {
-	//		System.out.print(integer+", ");
-			
-	//	}
-		
-	//	System.out.println("\nDuration: " + duration);
-	//	System.out.println("Full Papper: " + isFullPaper);
-		
-	//	System.out.println("Presenter is an author: " + checkIfPresenterIsAuthor());
-		
 		
 		createGenome();
 	}
-	
-//	Upgrade
-	// AAAA AAAA AAAA TT TT TT D
-	
-	
-	
-	//	AAAA AAAA AAAA TT TT TT DD
-	
 	
 	/**
 	 * Creates the genome of a paper 

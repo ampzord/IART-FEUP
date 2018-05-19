@@ -25,8 +25,8 @@ public class Utilities {
 	public static int SESSION_THEME = 5; // 32 themes
 	public static int THEME = 5; // 32 themes
 	public static int DURATION = 3; // min: 1h(60min)
-	public static int PRESENTER = 6; // idAuthor
-	public static int AUTHORS = 6; // idAuthor
+	public static int PRESENTER = 3; // idAuthor
+	public static int AUTHORS = 3; // idAuthor
 	public static int AUTHORS_PER_PAPER = 2;
 	public static int PAPERS = 6; // 64 themes
 	public static int THEMES_PER_PAPER = 2;
