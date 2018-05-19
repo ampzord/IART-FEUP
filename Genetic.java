@@ -144,7 +144,7 @@ public class Genetic {
 		for (Conference c : populationForRoulette) 
 			c.setProbability(c.getScore()/sum);
 
-		System.out.println("poprolette" +populationForRoulette.size());
+//		System.out.println("poprolette" +populationForRoulette.size());
 		return populationForRoulette;
 	}
 
@@ -350,7 +350,7 @@ public class Genetic {
 
 //		System.out.println("offset: "+ offset);
 
-		Utilities.getCromossomeSize();
+//		Utilities.getCromossomeSize();
 
 		if (c1.getCromossome().length() != offset) {
 			throw new java.lang.RuntimeException("Error! The cromossome and the generated cromossome size are different.");
@@ -420,7 +420,7 @@ public class Genetic {
 //			}
 //		}
 
-		System.out.println(paired.size());
+//		System.out.println(paired.size());
 		return paired;
 	}
 

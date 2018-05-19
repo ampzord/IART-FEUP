@@ -2,85 +2,89 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 
 public class Utilities {
-	
 
 	public static double CROSSING_RATIO = 0.5;
-	
-//	public static int SESSION_THEME = 5; //32 themes
-//	public static int THEME = 5; //32 themes
-//	public static int DURATION = 3; // min: 1h(60min)
-//	public static int PRESENTER = 6; //idAuthor
-//	public static int DAYS = 2; // 3 days 
-//	public static int AUTHORS = 6; //idAuthor
-//	public static int AUTHORS_PER_PAPER = 2; 
-//	public static int PAPERS= 6; //64 themes
-//	public static int THEMES_PER_PAPER = 2; 
-//	public static int PAPERS_PER_SESSION= 2; //64 themes
+
+	// public static int SESSION_THEME = 5; //32 themes
+	// public static int THEME = 5; //32 themes
+	// public static int DURATION = 3; // min: 1h(60min)
+	// public static int PRESENTER = 6; //idAuthor
+	// public static int DAYS = 2; // 3 days
+	// public static int AUTHORS = 6; //idAuthor
+	// public static int AUTHORS_PER_PAPER = 2;
+	// public static int PAPERS= 6; //64 themes
+	// public static int THEMES_PER_PAPER = 2;
+	// public static int PAPERS_PER_SESSION= 2; //64 themes
 	public static int DAY_WEIGHT = 5;
 	public static int CONF_WEIGHT = 5;
 	public static int SESS_WEIGHT = 5;
 	public static int PAPR_WEIGHT = 1;
 	public static int THEM_WEIGHT = 1;
 	public static int MAX_ITERATIONS = 1000;
-	
-	public static int SESSION_THEME = 5; //32 themes
-	public static int THEME = 5; //32 themes
+
+	public static int SESSION_THEME = 5; // 32 themes
+	public static int THEME = 5; // 32 themes
 	public static int DURATION = 3; // min: 1h(60min)
-	public static int PRESENTER = 6; //idAuthor 
-	public static int AUTHORS = 6; //idAuthor
-	public static int AUTHORS_PER_PAPER = 2; 
-	public static int PAPERS = 6; //64 themes
-	public static int THEMES_PER_PAPER = 2; 
-	
+	public static int PRESENTER = 6; // idAuthor
+	public static int AUTHORS = 6; // idAuthor
+	public static int AUTHORS_PER_PAPER = 2;
+	public static int PAPERS = 6; // 64 themes
+	public static int THEMES_PER_PAPER = 2;
+
 	public static int DAYS = 3; // 3 days
+	public static int DAYSBITS = 2; // 3 days
 	public static int SESSIONS_PER_PERIOD = 1;
-	public static int PAPERS_PER_SESSION = 2; //64 themes
-	
+	public static int PAPERS_PER_SESSION = 2; // 64 themes
+
 	// Inteiro ao invés do tamanho do binário
 	public static int NUM_PERIODS = 4;
-	
+
 	public static enum SELECTION {
 		ELITIST, PROBABILISTIC
 	};
-	
-	public static int POPULATION_SIZE = 100000;
-	
-//	// Exemplo 1
-//	public static int DAYS = 1; // 3 days
-//	public static int SESSIONS_PER_PERIOD = 1;
-//	public static int PAPERS_PER_SESSION = 1; //64 themes
-	
+
+	public static int POPULATION_SIZE = 20000;
+
+	// // Exemplo 1
+	// public static int DAYS = 1; // 3 days
+	// public static int SESSIONS_PER_PERIOD = 1;
+	// public static int PAPERS_PER_SESSION = 1; //64 themes
+
 	// Exemplo 2
-//		public static int DAYS = 1; // 3 days
-//		public static int SESSIONS_PER_PERIOD = 2;
-//		public static int PAPERS_PER_SESSION = 1; //64 themes
-	
-	
+	// public static int DAYS = 1; // 3 days
+	// public static int SESSIONS_PER_PERIOD = 2;
+	// public static int PAPERS_PER_SESSION = 1; //64 themes
+
 	// Exemplo 3
-//	public static int DAYS = 1; // 3 days
-//	public static int SESSIONS_PER_PERIOD = 2;
-//	public static int PAPERS_PER_SESSION = 2; //64 themes
+	// public static int DAYS = 1; // 3 days
+	// public static int SESSIONS_PER_PERIOD = 2;
+	// public static int PAPERS_PER_SESSION = 2; //64 themes
 
 	// Exemplo 4
-//	public static int DAYS = 2; // 3 days
-//	public static int SESSIONS_PER_PERIOD = 1;
-//	public static int PAPERS_PER_SESSION = 2; //64 themes
-	
-	
+	// public static int DAYS = 2; // 3 days
+	// public static int SESSIONS_PER_PERIOD = 1;
+	// public static int PAPERS_PER_SESSION = 2; //64 themes
+
 	/**
 	 * Transforms a number to binary in string format
-	 * @param number number to be transformed
-	 * @param size size of number in binary
+	 * 
+	 * @param number
+	 *            number to be transformed
+	 * @param size
+	 *            size of number in binary
 	 * @return binary number as a string
 	 */
 	public static String transform2Bin(int number, int size) {
-		 return normalize(decToBin(number), size);		
+		return normalize(decToBin(number), size);
 	}
 
 	/**
 	 * Concatenates 0s to the left of the string to have the desired length
-	 * @param word string to be concatenated
-	 * @param length desired size
+	 * 
+	 * @param word
+	 *            string to be concatenated
+	 * @param length
+	 *            desired size
 	 * @return string concatenated
 	 */
 	public static String normalize(String word, int length) {
@@ -100,81 +104,89 @@ public class Utilities {
 
 	/**
 	 * Converts a string on decimal format to binary
-	 * @param s string
+	 * 
+	 * @param s
+	 *            string
 	 * @return string in binary
 	 */
 	public static String decToBin(String s) {
-		 return new BigInteger(s, 10).toString(2);
+		return new BigInteger(s, 10).toString(2);
 	}
-	
+
 	/**
 	 * Converts a number on decimal format to binary
+	 * 
 	 * @param i
 	 * @return string in binary
 	 */
 	public static String decToBin(int i) {
-		 String s = String.valueOf(i);
-		 return new BigInteger(s, 10).toString(2);
+		String s = String.valueOf(i);
+		return new BigInteger(s, 10).toString(2);
 	}
-	
+
 	/**
 	 * Converts a number on binary format to decimal
+	 * 
 	 * @param i
 	 * @return string in binary
 	 */
 	public static String binToDec(String s) {
 		return new BigInteger(s, 2).toString(10);
 	}
-	
+
 	/**
 	 * Returns the size of a session on a cromossome
+	 * 
 	 * @return Session size
 	 */
 	public static int getSessionCount() {
-		//Periodo (manhã, tarde...)
-		int PERIOD = 2;		
-		return PERIOD + THEME + DURATION + getPaperSize() * PAPERS_PER_SESSION; 
+		// Periodo (manhã, tarde...)
+		int PERIOD = 2;
+		return PERIOD + THEME + DURATION + getPaperSize() * PAPERS_PER_SESSION;
 	}
-	
+
 	/**
 	 * Returns the size of a paper on a cromossome
+	 * 
 	 * @return
 	 */
 	public static int getPaperSize() {
 		int ISFULLPAPER = 1;
-				//4									4							
+		// 4 4
 		return (PRESENTER + AUTHORS * AUTHORS_PER_PAPER) + (THEME * THEMES_PER_PAPER) + ISFULLPAPER;
 	}
-	
 
 	/**
 	 * Returns the size of a cromossome
+	 * 
 	 * @return
 	 */
 	public static int getCromossomeSize() {
-		int cromossomePaper = (DAYS * DAYS) + DAYS * (SESSIONS_PER_PERIOD * getSessionCount()); 
-//		System.out.println("Cromossome size: " + cromossomePaper);
+		int cromossomePaper = (DAYS * DAYSBITS) + DAYS * (SESSIONS_PER_PERIOD * getSessionCount());
+		// System.out.println("Cromossome size: " + cromossomePaper);
 		return cromossomePaper;
-}
-	
+	}
+
 	/**
 	 * Calculates the discrepancy between representations
-	 * @param representations Representations to be calculated
+	 * 
+	 * @param representations
+	 *            Representations to be calculated
 	 * @return Difference between the max value and the min value
 	 */
 	public static int calculateRepresentation(ArrayList<Integer> representations) {
-				
+
 		int min = representations.get(0);
-	    int max = min;
-	    int size = representations.size();
-        for (int i = 0; i < size; i++){
-        	
-        	int value = representations.get(i);
-            if (min > value)
-                min = value;
-            if (max < value)
-                max = value;
-        }
-        return max-min;
+		int max = min;
+		int size = representations.size();
+		for (int i = 0; i < size; i++) {
+
+			int value = representations.get(i);
+			if (min > value)
+				min = value;
+			if (max < value)
+				max = value;
+		}
+		return max - min;
 	}
 }

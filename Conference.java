@@ -11,7 +11,7 @@ public class Conference  {
 	private ArrayList<Day> days = new ArrayList<Day>();
 	private int numberRooms;
 	private int numberSessions;
-	private int nDays;
+//	private int nDays;
 	private double fitnessScore;
 	private double probability;
 	
@@ -30,14 +30,16 @@ public class Conference  {
 	 * A day has one or more sessions
 	 */
 	private void splitCromossome() {
-		String day = getCromossome().substring(0, 1);
-		String sessions = getCromossome().substring(2, getCromossome().length()); //ver valor de 30 -> tamanho das sess�es, salas
+		int offset = 0;
 		
-		this.nDays = getCromossome().length() / (Utilities.getSessionCount() * Utilities.SESSIONS_PER_PERIOD);
-		
+//		this.nDays = getCromossome().length() / (Utilities.getSessionCount() * Utilities.SESSIONS_PER_PERIOD);
 //		System.out.println("ndays "+ nDays);
 		
-		for (int i = 0; i <  Utilities.DAYS; i++){
+		for (int i = 0; i <  Utilities.DAYS; i++) {
+			
+			String day = getCromossome().substring(offset, offset += Utilities.DAYSBITS);
+			String sessions = getCromossome().substring(offset, offset += (Utilities.getSessionCount() * Utilities.SESSIONS_PER_PERIOD));//getCromossome().length()); //ver valor de 30 -> tamanho das sess�es, salas
+			
 			days.add(new Day(day, sessions));
 		}
 
