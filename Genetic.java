@@ -219,9 +219,11 @@ public class Genetic {
 	}
 
 	private void crossingOverPhase() {
-		int counter = population_size % 2 == 0 ? population_size : population_size-1;
+		int counter = currentPopulation.size() % 2 == 0 ? currentPopulation.size()-1 : currentPopulation.size();
 		ArrayList<Conference> aux = new ArrayList<Conference>();
+//		System.out.println(counter);
 		for (int i = 0; i < counter-2 ; i+=2) {
+//			System.out.println(i+1);
 			aux.addAll(crossCromossomes(currentPopulation.get(i), currentPopulation.get(i+1)));
 		}
 		setCurrentPopulation(aux);

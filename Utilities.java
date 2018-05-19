@@ -43,7 +43,7 @@ public class Utilities {
 		ELITIST, PROBABILISTIC
 	};
 	
-	public static int POPULATION_SIZE = 10000;
+	public static int POPULATION_SIZE = 100000;
 	
 //	// Exemplo 1
 //	public static int DAYS = 1; // 3 days
