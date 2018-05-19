@@ -49,7 +49,6 @@ public class Genetic {
 			setBestConference();
 		}
 		System.out.println("Best Conference");
-		System.out.println(bestConference.getReadableCromossome() + "\n");
 		System.out.println(bestConference.getScore() + "\n");
 		System.out.println(bestConference.toString());
 
