@@ -39,8 +39,8 @@ public class Genetic {
 		population_size = this.currentPopulation.size();
 
 		for (int i = 0; i < Utilities.MAX_ITERATIONS; i++){
-			System.out.println("----------------------------------------------------");
-			System.out.println("Current Iteration " + i);
+//			System.out.println("----------------------------------------------------");
+//			System.out.println("Current Iteration " + i);
 
 			selectionPhase();
 			pairingPhase();
@@ -49,7 +49,10 @@ public class Genetic {
 			setBestConference();
 		}
 		System.out.println("Best Conference");
-		System.out.println(bestConference.getScore());
+		System.out.println(bestConference.getReadableCromossome() + "\n");
+		System.out.println(bestConference.getScore() + "\n");
+		System.out.println(bestConference.toString());
+
 		
 		//TODO
 		/*
@@ -260,7 +263,7 @@ public class Genetic {
 		//		String cromo =  "00  11   11      001    00 00 01  10 11  1    01011110110           01      00 11 001 00000110111  01011110110"; 
 		//		String cromo2 = "01  01   01      000    01 10 00  00 10  1    01101110110           01      10 01 011 01010110101  11010111100";
 
-		System.out.println("Total lenght: " + c1.getCromossome().length());
+//		System.out.println("Total lenght: " + c1.getCromossome().length());
 		
 		ArrayList<String> aux;
 				
@@ -277,21 +280,21 @@ public class Genetic {
 				offspring1 += aux.get(0);
 				offspring2 += aux.get(1);
 				offset += 2;
-				System.out.println("current offset: " + offset);
+//				System.out.println("current offset: " + offset);
 
 				// Tema de sessao
 				aux = crossAux(c1.getCromossome().substring(offset, offset+Utilities.SESSION_THEME), c2.getCromossome().substring(offset, offset+Utilities.SESSION_THEME));
 				offspring1 += aux.get(0);
 				offspring2 += aux.get(1);
 				offset += Utilities.SESSION_THEME;
-				System.out.println("current offset: " + offset);
+//				System.out.println("current offset: " + offset);
 
 				// duração da sessao
 				aux = crossAux(c1.getCromossome().substring(offset, offset+Utilities.DURATION), c2.getCromossome().substring(offset, offset+Utilities.DURATION));
 				offspring1 += aux.get(0);
 				offspring2 += aux.get(1);
 				offset += Utilities.DURATION;
-				System.out.println("current offset: " + offset);
+//				System.out.println("current offset: " + offset);
 
 				for (int paper = 0 ; paper < Utilities.PAPERS_PER_SESSION ; paper++) {
 					// Presenter
@@ -299,7 +302,7 @@ public class Genetic {
 					offspring1 += aux.get(0);
 					offspring2 += aux.get(1);
 					offset += Utilities.PRESENTER;
-					System.out.println("current offset: " + offset);
+//					System.out.println("current offset: " + offset);
 
 					for (int authors = 0 ; authors < Utilities.AUTHORS_PER_PAPER ; authors++) {
 						// Authors
@@ -330,7 +333,7 @@ public class Genetic {
 			//			offset += Utilities.DAY;
 		}
 
-		System.out.println("offset: "+ offset);
+//		System.out.println("offset: "+ offset);
 
 		Utilities.getCromossomeSize();
 

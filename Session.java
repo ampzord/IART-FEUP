@@ -134,4 +134,17 @@ public class Session {
 		return this.durationID;
 	}
 
+	
+	@Override
+	public String toString() {
+		String info = "";
+		info += "Tema da Sessao: " + themeID + "\n";
+		info += "Duração: " + durationID + "\n";
+		info += "Periodo: " + sessionSchedule + "\n";
+		for (int i = 0; i < papers.size() ; i++) {
+			info += "Paper: " + i + papers.get(i).toString() + "\n";
+		}
+		
+		return info;
+	}
 }

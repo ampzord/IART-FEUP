@@ -73,6 +73,17 @@ public class Day {
 		return sessions;
 	}
 	
+	@Override
+	public String toString() {
+		String info = "";
+		info += "Dia " + this.day + "\n";
+		for (int i = 0; i < sessions.size() ; i++) {
+			info += "Sessão: " + i + "\n" + sessions.get(i).toString() + "\n";
+		}
+		
+		return info;
+	}
+	
 }
 
 //Session: 

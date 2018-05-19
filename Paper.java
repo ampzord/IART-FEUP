@@ -154,5 +154,15 @@ public class Paper {
 		return presenter;
 	}
 	
+	
+	@Override
+	public String toString() {
+		String info = "";
+		
+		
+		
+		
+		return info;
+	}
 
 }
