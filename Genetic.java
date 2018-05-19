@@ -95,7 +95,10 @@ public class Genetic {
 	private ArrayList<Conference> probabilistic() {	
 
 		ArrayList<Conference> populationForRoulette = setPopulationForRoulette();
-
+//		while (populationForRoulette.size() == ) {
+//			
+//		}
+		
 		return selectionWheel(populationForRoulette, population_size, new Random());
 	}
 
@@ -137,6 +140,7 @@ public class Genetic {
 		for (Conference c : populationForRoulette) 
 			c.setProbability(c.getScore()/sum);
 
+		System.out.println("poprolette" +populationForRoulette.size());
 		return populationForRoulette;
 	}
 
@@ -212,8 +216,8 @@ public class Genetic {
 	private void crossingOverPhase() {
 		int counter = population_size % 2 == 0 ? population_size : population_size-1;
 		ArrayList<Conference> aux = new ArrayList<Conference>();
-		for (int i = 0; i < counter ; i+=2) {
-			aux.addAll(crossCromossomes(getCurrentPopulation().get(i), getCurrentPopulation().get(i+1)));
+		for (int i = 0; i < counter-2 ; i+=2) {
+			aux.addAll(crossCromossomes(currentPopulation.get(i), currentPopulation.get(i+1)));
 		}
 		setCurrentPopulation(aux);
 	}
@@ -400,15 +404,16 @@ public class Genetic {
 				paired.add(currentPopulation.get(i));
 		}
 
-		ArrayList<Conference> array2 = new ArrayList<Conference>();
+//		ArrayList<Conference> array2 = new ArrayList<Conference>();
 
-		if (paired.size()%2 == 0) {
-			for (int i = 0; i < paired.size()-2 ; i+=2) {
-				array2.addAll(crossCromossomes(paired.get(i), paired.get(i+1)));  
-			}
-		}
+//		if (paired.size()%2 == 0) {
+//			for (int i = 0; i < paired.size()-2 ; i+=2) {
+//				array2.addAll(crossCromossomes(paired.get(i), paired.get(i+1)));  
+//			}
+//		}
 
-		return array2;
+		System.out.println(paired.size());
+		return paired;
 	}
 
 
