@@ -21,16 +21,20 @@ public class Utilities {
 	public static int SESS_WEIGHT = 1;
 	public static int PAPR_WEIGHT = 1;
 	public static int THEM_WEIGHT = 1;
-	public static int MAX_ITERATIONS = 100;
+	public static int MAX_ITERATIONS = 10000;
 	
-	public static int SESSION_THEME = 2; //32 themes
-	public static int THEME = 2; //32 themes
+	public static int SESSION_THEME = 5; //32 themes
+	public static int THEME = 5; //32 themes
 	public static int DURATION = 3; // min: 1h(60min)
-	public static int PRESENTER = 2; //idAuthor 
-	public static int AUTHORS = 2; //idAuthor
+	public static int PRESENTER = 6; //idAuthor 
+	public static int AUTHORS = 6; //idAuthor
 	public static int AUTHORS_PER_PAPER = 2; 
-	public static int PAPERS = 2; //64 themes
+	public static int PAPERS = 6; //64 themes
 	public static int THEMES_PER_PAPER = 2; 
+	
+	public static int DAYS = 3; // 3 days
+	public static int SESSIONS_PER_PERIOD = 1;
+	public static int PAPERS_PER_SESSION = 2; //64 themes
 	
 	// Inteiro ao invés do tamanho do binário
 	public static int NUM_PERIODS = 4;
@@ -58,9 +62,9 @@ public class Utilities {
 //	public static int PAPERS_PER_SESSION = 2; //64 themes
 
 	// Exemplo 4
-	public static int DAYS = 2; // 3 days
-	public static int SESSIONS_PER_PERIOD = 1;
-	public static int PAPERS_PER_SESSION = 2; //64 themes
+//	public static int DAYS = 2; // 3 days
+//	public static int SESSIONS_PER_PERIOD = 1;
+//	public static int PAPERS_PER_SESSION = 2; //64 themes
 	
 	
 	/**

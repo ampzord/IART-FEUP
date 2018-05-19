@@ -56,28 +56,28 @@ public class Main {
 		
 		
 		//Para testar o algoritmo em si
-		String cromo = "01 11 11     111 11 10 11 10 11 1   01 00 01 10 11 1    1111001  00000110111  10100000011";
-		Conference c1 = new Conference(cromo);
-
-		String cromo1 = "01111100100000110110111100100100110011";
-		Conference c2 = new Conference(cromo1);
-
-		String cromo2 = "01111100100000110110110000100100110011";
-		Conference c3 = new Conference(cromo2);
+//		String cromo = "01 11 11     111 11 10 11 10 11 1   01 00 01 10 11 1    1111001  00000110111  10100000011";
+//		Conference c1 = new Conference(cromo);
+//
+//		String cromo1 = "01111100100000110110111100100100110011";
+//		Conference c2 = new Conference(cromo1);
+//
+//		String cromo2 = "01111100100000110110110000100100110011";
+//		Conference c3 = new Conference(cromo2);
 		
 		
 		ArrayList<Conference> p = new ArrayList<Conference>();
-		
-		
+//		
+//		
 		for (int i = 0; i < 100 ; i++) {
 			p.add(new Conference(Genetic.generateRandomPopulation()));
 		}
-		
-		for (int i = 0; i < 100 ; i++) {
-			System.out.println(p.get(i).getCromossome());
-			}
-		
-		
+//		
+//		for (int i = 0; i < 100 ; i++) {
+//			System.out.println(p.get(i).getCromossome());
+//			}
+//		
+//		
 		
 		
 		Genetic g = new Genetic(p);
@@ -164,10 +164,10 @@ public class Main {
 		ArrayList<Conference> arr2 = new ArrayList<Conference>();
 		
 	
-		for (int i = 0; i < 100 ; i++) {
-			arr.add(new Conference(Genetic.generateRandomPopulation()));
-		}
-		g.setCurrentPopulation(arr);
+//		for (int i = 0; i < 100 ; i++) {
+//			arr.add(new Conference(Genetic.generateRandomPopulation()));
+//		}
+//		g.setCurrentPopulation(arr);
 		
 		for (int i = 0; i < 100 ; i++) {
 			arr2 = g.emparelhate();
