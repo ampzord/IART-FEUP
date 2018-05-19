@@ -221,11 +221,13 @@ public class Genetic {
 	private void crossingOverPhase() {
 		int counter = currentPopulation.size() % 2 == 0 ? currentPopulation.size()-1 : currentPopulation.size();
 		ArrayList<Conference> aux = new ArrayList<Conference>();
-//		System.out.println(counter);
+		
 		for (int i = 0; i < counter-2 ; i+=2) {
 //			System.out.println(i+1);
+			
 			aux.addAll(crossCromossomes(currentPopulation.get(i), currentPopulation.get(i+1)));
 		}
+
 		setCurrentPopulation(aux);
 	}
 
@@ -357,8 +359,8 @@ public class Genetic {
 		
 		ArrayList<Conference> children = new ArrayList<Conference>();
 		
-//		System.out.println("Parents: " + c1.getCromossome() + "\n" + c2.getCromossome() + "\n");
-//		System.out.println("New Cromossome: " + offspring1 + "\n" + offspring2 + "\n");
+		children.add(new Conference(offspring1));
+		children.add(new Conference(offspring2));
 		return children;
 	}
 
@@ -431,6 +433,7 @@ public class Genetic {
 	private void setBestConference() {
 
 		bestConference = currentPopulation.stream().max(Comparator.comparing(v -> v.getScore())).get();
+		
 	}
 
 }
