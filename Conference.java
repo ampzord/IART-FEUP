@@ -8,7 +8,6 @@ import java.util.ArrayList;
 public class Conference  {
 	
 	private String cromossome;
-	private String readableCromossome = "";
 	private ArrayList<Day> days = new ArrayList<Day>();
 	private int numberRooms;
 	private int numberSessions;
@@ -21,7 +20,6 @@ public class Conference  {
 	 * @param cromossome String that defines the genome
 	 */
 	Conference(String cromossome){		
-		this.readableCromossome = cromossome;
 		this.setCromossome(cromossome.replaceAll(" ", ""));
 		splitCromossome();
 		calculateScore();
@@ -46,10 +44,6 @@ public class Conference  {
 		//verificar valor sde substrings
 	}
 	
-	
-	public String getReadableCromossome() {
-		return this.readableCromossome;
-	}
 	
 //	public boolean checkAuthors() {
 //		
