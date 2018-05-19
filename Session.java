@@ -142,7 +142,7 @@ public class Session {
 		info += "Duração: " + durationID + "\n";
 		info += "Periodo: " + sessionSchedule + "\n";
 		for (int i = 0; i < papers.size() ; i++) {
-			info += "Paper: " + i + papers.get(i).toString() + "\n";
+			info += "Paper: " + i + "\n" + papers.get(i).toString() + "\n";
 		}
 		
 		return info;

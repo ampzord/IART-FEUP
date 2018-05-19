@@ -148,9 +148,10 @@ public class Conference  {
 	public String toString() {
 		String info = "";
 		info += "Total de Dias: " + days.size() + "\n";
-		
+		info += "--------------\n";
 		for (int i = 0 ; i < days.size() ; i++) {
-			info += "Dia: " + i + "\n" + days.toString() + "\n"	;
+			info += "Dia: " + i + "\n" + days.toString() + "\n";
+			info += "-------------\n";
 		}
 		
 		return info;		

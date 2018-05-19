@@ -133,7 +133,11 @@ public class Paper {
 	public String toString() {
 		String info = "";
 		
-		
+		info += "Temas do Paper: \n";
+		for (int i = 0; i < themes.size() ; i++) {
+			info += themes.get(i) + " ";
+		}
+		info += "\n";
 		
 		
 		return info;
