@@ -239,7 +239,7 @@ public class Genetic {
 		ArrayList<Integer> mutations = new ArrayList<Integer>();
 		int cromossomeSize =  Utilities.getCromossomeSize();
 		double pm = 0.01;
-		int times = population_size * cromossomeSize;
+		int times = currentPopulation.size() * cromossomeSize;
 		for (int i = 0; i < times; i++) {
 			double n = rand.nextDouble();
 			if (n < pm)
