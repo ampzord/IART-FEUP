@@ -1,3 +1,4 @@
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.io.IOException;
@@ -16,6 +17,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 
@@ -53,17 +55,39 @@ public class Main {
 
 		Genetic g = new Genetic(p);	
 		
-		
-		JPanel panel = new JPanel();
-		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-		
-		
-		JLabel text = new JLabel();
-		
-		text.setText("<html>" + g.getBestConference().toString().replaceAll("<","&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br/>") + "</html>");
+		showResults(g);
+//		JPanel panel = new JPanel();
+//		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+//		
+//		
+//		JLabel text = new JLabel();
+//		
+//		text.setText("<html>" + g.getBestConference().toString().replaceAll("<","&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br/>") + "</html>");
+//
+//		panel.add(text);
+//		JOptionPane.showMessageDialog(null,panel,"Results",JOptionPane.DEFAULT_OPTION);
+	}
+	
+	public static void showResults(Genetic g) {
+        JFrame frame = new JFrame();
+        JPanel panel = new JPanel();
 
-		panel.add(text);
-		JOptionPane.showMessageDialog(null,panel,"Results",JOptionPane.DEFAULT_OPTION);
+        JLabel text = new JLabel();
+		text.setText("<html>" + g.getBestConference().toString().replaceAll("<","&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br/>") + "</html>");
+		panel.add(text);        
+        
+        JScrollPane scrollPane = new JScrollPane(panel);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+//        scrollPane.setBounds(50, 30, 500, 400);
+        scrollPane.setBounds(0, 0, 500, 400);
+        JPanel contentPane = new JPanel(null);
+        contentPane.setPreferredSize(new Dimension(500, 400));
+        contentPane.add(scrollPane);
+        frame.setContentPane(contentPane);
+        frame.pack();
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setVisible(true);
 	}
 
 
