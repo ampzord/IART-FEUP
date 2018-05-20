@@ -208,11 +208,10 @@ public class Genetic {
 		Random rand = new Random();
 		ArrayList<Integer> mutations = new ArrayList<Integer>();
 		int cromossomeSize =  Utilities.getCromossomeSize();
-		double pm = 0.01;
 		int times = currentPopulation.size() * cromossomeSize;
 		for (int i = 0; i < times; i++) {
 			double n = rand.nextDouble();
-			if (n < pm)
+			if (n < Utilities.MUTATION_PROB)
 				mutations.add(i);
 		}
 
@@ -359,12 +358,11 @@ public class Genetic {
 	 */
 	private ArrayList<Conference> pairCromossomes() {
 
-		double pc = 0.25; 
 		ArrayList<Conference> paired = new ArrayList<Conference>();
 		for(int i = 0; i < population_size; i++) {
 			Random rand = new Random();		
 			double n = rand.nextDouble();
-			if (n < pc)
+			if (n < Utilities.PAIRING_PROB)
 				paired.add(currentPopulation.get(i));
 		}
 		return paired;
