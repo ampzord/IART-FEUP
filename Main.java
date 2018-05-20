@@ -1,11 +1,67 @@
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Random;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
 public class Main {
 	public static void main(String[] args) {
 
+		
+		JTextField maxPopTextField = new JTextField(10);
+//		JTextField maxPopTextField = new JTextField(10);
+
+	    String[] choices = { "Probabilistico","Esqueci o nome" };
+
+	    final JComboBox<String> cb = new JComboBox<String>(choices);
+
+		
+		JPanel panel = new JPanel();
+//		 panel.add(new JButton("Click"));
+	       panel.setLayout(new GridBagLayout());
+	      GridBagConstraints gbc = new GridBagConstraints();
+	      
+	      // adiciona os compnentes na vertical 
+//	      panel.add(label1, gbc);
+//	        panel.add(label2, gbc);
+	      
+		 panel.add(new JLabel("Qual o tamanho da população inicial?"));
+		 panel.add(maxPopTextField);
+		 
+		 
+		 panel.add(new JLabel("Qual o método que deseja utilizar?"));
+		 cb.setVisible(true);
+		    panel.add(cb);
+		 
+		 JOptionPane.showMessageDialog(null,panel,"Information",JOptionPane.INFORMATION_MESSAGE);
+
+		 
+		 // pega os resultados
+		 System.out.println(maxPopTextField.getText());
+		 System.out.println(cb.getSelectedIndex());
+		 
+//		String stringParaAvaliar = JOptionPane.showInputDialog("Qual o tamanho da strin");
+//		do {
+//
+//
+//			stringParaAvaliar = "";
+//			stringParaAvaliar = JOptionPane.showInputDialog("Informe a String que deseja avaliar:");
+//		} while (stringParaAvaliar != null || !stringParaAvaliar.trim().equals("")); 
+//		System.exit(0);
+		
+		
+		
+//		
+		
 		
 		ArrayList<Conference> p = new ArrayList<Conference>();
 
