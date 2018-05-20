@@ -1,15 +1,17 @@
 import java.math.BigInteger;
 import java.util.ArrayList;
 
+
+
 public class Utilities {
-	
-	
+
+
 	public static double DAY_WEIGHT = 2.5;
 	public static double CONF_WEIGHT = 2;
 	public static double SESS_WEIGHT = 1.5;
 	public static int PAPR_WEIGHT = 1;
 	public static int THEM_WEIGHT = 1;
-	
+
 	public static int MAX_ITERATIONS = 200;
 	public static double CROSSING_RATIO = 0.5;
 	
@@ -46,13 +48,10 @@ public class Utilities {
 
 
 
-	public static enum SELECTION {
-		ELITIST, PROBABILISTIC
-	};
-
-	public static Utilities.SELECTION selection_t;
+	public static SELECTION selection_t;
 
 	public static int POPULATION_SIZE;
+	public static int ELITIST_NUMBER;
 	
 	public static double MUTATION_PROB = 0.01;
 	public static double PAIRING_PROB = 0.25;
@@ -180,5 +179,15 @@ public class Utilities {
 				max = value;
 		}
 		return max - min;
+	}
+
+	public static boolean containsOnlyNumbers(String str) {
+		for (int i = 0; i < str.length(); i++) {
+			if (!Character.isDigit(str.charAt(i))) {
+				System.out.println(str);
+				return false;
+			}
+		}
+		return true;
 	}
 }
