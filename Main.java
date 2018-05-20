@@ -79,6 +79,7 @@ public class Main {
         JScrollPane scrollPane = new JScrollPane(panel);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.getVerticalScrollBar().setUnitIncrement(16);
 //        scrollPane.setBounds(50, 30, 500, 400);
         scrollPane.setBounds(0, 0, 500, 400);
         JPanel contentPane = new JPanel(null);
@@ -106,11 +107,10 @@ public class Main {
 			String[] choices = { "Probabilistic","Elitistic" };
 			final JComboBox<String> selectionMethodComboBox = new JComboBox<String>(choices);
 
-			JLabel popSizeLabel = new JLabel("What is the size of the population?");
-			JLabel selectionMethodLabel = new JLabel("Which selection method would you like to use?");
-			JLabel numberDaysLabel = new JLabel("What is the number of days you want?");
-
-			JLabel iterationsLabel = new JLabel("What is the max number of iteretions do you want to perform?");
+			JLabel popSizeLabel = new JLabel("What is the population size?");
+			JLabel selectionMethodLabel = new JLabel("What selection method would you like to use?");
+			JLabel numberDaysLabel = new JLabel("What number of that days that you want?");
+			JLabel iterationsLabel = new JLabel("What is the max number of iterations that you want to perform?");
 
 			panel.add(popSizeLabel);
 			panel.add(maxPopTextField);
