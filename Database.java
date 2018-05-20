@@ -21,14 +21,17 @@ public class Database {
 		BufferedReader br_author = new BufferedReader(new FileReader(author));
 
 		String st;
-		while ((st = br_theme.readLine()) != null) {
+		int i = 0;
+		while ((st = br_theme.readLine()) != null || i < Utilities.THEME_DATABASE_SIZE) {
 			themes.add(st);
+			i++;
 		}
 		
 		st = "";
-		
-		while ((st = br_author.readLine()) != null) {
+		i = 0;
+		while ((st = br_author.readLine()) != null || i < Utilities.AUTHORS_DATABASE_SIZE) {
 			authors.add(st);
+			i++;
 		}
 		
 		

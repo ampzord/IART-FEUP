@@ -20,6 +20,19 @@ public class Utilities {
 	
 	public static int PRESENTER = 2; 
 	public static int AUTHORS = 2; 
+	
+	public static int AUTHORS_DATABASE_SIZE = 50; 
+	public static int THEME_DATABASE_SIZE = 50;
+	
+	public static int SESSION_THEME = 2; 
+	public static int THEME = 2;
+	
+	public static int AUTHORS_BITS = (int) Math.ceil( Math.log10(AUTHORS) / Math.log10(2.) );
+	public static int PRESENTER_BITS = (int) Math.ceil( Math.log10(PRESENTER) / Math.log10(2.) );
+	public static int THEME_BITS = (int) Math.ceil( Math.log10(THEME) / Math.log10(2.) ); 
+	public static int SESSION_THEME_BITS = (int) Math.ceil( Math.log10(SESSION_THEME) / Math.log10(2.) ); 
+	
+	
 	/*
 	public static int SESSION_THEME = 2; 
 	public static int THEME = 2; 
@@ -34,9 +47,8 @@ public class Utilities {
 	public static int PAPERS_PER_SESSION = 2; */
 	
 	
+	//Utilities.DAYSBITS = (int) Math.ceil( Math.log10(Utilities.DAYS) / Math.log10(2.) );
 	
-	public static int SESSION_THEME = 2; 
-	public static int THEME = 2;
 	
 	
 	public static int AUTHORS_PER_PAPER = 2;

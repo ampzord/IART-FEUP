@@ -157,4 +157,19 @@ public class Paper {
 		return info;
 	}
 
+	public boolean checkIfAuthorsAreAllDiff() {
+
+		for(int i = 0; i < authors.size(); i++){
+			for (int j = i+1; j < authors.size(); j++)
+			{
+				if (authors.get(i) == authors.get(j))
+					return false;
+			}
+		}
+		return true;
+			
+	}
+	
+
+
 }

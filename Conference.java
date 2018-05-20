@@ -63,12 +63,16 @@ public class Conference  {
 					this.fitnessScore = 0;
 					return;
 				}
-				
 				for (Paper p : s.getPapers()) {
 					if (!p.checkIfPresenterIsAuthor()){
 						this.fitnessScore = 0;
 						return;
-					}					
+					}
+					
+					if (!p.checkIfAuthorsAreAllDiff()) {
+						this.fitnessScore = 0;
+						return;
+					}
 				}
 				score += (s.checkThemesID() * Utilities.THEM_WEIGHT);
 				
