@@ -138,7 +138,14 @@ public class Paper {
 			info += themes.get(i) + " ";
 		}
 		info += "\n";
-		
+		info += "Autores: \n";
+		for (int i = 0; i < authors.size() ; i++) {
+			info += authors.get(i) + " ";
+		}
+		info += "\n";
+		info += (isFullPaper) ? "Full Paper\n" : "Short Paper\n";
+		info += "Apresentador: " + presenter + "\n";
+		info += "Duração: " + duration + "\n";
 		
 		return info;
 	}

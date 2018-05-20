@@ -15,12 +15,12 @@ public class Utilities {
 	// public static int PAPERS= 6; //64 themes
 	// public static int THEMES_PER_PAPER = 2;
 	// public static int PAPERS_PER_SESSION= 2; //64 themes
-	public static int DAY_WEIGHT = 5;
-	public static int CONF_WEIGHT = 4;
-	public static int SESS_WEIGHT = 3;
+	public static double DAY_WEIGHT = 2.5;
+	public static double CONF_WEIGHT = 2;
+	public static double SESS_WEIGHT = 1.5;
 	public static int PAPR_WEIGHT = 1;
-	public static int THEM_WEIGHT = 2;
-	public static int MAX_ITERATIONS = 250;
+	public static int THEM_WEIGHT = 1;
+	public static int MAX_ITERATIONS = 200;
 
 	public static int SESSION_THEME = 2; // 32 themes
 	public static int THEME = 2; // 32 themes
@@ -29,7 +29,7 @@ public class Utilities {
 	public static int AUTHORS = 2; // idAuthor
 	public static int AUTHORS_PER_PAPER = 2;
 	public static int PAPERS = 2; // 64 themes
-	public static int THEMES_PER_PAPER = 2;
+	public static int THEMES_PER_PAPER = 3;
 
 	public static int DAYS = 3; // 3 days
 	public static int DAYSBITS = 2; // 3 days
@@ -43,7 +43,7 @@ public class Utilities {
 		ELITIST, PROBABILISTIC
 	};
 
-	public static int POPULATION_SIZE = 2000;
+	public static int POPULATION_SIZE = 1000;
 
 	// // Exemplo 1
 	// public static int DAYS = 1; // 3 days
