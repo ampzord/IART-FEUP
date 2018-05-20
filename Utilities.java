@@ -14,7 +14,7 @@ public class Utilities {
 	public static int SESSION_THEME = 2; 
 	public static int THEME = 2; 
 	public static int DURATION = 3; 
-	public static int PRESENTER = 2; 
+	public static int PRESENTER = 2;
 	public static int AUTHORS = 2; 
 	public static int AUTHORS_PER_PAPER = 2;
 	public static int PAPERS = 2; 
@@ -34,7 +34,9 @@ public class Utilities {
 	public static Utilities.SELECTION selection_t;
 
 	public static int POPULATION_SIZE;
-
+	
+	public static double MUTATION_PROB = 0.01;
+	public static double PAIRING_PROB = 0.25;
 
 	/**
 	 * Transforms a number to binary in string format
