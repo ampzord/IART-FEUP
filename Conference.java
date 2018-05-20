@@ -138,7 +138,7 @@ public class Conference  {
 		info += "Number of days: " + days.size() + "\n";
 		info += "--------------\n";
 		for (int i = 0 ; i < days.size() ; i++) {
-			info += "Day: " + i + "\n" + days.toString() + "\n";
+			info += "Day: " + (i+1) + "\n" + days.toString() + "\n";
 			info += "-------------\n";
 		}
 		

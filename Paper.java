@@ -134,18 +134,24 @@ public class Paper {
 	public String toString() {
 		String info = "";
 		
-		info += "Paper Themes: \n";
+		info += "Paper Themes: ";
 		for (int i = 0; i < themes.size() ; i++) {
-			info += themes.get(i) + " ";
+			if (i == themes.size()-1)
+				info += Database.getThemessByID(themes.get(i));
+			else
+				info += Database.getThemessByID(themes.get(i)) + ", ";
 		}
 		info += "\n";
-		info += "Authors: \n";
+		info += "Authors: ";
 		for (int i = 0; i < authors.size() ; i++) {
-			info += authors.get(i) + " ";
+			if (i == authors.size()-1)
+				info += Database.getAuthorsByID(themes.get(i));
+			else
+				info += Database.getAuthorsByID(themes.get(i)) + ", ";
 		}
 		info += "\n";
 		info += (isFullPaper) ? "Full Paper\n" : "Short Paper\n";
-		info += "Presenter: " + presenter + "\n";
+		info += "Presenter: " + Database.getAuthorsByID(presenter) + "\n";
 		info += "Duration: " + duration + "\n";
 		
 		return info;

@@ -8,8 +8,9 @@ import com.sun.java_cup.internal.runtime.Scanner;
 
 public class Database {
 
-	private ArrayList<String> authors = new ArrayList<String>();
-	private ArrayList<String> themes = new ArrayList<String>();
+	private static ArrayList<String> authors = new ArrayList<String>();
+	private static ArrayList<String> themes = new ArrayList<String>();
+	private static ArrayList<String> periods = new ArrayList<String>();
 
 
 	public Database() throws IOException {
@@ -30,13 +31,51 @@ public class Database {
 			authors.add(st);
 		}
 		
-		for(int i = 0; i < authors.size();i++) {
-			System.out.println(authors.get(i));
-		}
 		
-		for(int i = 0; i < themes.size();i++) {
-			System.out.println(themes.get(i));
-		}
+		periods.add("08:00 -> 10:00 AM");
+		periods.add("11:00 -> 13:00 AM");
+		periods.add("14:00 -> 16:00 PM");
+		periods.add("17:00 -> 19:00 PM");
 	}
+
+
+	/**
+	 * @return the authors
+	 */
+	public static ArrayList<String> getAuthors() {
+		return authors;
+	}
+	
+	/**
+	 * @return String author name
+	 */
+	public static String getAuthorsByID(int id) {
+		return authors.get(id);
+	}
+
+
+	/**
+	 * @return the themes
+	 */
+	public static ArrayList<String> getThemes() {
+		return themes;
+	}
+	
+	
+	/**
+	 * @return  String theme name
+	 */
+	public static String getThemessByID(int id) {
+		return themes.get(id);
+	}
+	
+	/** 
+	 * @return String name of period
+	 */
+	public static String getScheduleByID(int id) {
+		return periods.get(id);
+	}
+	
+	
 }
 
