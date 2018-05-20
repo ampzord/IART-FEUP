@@ -52,6 +52,8 @@ public class Main {
 			p.add(new Conference(Genetic.generateRandomPopulation()));	
 
 		new Genetic(p);	
+		
+		
 
 	}
 
