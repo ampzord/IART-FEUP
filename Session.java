@@ -141,7 +141,7 @@ public class Session {
 		info += "Duration: " + durationID + "\n";
 		info += "Period: " + Database.getScheduleByID(sessionSchedule) + "\n";
 		for (int i = 0; i < papers.size(); i++) {
-			info += "Paper: " + i + "\n" + papers.get(i).toString() + "\n";
+			info += "\nPaper: " + i + "\n" + papers.get(i).toString() + "\n";
 		}
 
 		return info;

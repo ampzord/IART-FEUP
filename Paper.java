@@ -145,9 +145,9 @@ public class Paper {
 		info += "Authors: ";
 		for (int i = 0; i < authors.size() ; i++) {
 			if (i == authors.size()-1)
-				info += Database.getAuthorsByID(themes.get(i));
+				info += Database.getAuthorsByID(authors.get(i));
 			else
-				info += Database.getAuthorsByID(themes.get(i)) + ", ";
+				info += Database.getAuthorsByID(authors.get(i)) + ", ";
 		}
 		info += "\n";
 		info += (isFullPaper) ? "Full Paper\n" : "Short Paper\n";
