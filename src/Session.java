@@ -1,5 +1,8 @@
+package src;
 
 import java.util.ArrayList;
+
+import database.Database;
 
 /**
  * This class represents a Session, which is a gene from a Conference
