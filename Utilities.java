@@ -2,14 +2,16 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 
 public class Utilities {
-
-	public static double CROSSING_RATIO = 0.5;
+	
+	
 	public static double DAY_WEIGHT = 2.5;
 	public static double CONF_WEIGHT = 2;
 	public static double SESS_WEIGHT = 1.5;
 	public static int PAPR_WEIGHT = 1;
 	public static int THEM_WEIGHT = 1;
+	
 	public static int MAX_ITERATIONS = 200;
+	public static double CROSSING_RATIO = 0.5;
 
 	public static int SESSION_THEME = 2; 
 	public static int THEME = 2; 
