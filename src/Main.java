@@ -1,19 +1,10 @@
 package src;
 import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.io.IOException;
-import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.Random;
-
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -22,9 +13,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 import database.Database;
-
-
-
 
 
 /**
@@ -37,19 +25,14 @@ public class Main {
 
 		try {
 			new Database();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		} catch (IOException e) {e.printStackTrace();}
 
 
 		showDialog();	
 
-		if (Utilities.selection_t == SELECTION.ELITIST) {
+		if (Utilities.selection_t == SELECTION.ELITIST) 
 			showElitisDialog(); 		 
-		}
-
-
+		
 
 		ArrayList<Conference> p = new ArrayList<Conference>();
 
@@ -59,16 +42,6 @@ public class Main {
 		Genetic g = new Genetic(p);	
 		
 		showResults(g);
-//		JPanel panel = new JPanel();
-//		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
-//		
-//		
-//		JLabel text = new JLabel();
-//		
-//		text.setText("<html>" + g.getBestConference().toString().replaceAll("<","&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br/>") + "</html>");
-//
-//		panel.add(text);
-//		JOptionPane.showMessageDialog(null,panel,"Results",JOptionPane.DEFAULT_OPTION);
 	}
 	
 	public static void showResults(Genetic g) {
@@ -83,7 +56,6 @@ public class Main {
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         scrollPane.getVerticalScrollBar().setUnitIncrement(16);
-//        scrollPane.setBounds(50, 30, 500, 400);
         scrollPane.setBounds(0, 0, 500, 400);
         JPanel contentPane = new JPanel(null);
         contentPane.setPreferredSize(new Dimension(500, 400));
@@ -100,7 +72,6 @@ public class Main {
 		JTextField maxPopTextField = new JTextField("1000", 10);
 		JTextField numberDaysTextField = new JTextField("3", 10);
 		JTextField iterationsTextField = new JTextField("200", 10);
-
 
 		do {
 
@@ -138,9 +109,7 @@ public class Main {
 			if (Utilities.containsOnlyNumbers(maxPopTextField.getText()) && Utilities.containsOnlyNumbers(numberDaysTextField.getText()) && Utilities.containsOnlyNumbers(iterationsTextField.getText())) {
 				Utilities.POPULATION_SIZE = Integer.parseInt(maxPopTextField.getText());
 				Utilities.DAYS = Integer.parseInt(numberDaysTextField.getText());
-//				System.out.println("DAYS BITS: " + Utilities.DAYS);
 				Utilities.DAYSBITS = (int) Math.ceil( Math.log10(Utilities.DAYS) / Math.log10(2.) );
-//				System.out.println("DAYS BITS: " + Utilities.DAYSBITS);
 				Utilities.MAX_ITERATIONS = Integer.parseInt(iterationsTextField.getText());
 
 				return;

@@ -3,7 +3,11 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 
 
-
+/**
+ * This class contains global variables used
+ * across the program
+ *
+ */
 public class Utilities {
 
 
@@ -34,28 +38,10 @@ public class Utilities {
 	public static int SESSION_THEME_BITS = (int) Math.ceil( Math.log10(SESSION_THEME) / Math.log10(2.) ); 
 	
 	
-	/*
-	public static int SESSION_THEME = 2; 
-	public static int THEME = 2; 
-	public static int PRESENTER = 2; 
-	public static int AUTHORS = 2; 
 	public static int AUTHORS_PER_PAPER = 2;
-	public static int THEMES_PER_PAPER = 3;
-
-	public static int DAYS = 3; 
-	public static int DAYSBITS = 2; 
-	public static int SESSIONS_PER_PERIOD = 1;
-	public static int PAPERS_PER_SESSION = 2; */
-	
-	
-	//Utilities.DAYSBITS = (int) Math.ceil( Math.log10(Utilities.DAYS) / Math.log10(2.) );
-	
-	
-	
-	public static int AUTHORS_PER_PAPER = 2;
-	public static int THEMES_PER_PAPER = 1; //numero maximo de temas que pode ter um paper
-	public static int SESSIONS_PER_PERIOD = 1; //numero de salas ao mesmo tempo
-	public static int PAPERS_PER_SESSION = 2; //numero de papers possiveis durante 1 sessao, o maximoé 2fullpapers+3shortpapers = 5
+	public static int THEMES_PER_PAPER = 1; //maximum number of themes on a paper
+	public static int SESSIONS_PER_PERIOD = 1; //number of sessions at the same time
+	public static int PAPERS_PER_SESSION = 2; //number of papers in 1 session, the max is 2fullpapers+3shortpapers = 5
 
 	public static int DAYS; 
 	public static int DAYSBITS; 
@@ -193,13 +179,16 @@ public class Utilities {
 		return max - min;
 	}
 
+	/**
+	 * Verifies if string contains only numbers
+	 * @param str
+	 * @return
+	 */
 	public static boolean containsOnlyNumbers(String str) {
-		for (int i = 0; i < str.length(); i++) {
-			if (!Character.isDigit(str.charAt(i))) {
-				System.out.println(str);
-				return false;
-			}
-		}
+		for (int i = 0; i < str.length(); i++) 
+			if (!Character.isDigit(str.charAt(i))) 
+				return false;		
+		
 		return true;
 	}
 }
