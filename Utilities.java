@@ -45,9 +45,6 @@ public class Utilities {
 	public static int DAYS = 1; 
 	public static int DAYSBITS = 2; 
 	
-
-
-
 	public static SELECTION selection_t;
 
 	public static int POPULATION_SIZE;
