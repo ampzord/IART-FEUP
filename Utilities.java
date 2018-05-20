@@ -53,7 +53,9 @@ public class Utilities {
 	public static Utilities.SELECTION selection_t;
 
 	public static int POPULATION_SIZE;
-
+	
+	public static double MUTATION_PROB = 0.01;
+	public static double PAIRING_PROB = 0.25;
 
 	/**
 	 * Transforms a number to binary in string format
