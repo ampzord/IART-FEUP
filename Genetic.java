@@ -29,10 +29,14 @@ public class Genetic {
 			mutationPhase();
 			setBestConference();
 		}
-		System.out.println("Best Conference");
-		System.out.println(bestConference.getScore() + "\n");
-		System.out.println(bestConference.toString());
+//		System.out.println("Best Conference");
+//		System.out.println(bestConference.getScore() + "\n");
+//		System.out.println(bestConference.toString());
 
+	}
+
+	public Conference getBestConference() {
+		return bestConference;
 	}
 
 	/**

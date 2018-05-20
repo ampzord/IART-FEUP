@@ -51,10 +51,19 @@ public class Main {
 		for (int i = 0; i < Utilities.POPULATION_SIZE ; i++) 
 			p.add(new Conference(Genetic.generateRandomPopulation()));	
 
-		new Genetic(p);	
+		Genetic g = new Genetic(p);	
 		
 		
+		JPanel panel = new JPanel();
+		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+		
+		
+		JLabel text = new JLabel();
+		
+		text.setText("<html>" + g.getBestConference().toString().replaceAll("<","&lt;").replaceAll(">", "&gt;").replaceAll("\n", "<br/>") + "</html>");
 
+		panel.add(text);
+		JOptionPane.showMessageDialog(null,panel,"Results",JOptionPane.DEFAULT_OPTION);
 	}
 
 
