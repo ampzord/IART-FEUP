@@ -19,11 +19,8 @@ public class Day {
 		this.day = day;
 		int index = 0;
 		
-		for (int j = 0; j < Utilities.SESSIONS_PER_PERIOD ; j ++) {
-		//	System.out.println("Session " + j);
+		for (int j = 0; j < Utilities.SESSIONS_PER_PERIOD ; j ++) 
 			this.sessions.add(new Session(sessions.substring(index, index += Utilities.getSessionCount())));
-		//	System.out.println();
-		}
 	}
 	
 	
@@ -73,18 +70,16 @@ public class Day {
 		return sessions;
 	}
 	
+	/**
+	 * Converts a Day to a human-friendly string
+	 */
 	@Override
 	public String toString() {
 		String info = "";
-//		info += "Dia " + this.day + "\n";
-		for (int i = 0; i < sessions.size() ; i++) {
+		for (int i = 0; i < sessions.size() ; i++) 
 			info += "Sessão: " + i + "\n" + sessions.get(i).toString() + "\n";
-		}
-		
+	
 		return info;
 	}
 	
 }
-
-//Session: 
-// TTT DDD PPPPPPP     TTT DDD PPPPPPP
