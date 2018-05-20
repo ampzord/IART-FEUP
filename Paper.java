@@ -134,19 +134,19 @@ public class Paper {
 	public String toString() {
 		String info = "";
 		
-		info += "Temas do Paper: \n";
+		info += "Paper Themes: \n";
 		for (int i = 0; i < themes.size() ; i++) {
 			info += themes.get(i) + " ";
 		}
 		info += "\n";
-		info += "Autores: \n";
+		info += "Authors: \n";
 		for (int i = 0; i < authors.size() ; i++) {
 			info += authors.get(i) + " ";
 		}
 		info += "\n";
 		info += (isFullPaper) ? "Full Paper\n" : "Short Paper\n";
-		info += "Apresentador: " + presenter + "\n";
-		info += "Duração: " + duration + "\n";
+		info += "Presenter: " + presenter + "\n";
+		info += "Duration: " + duration + "\n";
 		
 		return info;
 	}

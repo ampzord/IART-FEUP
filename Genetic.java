@@ -3,10 +3,6 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Random;
 
-import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
-
-import jdk.nashorn.internal.runtime.Context.ThrowErrorManager;
-
 /**
  * This class represents the used algorithm
  * It contains all required phases in the algorithm: selection, crossing over and mutation
@@ -45,11 +41,11 @@ public class Genetic {
 	 * based on user input
 	 */
 	private void selectionPhase() {
-		Utilities.SELECTION selection_t = Utilities.SELECTION.PROBABILISTIC;
+		
 
 		int N = 1;
 
-		switch(selection_t) {
+		switch(Utilities.selection_t) {
 		case ELITIST :
 			currentPopulation = elitist(N);
 			break;
@@ -66,7 +62,6 @@ public class Genetic {
 		ArrayList<Conference> populationForRoulette = setPopulationForRoulette();
 
 		while (populationForRoulette.size() == 0) {
-//			System.out.println("tamamho nao aceitavewl -> " + populationForRoulette.size());
 			currentPopulation = new ArrayList<Conference>();
 			for (int i = 0; i < Utilities.POPULATION_SIZE; i++) 
 				currentPopulation.add(new Conference(Genetic.generateRandomPopulation()));
@@ -75,7 +70,6 @@ public class Genetic {
 			for (Conference c : currentPopulation)
 				if (c.getScore() != 0)
 					sum++;
-			System.out.println(sum);
 			populationForRoulette = setPopulationForRoulette();
 		}
 
@@ -132,7 +126,6 @@ public class Genetic {
 		for (Conference c : populationForRoulette) 
 			c.setProbability(c.getScore()/sum);
 
-		//		System.out.println("poprolette" +populationForRoulette.size());
 		return populationForRoulette;
 	}
 
@@ -386,14 +379,6 @@ public class Genetic {
 
 		bestConference = currentPopulation.stream().max(Comparator.comparing(v -> v.getScore())).get();
 
-	}
-	
-	/**
-	 * Returns the Current Population
-	 * @return currentPopulation
-	 */
-	private ArrayList<Conference> getCurrentPopulation() {
-		return currentPopulation;
 	}
 
 	/**

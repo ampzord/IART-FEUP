@@ -77,7 +77,7 @@ public class Day {
 	public String toString() {
 		String info = "";
 		for (int i = 0; i < sessions.size() ; i++) 
-			info += "Sessão: " + i + "\n" + sessions.get(i).toString() + "\n";
+			info += "Session: " + i + "\n" + sessions.get(i).toString() + "\n";
 	
 		return info;
 	}

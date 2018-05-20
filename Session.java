@@ -132,9 +132,9 @@ public class Session {
 	@Override
 	public String toString() {
 		String info = "";
-		info += "Tema da Sessao: " + themeID + "\n";
-		info += "Duração: " + durationID + "\n";
-		info += "Periodo: " + sessionSchedule + "\n";
+		info += "Session Theme: " + themeID + "\n";
+		info += "Duration: " + durationID + "\n";
+		info += "Period: " + sessionSchedule + "\n";
 		for (int i = 0; i < papers.size() ; i++) {
 			info += "Paper: " + i + "\n" + papers.get(i).toString() + "\n";
 		}

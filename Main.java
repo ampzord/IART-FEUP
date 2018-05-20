@@ -13,14 +13,17 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+/**
+ * Main Class. Starts the program with a simple UI
+ * to have some input data from the User
+ */
 public class Main {
 	public static void main(String[] args) {
-
 		
 		JTextField maxPopTextField = new JTextField(10);
 //		JTextField maxPopTextField = new JTextField(10);
 
-	    String[] choices = { "Probabilistico","Esqueci o nome" };
+	    String[] choices = { "Probabilistic","Elitistic" };
 
 	    final JComboBox<String> cb = new JComboBox<String>(choices);
 
@@ -34,20 +37,24 @@ public class Main {
 //	      panel.add(label1, gbc);
 //	        panel.add(label2, gbc);
 	      
-		 panel.add(new JLabel("Qual o tamanho da população inicial?"));
+		 panel.add(new JLabel("What is the size of the population?"));
 		 panel.add(maxPopTextField);
 		 
 		 
-		 panel.add(new JLabel("Qual o método que deseja utilizar?"));
+		 panel.add(new JLabel("Which selection method would you like to use?"));
 		 cb.setVisible(true);
 		    panel.add(cb);
 		 
 		 JOptionPane.showMessageDialog(null,panel,"Information",JOptionPane.INFORMATION_MESSAGE);
 
 		 
-		 // pega os resultados
-		 System.out.println(maxPopTextField.getText());
-		 System.out.println(cb.getSelectedIndex());
+		 Utilities.POPULATION_SIZE = Integer.parseInt(maxPopTextField.getText());
+				 
+		if (cb.getSelectedIndex() == 0)
+			Utilities.selection_t = Utilities.SELECTION.PROBABILISTIC;
+		else
+			Utilities.selection_t = Utilities.SELECTION.ELITIST;
+			
 		 
 //		String stringParaAvaliar = JOptionPane.showInputDialog("Qual o tamanho da strin");
 //		do {
@@ -60,16 +67,12 @@ public class Main {
 		
 		
 		
-//		
-		
-		
 		ArrayList<Conference> p = new ArrayList<Conference>();
 
-		for (int i = 0; i < Utilities.POPULATION_SIZE ; i++) {
-			p.add(new Conference(Genetic.generateRandomPopulation()));
-		}
+		for (int i = 0; i < Utilities.POPULATION_SIZE ; i++) 
+			p.add(new Conference(Genetic.generateRandomPopulation()));	
 	
-		Genetic g = new Genetic(p);	
+		new Genetic(p);	
 
 	}
 }

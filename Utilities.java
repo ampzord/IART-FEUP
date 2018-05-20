@@ -31,7 +31,9 @@ public class Utilities {
 		ELITIST, PROBABILISTIC
 	};
 
-	public static int POPULATION_SIZE = 1000;
+	public static Utilities.SELECTION selection_t;
+
+	public static int POPULATION_SIZE;
 
 
 	/**
