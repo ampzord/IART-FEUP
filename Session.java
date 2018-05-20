@@ -6,7 +6,6 @@ import java.util.ArrayList;
  * which is a gene from a Conference
  */
 public class Session {
-	//dura��o, tema, papers(2 full papers no minimo), apresentador, dia da apresenta��o
 
 	private int themeID;
 	private int durationID;
@@ -28,21 +27,14 @@ public class Session {
 
 		this.durationID = Integer.parseInt(Utilities.binToDec(session.substring(index, index += Utilities.DURATION)));//2...4
 		
-//		String cromo = "11 001 000110111";
 		for (int i = 0; i < Utilities.PAPERS_PER_SESSION; i++) {
-		//	System.out.println("Paper " + i);
 			String paper = session.substring(index, index += Utilities.getPaperSize());
 			this.papers.add(new Paper(paper));
 		}
-
-	//	System.out.println("Theme ID: "+ themeID);
-	//	System.out.println("Duration ID: "+ durationID);
-	//	System.out.println("Period: "+ sessionSchedule);
 		
 		createGenome();
 	}
 	
-	// TT DD PPPPPP PPPPPPP
 
 	/**
 	 * Creates a genome of the session
@@ -50,7 +42,6 @@ public class Session {
 	private void createGenome() {
 		
 		String papersGene = "";
-		int fullPapers = 0;
 		for (Paper paper : papers) 
 			papersGene += paper.getGene();
 
@@ -135,6 +126,9 @@ public class Session {
 	}
 
 	
+	/**
+	 * Converts a Session to a human-friendly string
+	 */
 	@Override
 	public String toString() {
 		String info = "";

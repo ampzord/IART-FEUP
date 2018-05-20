@@ -9,9 +9,6 @@ public class Conference  {
 	
 	private String cromossome;
 	private ArrayList<Day> days = new ArrayList<Day>();
-	private int numberRooms;
-	private int numberSessions;
-//	private int nDays;
 	private double fitnessScore;
 	private double probability;
 	
@@ -32,9 +29,6 @@ public class Conference  {
 	private void splitCromossome() {
 		int offset = 0;
 		
-//		this.nDays = getCromossome().length() / (Utilities.getSessionCount() * Utilities.SESSIONS_PER_PERIOD);
-//		System.out.println("ndays "+ nDays);
-		
 		days = new ArrayList<Day>(); 
 		
 		for (int i = 0; i <  Utilities.DAYS; i++) {
@@ -46,13 +40,7 @@ public class Conference  {
 			
 		}
 
-		//verificar valor sde substrings
 	}
-	
-	
-//	public boolean checkAuthors() {
-//		
-//	}
 	
 	/**
 	 * Calculates the fitness score associated to the Conference
@@ -176,8 +164,12 @@ public class Conference  {
 		calculateScore();
 	}
 
-	public void setScore(int i) {
-		this.fitnessScore = i;
+	/**
+	 * Sets the fitness score of the Conference
+	 * @param score new score to be set
+	 */
+	public void setScore(int score) {
+		this.fitnessScore = score;
 		
 	}
 }

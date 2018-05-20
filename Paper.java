@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  * This class represents a Session,
@@ -24,7 +23,6 @@ public class Paper {
 		
 		presenter = Integer.parseInt(Utilities.binToDec(paper.substring(index, index += Utilities.PRESENTER)));
 		
-	//	System.out.println("Presenter: " + presenter);
 		
 		for (int i = 0; i < Utilities.AUTHORS_PER_PAPER; i++) {
 						
@@ -35,9 +33,9 @@ public class Paper {
 			this.authors.add(b);
 		}
 		
-		for (int i = 0; i < Utilities.THEMES_PER_PAPER; i++) {
+		for (int i = 0; i < Utilities.THEMES_PER_PAPER; i++) 
 			this.themes.add(Integer.parseInt(Utilities.binToDec(paper.substring(index, index += Utilities.THEME))));
-		}
+		
 
 		this.isFullPaper = paper.substring(index, index++).equals("0") ? false : true;
 		
@@ -51,6 +49,7 @@ public class Paper {
 	
 	/**
 	 * Creates the genome of a paper 
+	 * and sets it
 	 */
 	public void createGenome() {
 		String themesG ="";
@@ -128,7 +127,9 @@ public class Paper {
 		return presenter;
 	}
 	
-	
+	/**
+	 * Converts a Paper to a human-friendly string
+	 */
 	@Override
 	public String toString() {
 		String info = "";
