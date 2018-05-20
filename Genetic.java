@@ -43,7 +43,7 @@ public class Genetic {
 	private void selectionPhase() {
 		
 
-		int N = 1;
+		int N = Utilities.ELITIST_NUMBER;
 
 		switch(Utilities.selection_t) {
 		case ELITIST :
