@@ -1,10 +1,6 @@
-# IART
+# IART-FEUP, 2018
 
 # B5: Otimização na Programação de uma Conferência
-
-# Objetivo:
-
-Aplicação de algoritmos de otimização ao problema da programação de uma conferência.
 
 # Descrição:
 
@@ -15,3 +11,32 @@ As apresentações são agrupadas em sessões temáticas. Cada sessão tem uma d
 Pretende-se montar o programa da conferência, procurando garantir sessões equilibradas: cada sessão deve ter pelo menos 2 apresentações de full-papers. Note que cada apresentador pode ser coautor (e apresentador) de mais do que um paper, pelo que se torna necessário garantir que não há sessões paralelas com apresentadores em comum.
 
 O trabalho consiste em aplicar metodologias de otimização (Algoritmos Genéticos é uma delas) a este cenário, resolvendo instâncias de dimensões consideráveis. Estas metodologias podem ser utilizadas para efectuar uma análise comparativa do nível de desempenho de cada uma.
+
+# Execução:
+
+Para correr o programa, basta importar o projeto em Eclipse e clicar em _Run_.
+
+Será apresentada uma interface gráfica com alguns dados padrão que podem ser alterados.
+
+---------------------------------------------------------------------------------------------------------------------------------------
+# B5: Optimization in a Conference Scheduling
+
+# Objective:
+
+Application of optimization algorithms to the problem of shceduling a conference.
+
+# Description:
+
+In the shceduling of a scientific conference, there is a set of presentations of scientific articles (papers) submitted and accepted in the conference. A paper covers one or more themes. Each presentation has a speaker (one of the authors of the paper) and may have different duration depending on whether it corresponds to a full-paper (30 minutes) or short-paper (20 minutes).
+
+Presentations are grouped in thematic sessions. Each session has a maximum duration of 2 hours. Papers presented in the same session should be related to the theme of the session. There may be a maximum of M sessions in parallel, related to the number of rooms available. The conference will take place over 3 days, and there will be a maximum of 4 sessions each day, with coffee breaks or lunch breaks.
+
+It is intended to set up the conference program, seeking to ensure balanced sessions: each session must have at least 2 full-paper presentations. Note that each presenter can be a co-author (and presenter) of more than one paper, so it is necessary to ensure that there are no parallel sessions with presenters in common.
+
+The work consists of applying optimization methodologies (Genetic Algorithms is one of them) to this scenario, solving instances of considerable dimensions. These methodologies can be used to perform a comparative analysis of the performance level of each.
+
+# Execution:
+
+To run the program, just import the project into Eclipse and click _Run_.
+
+A graphical interface will be displayed with some standard data that can be changed.
