@@ -1,33 +1,14 @@
-# IART-FEUP, 2018
+FEUP-IART
+============
+Repository for Artificial Intelligence class @ FEUP.
 
-# B5: Otimização na Programação de uma Conferência
+# Project - Optimization in a Conference Scheduling
 
-# Descrição:
-
-No programa de uma conferência científica há um conjunto de apresentações de artigos científicos (papers) submetidos e aceites na conferência. Um paper cobre um ou mais temas. Cada apresentação tem um orador (um dos autores do paper), e pode ter diferente duração consoante corresponda a um full-paper (30 minutos) ou short-paper (20 minutos).
-
-As apresentações são agrupadas em sessões temáticas. Cada sessão tem uma duração máxima de 2 horas. Os papers apresentados numa mesma sessão devem estar relacionados com o tema da sessão. Pode haver um máximo de M sessões em paralelo, relacionado com o número de salas disponíveis. A conferência decorrerá ao longo de 3 dias, e em cada dia há no máximo 4 horários para sessões, intervalados por coffe-breaks ou pelo almoço.
-
-Pretende-se montar o programa da conferência, procurando garantir sessões equilibradas: cada sessão deve ter pelo menos 2 apresentações de full-papers. Note que cada apresentador pode ser coautor (e apresentador) de mais do que um paper, pelo que se torna necessário garantir que não há sessões paralelas com apresentadores em comum.
-
-O trabalho consiste em aplicar metodologias de otimização (Algoritmos Genéticos) a este cenário, resolvendo instâncias de dimensões consideráveis. Estas metodologias podem ser utilizadas para efectuar uma análise comparativa do nível de desempenho de cada uma.
-
-# Execução:
-
-Para correr o programa, basta importar o projeto em Eclipse e clicar em _Run_.
-
-Será apresentada uma interface gráfica com alguns dados padrão que podem ser alterados.
-
-Também está disponível o ficheiro _Conference.jar_, que rapidamente começa o programa.
-
----------------------------------------------------------------------------------------------------------------------------------------
-# B5: Optimization in a Conference Scheduling
-
-# Objective:
+## Objective:
 
 Application of optimization algorithms to the problem of scheduling a conference.
 
-# Description:
+## Description:
 
 In the scheduling of a scientific conference, there is a set of presentations of scientific articles (papers) submitted and accepted in the conference. A paper covers one or more themes. Each presentation has a speaker (one of the authors of the paper) and may have different duration depending on whether it corresponds to a full-paper (30 minutes) or short-paper (20 minutes).
 
@@ -37,10 +18,10 @@ It is intended to set up the conference program, seeking to ensure balanced sess
 
 The work consists of applying optimization methodologies (Genetic Algorithms) to this scenario, solving instances of considerable dimensions. These methodologies can be used to perform a comparative analysis of the performance level of each.
 
-# Execution:
+## Execution:
 
-To run the program, just import the project into Eclipse and click _Run_.
+Run _Conference.jar_ file.
 
-A graphical interface will be displayed with some standard data that can be changed.
+## License
 
-There is also a _Conference.jar_ file, which quickly starts the program.
+This project is licensed under the terms of the **MIT** [license](https://github.com/ampzord/FEUP-IART/blob/master/LICENSE).
